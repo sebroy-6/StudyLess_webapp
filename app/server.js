@@ -1,9 +1,12 @@
 const express = require("express");
+const path = require('path');
 const app = express();
+const PORT = 5000;
 
-app.get('/', (req, res) => {
-  console.log("hello");
-  res.send("Hello");
-})
+app.set("view engine", "ejs");
 
-app.listen(5000);
+app.get("/", (req, res) => {
+  res.sendFile("../pages/index.html");
+});
+
+app.listen(PORT);
