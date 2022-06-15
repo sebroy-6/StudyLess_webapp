@@ -1,12 +1,16 @@
 const express = require("express");
-const path = require('path');
 const app = express();
 const PORT = 5000;
 
+// set up the access to all the files in the public folder
 app.set("view engine", "ejs");
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.sendFile("../pages/index.html");
+  res.render("../public/index");
 });
+
+const userRouter = require("./routes/SignIn");
+app.use("/signIn", userRouter);
 
 app.listen(PORT);
