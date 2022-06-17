@@ -1,28 +1,53 @@
 html {
-    font-family: Verdana, sans-serif;
-    font-size: 15px;
-    line-height: 1.5;
-    font-weight: normal;
-    background-color: rgb(75 95 132 / 43%);
-  }
+  font-family: Copperplate, Fantasy;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: normal;
+  background-color: rgb(125 70 11);
+}
   
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 400;
-    line-height: 1;
-    margin: 20px 0;
-  }
-  
-  h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {font-weight: inherit;}
-  h1 {font-size: 36px}
-  h2 {font-size: 30px}
-  h3 {font-size: 24px}
-  h4 {font-size: 20px}
-  h5 {font-size: 18px}
-  h6 {font-size: 16px}
-  
-  hr {
-    height: 0;
-    border: 0;
-    border-top: 1px solid #eee;
-    margin: 20px 0;
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px 0;
+}
+
+button{
+  font-size: 18px;
+  border-radius: 20px;
+  background-color: transparent;
+  border-color: #fdb44d;
+  color: #fdb44d;
+}
+
+.main::after {
+  content: "";
+  background: url("../images/library.png");
+  background-repeat: repeat-x;
+  opacity: 60%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+
+#pageheader {
+  font-weight: normal;
+  font-size: 75px;
+  text-align: center;
+  color: #fdb44d;
+}
+
+#inputForm {
+  font-weight: normal;
+  font-size: 30px;
+  text-align: center;
+  color: #ded4c5;
+}
+
+#inputForm {
+  font-size: 25px;
+  text-align: center;
+}
