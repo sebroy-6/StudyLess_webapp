@@ -8,13 +8,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
-  <body class="main">
-    <form id="inputForm">
-      UserName:<input type="text" name="name" />
-      <br />
-      password:<input type="text" name="subject" />
-      <br />
-    </form>
-    <button type="console.log('LOGIN DEMANDED')" onclick>register</button>
+  <body>
+    <div class="formBox">
+      <form class="inputForm" method="post">
+        <label for="uname"><b>Enter your username</b></label>
+        <br />
+        <input type="text" name="uname" />
+        <br />
+        <label for="psw"><b>Enter your password</b></label>
+        <br />
+        <input type="password" name="psw" />
+        <br />
+        <button type="submit">Login</button>
+      </form>
+    </div>
   </body>
 </html>
