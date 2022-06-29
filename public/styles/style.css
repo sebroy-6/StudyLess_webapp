@@ -5,6 +5,12 @@ html {
   font-weight: normal;
 }
 
+h1 {
+  font-size: 200%;
+  font-weight: normal;
+  margin: 0 0 0.25em 0;
+}
+
 button{
   font-size: 18px;
   border-radius: 20px;
@@ -13,11 +19,31 @@ button{
   color: #fdb44d;
 }
 
+input {
+  font-size: 20px;
+  color: #d0881c;
+}
+
+input::placeholder {
+  color: #d0881c;
+}
+
+input.inputForm{
+  width: 200px;
+  height: 30px;
+}
+
 button.signIn{
   font-size: 25px;
 }
 
-body::after {
+button:hover{
+  background-color: #c7872d;
+  border-color: #0a0601;
+  color: #0a0601;
+}
+
+body.library::after {
   content: "";
   background: url("../images/library.png");
   background-color: rgb(5 3 1);
@@ -31,12 +57,12 @@ body::after {
   z-index: -1;   
 }
 
-.center{
-  text-align: center;
+body.app::after{
+  background-color: rgb(167, 126, 85);   
 }
 
-.sidebar{
-  text-align: right;
+.center{
+  text-align: center;
 }
 
 .pageheader {
@@ -50,7 +76,7 @@ body::after {
   position: absolute;
   top: 40%;
   left: 50%;
-  width : 40%;
+  width : 30%;
   height : 60%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -58,15 +84,14 @@ body::after {
 
 .inputForm {
   margin: 5%;
-  text-align: left;
+  text-align: center;
   font-size: 30px;
   color: #d0881c;
 }
 
 .inputForm::after {
   content: "";
-  background-color: rgb(129, 64, 0);
-  text-align: center;
+  background-color: rgb(71, 46, 35);
   top: 0;
   left: 0;
   bottom: 0;
@@ -74,7 +99,14 @@ body::after {
   position: absolute;
   z-index: -1;
   border-radius: 7%;
-  border-color: black;
-  border-style: solid;
-  border-width: 10px;
+}
+
+.inputBox{
+  width: 80%;
+  height: 35px;
+  margin: 5%;
+  border-style: hidden;
+  border-bottom-style: solid;
+  background-color : transparent;
+  border-bottom-color: #fdb44d;
 }

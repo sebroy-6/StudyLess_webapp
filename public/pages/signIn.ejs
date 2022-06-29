@@ -8,18 +8,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
-  <body>
+  <body class="library">
     <div class="formBox">
       <form class="inputForm" method="post">
-        <label for="uname"><b>Enter your username</b></label>
+        <h1 class="center"><b>Login</b></h1>
+        <input
+          class="inputBox"
+          type="text"
+          name="uname"
+          placeholder="enter your username"
+        />
+        <input
+          class="inputBox"
+          type="password"
+          name="psw"
+          placeholder="enter your password"
+        />
         <br />
-        <input type="text" name="uname" />
-        <br />
-        <label for="psw"><b>Enter your password</b></label>
-        <br />
-        <input type="password" name="psw" />
-        <br />
-        <button type="submit">Login</button>
+        <button class="signIn" type="submit">Login</button>
+        <button class="signIn" type="button">signUp</button>
       </form>
     </div>
   </body>
