@@ -110,3 +110,23 @@ body.app::after{
   background-color : transparent;
   border-bottom-color: #fdb44d;
 }
+
+label.errorMessage {
+  color: red;
+  font-size: 20px;
+}
+
+#sideBar {
+  height: 100vh;
+  width: 15vw;
+  background-color: #111;
+  left: 0; /* used with position attribute */
+  top: 0;
+  position: fixed;
+  border-radius: 0% 10% 10% 0%;
+
+}
+
+body.homePage {
+  background-color:rgb(100, 65, 37);
+}

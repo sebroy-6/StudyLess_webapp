@@ -1,12 +1,13 @@
 // get the data from a json file and store it in a variable
 const fs = require('fs');
-
 const userJsonPath = "./app/data/users.json";
 
 function getData(fileName = userJsonPath) {
     let data = fs.readFileSync(fileName, 'utf8');
     return JSON.parse(data);
 }
+
+// Section related to USERS
 
 function getUser(username) {
     return getData(userJsonPath).find(user => user.username === username);
@@ -26,4 +27,7 @@ function addUser(username, password) {
 }
 
 module.exports = { getUser, addUser };
+
+
+// Section related to USER_DATA
 

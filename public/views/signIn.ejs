@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<title>POLYSTUDY - signIn</title>
+	<link rel="icon" type="image/x-icon" href="/images/webapp_logo.png" />
+	<link rel="stylesheet" type="text/css" href="/styles/style.css" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	</head>
+	<body class="library">
+		<div class="formBox">
+			<form class="inputForm" method="post">
+				<h1 class="center"><b>Login</b></h1>
+				<input
+					class="inputBox"
+					type="text"
+					name="uname"
+					placeholder="enter your username"
+				/>
+				<input
+					class="inputBox"
+					type="password"
+					name="psw"
+					placeholder="enter your password"
+				/>
+				<br />
+				<label class="errorMessage"> <%= locals.errorMsg %> </label>
+				<br />
+				<button class="signIn" name="Button" value="logIn">Login</button>
+				<button class="signIn" name="Button" value="signUp">signUp</button>
+			</form>
+		</div>
+	</body>
+</html>
