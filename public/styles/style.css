@@ -1,54 +1,29 @@
 html {
   font-family: Copperplate, Fantasy;
-  font-size: 15px;
-  line-height: 1.5;
   font-weight: normal;
 }
 
 h1 {
   font-size: 200%;
   font-weight: normal;
-  margin: 0 0 0.25em 0;
 }
 
-button{
-  font-size: 18px;
-  border-radius: 20px;
-  background-color: transparent;
-  border-color: #fdb44d;
-  color: #fdb44d;
-}
 
-input {
-  font-size: 20px;
-  color: #d0881c;
-}
+/* index styles */ 
 
-input::placeholder {
-  color: #d0881c;
-}
-
-input.inputForm{
-  width: 200px;
-  height: 30px;
-}
-
-button.signIn{
-  font-size: 25px;
-}
-
-button:hover{
-  background-color: #c7872d;
-  border-color: #0a0601;
-  color: #0a0601;
+body.library {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(5 3 1);
+  text-align: center;
 }
 
 body.library::after {
   content: "";
-  background: url("../images/library.png");
-  background-color: rgb(5 3 1);
-  background-repeat: repeat-x;
-  opacity: 85%;
+  background: url("../images/london-library.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 80%;
   top: 0;
   left: 0;
   bottom: 0;
@@ -57,58 +32,63 @@ body.library::after {
   z-index: -1;   
 }
 
-body.app::after{
-  background-color: rgb(167, 126, 85);   
-}
-
-.center{
-  text-align: center;
-}
-
-.pageheader {
+h1.pageheader {
+  margin-top: 20vh;
   font-weight: normal;
   font-size: 75px;
   text-align: center;
-  color: #fdb44d;
+  color: rgb(255, 255, 255);
 }
 
-.formBox{
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  width : 30%;
-  height : 60%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+button.signIn{
+  font-size: 25px;
+  border-radius: 20px;
+  background-color: transparent;
+  border-color: white;
+  color: white;
 }
 
-.inputForm {
-  margin: 5%;
+button.signIn:hover{
+  background-color: white;
+  border-color: #0a0601;
+  color: #0a0601;
+}
+
+
+/* signIn styles */
+
+form.inputForm {
+  background-color: rgba(41, 41, 41, 0.85);
+  border-radius: 30px;
+  width: 425px;
+  height: 475px;
   text-align: center;
   font-size: 30px;
-  color: #d0881c;
+  color: white;
+  margin-top: 10vh;
 }
 
-.inputForm::after {
-  content: "";
-  background-color: rgb(71, 46, 35);
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
-  border-radius: 7%;
+.inputForm > h1 {
+  margin-top: 30px;
 }
 
-.inputBox{
+input {
+  font-size: 20px;
+  color: white;
+}
+
+.inputForm > input {
   width: 80%;
   height: 35px;
   margin: 5%;
   border-style: hidden;
   border-bottom-style: solid;
   background-color : transparent;
-  border-bottom-color: #fdb44d;
+  border-bottom-color: white;
+}
+
+input::placeholder {
+  color: white;
 }
 
 label.errorMessage {
@@ -116,17 +96,39 @@ label.errorMessage {
   font-size: 20px;
 }
 
-#sideBar {
-  height: 100vh;
-  width: 15vw;
-  background-color: #111;
-  left: 0; /* used with position attribute */
-  top: 0;
-  position: fixed;
-  border-radius: 0% 10% 10% 0%;
 
-}
+/* homepage styles */
 
 body.homePage {
   background-color:rgb(100, 65, 37);
 }
+
+div.navBar{
+  height: 100vh;
+  width: 15vw;
+  background-color: rgba(140, 95, 32, 0.68);
+  left: 0;
+  top: 0;
+  position: fixed;
+  border-radius: 0% 10% 10% 0%;
+  z-index: 1;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+
+ul.navBar {
+  list-style-type: none;
+  margin: 0;
+  margin-top: 20%;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(183, 40, 40);
+}
+
+.navBar > a {
+  width: 15vw;
+  text-decoration: none;
+  text-align: center;
+}
+
