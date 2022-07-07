@@ -8,10 +8,42 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	</head>
+	<script>
+		function toggleStudyRoomsVisibility() {
+			let collection = document.getElementsByClassName("studyroom");
+			for (let i = 0; i < collection.length; i++) {
+				if (collection[i].style.visibility === "visible")
+					collection[i].style.visibility = "hidden";
+				else
+					collection[i].style.visibility = "visible";
+			}
+		}
+	</script>
 	<body class="homePage">
-		<div class="navBar">
-			<ul class="navBar">
-				<li><a href="/public/views/homePage.ejs">This page</a></li>
+		<ul class="bar-side">
+			<h1>POLYSTUDY</h1>
+			<li class="bar-side">
+				<button href="/">index page</button>
+				<button href="/signIn">signIn page</button>
+				<button href="" onclick="toggleStudyRoomsVisibility()">Study Rooms</button>
+				<button class="studyroom" onclick="">room 1</button>
+			</li>
+		</ul>
+		<div class="bar-top">
+			<ul class="bar-top">
+				<li class="bar-top">
+					<a href="" class="image">
+						<img src="/images/defaultProfilePicture.png" />
+					</a>
+				</li>
+				<li class="bar-top">
+					<a href="" class="image">
+						<img src="/images/gearPicture.png" />
+					</a>
+				</li>
+				<li class="bar-top">
+					<a href="" class="text"><b>CONTACT<b></a>
+				</li>
 			</ul>
 		</div>
 	</body>

@@ -24,10 +24,19 @@
 				placeholder="enter your password"
 			/>
 			<br />
-			<label class="errorMessage"> <%= locals.errorMsg %> </label>
+			<label class="errorMessage" id="errorMsg"> <%= locals.errorMsg %> </label>
 			<br />
-			<button class="signIn" name="Button" value="logIn">Login</button>
-			<button class="signIn" name="Button" value="signUp">signUp</button>
+			<button class="signIn" name="Button" value="logIn" title="Login">
+				Login
+			</button>
+			<button
+				class="signIn"
+				name="Button"
+				value="signUp"
+				title="Create account"
+			>
+				signUp
+			</button>
 		</form>
 	</body>
 </html>
