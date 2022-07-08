@@ -1,3 +1,4 @@
+const jsonScript = require("../scripts/json_scripts");
 const express = require("express");
 const router = express.Router();
 const bodyParser = require('body-parser'); // Middleware 
@@ -5,7 +6,7 @@ const bodyParser = require('body-parser'); // Middleware
 router.use(bodyParser.urlencoded({ extended: false }));
 
 router.get("/", (req, res) => {
-  res.render("homePage");
+  res.render("manageNotes");
 });
 
 module.exports = router;

@@ -19,4 +19,7 @@ app.use("/signIn", signInRouter);
 const homePageRouter = require("./routes/homePage");
 app.use("/homePage", homePageRouter);
 
+const manageNotesRouter = require("./routes/manageNotes");
+app.use("/manageNotes", manageNotesRouter);
+
 app.listen(PORT);

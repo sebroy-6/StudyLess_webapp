@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 	<title>POLYSTUDY - signIn</title>
+
 	<link rel="icon" type="image/x-icon" href="/images/webapp_logo.png" />
 	<link rel="stylesheet" type="text/css" href="/styles/style.css" />
+
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	</head>
+
 	<body class="library">
 		<form class="inputForm" method="post">
 			<h1><b>Login</b></h1>
+
 			<input
 				class="inputBox"
 				type="text"
@@ -23,9 +27,11 @@
 				name="psw"
 				placeholder="enter your password"
 			/>
+
 			<br />
 			<label class="errorMessage" id="errorMsg"> <%= locals.errorMsg %> </label>
 			<br />
+
 			<button class="signIn" name="Button" value="logIn" title="Login">
 				Login
 			</button>
