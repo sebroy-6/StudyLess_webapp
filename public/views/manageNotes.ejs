@@ -17,14 +17,12 @@
 		<ul class="bar-side">
 			<h1>POLYSTUDY</h1>
 			<li class="bar-side">
+				<button class="back" onclick="location.href='/homePage'">back</button>
+			</li>
+			<li class="bar-side">
 				<button onclick="toggleClassDisplay('manageNotesOption')">Manage notes</button>
 				<button class="manageNotesOption">add notes</button>
 				<button class="manageNotesOption">view notes</button>
-			</li>
-			<li class="bar-side">
-				<button onclick="toggleClassDisplay('studyroom')">Study Rooms</button>
-				<button class="studyroom">FlashCards</button>
-				<button class="studyroom">...</button>
 			</li>
 		</ul>
 
@@ -46,7 +44,16 @@
 			</ul>
 		</div>
 		<div class="app-container">
-			
+			<div class="text">
+				<h2>Add Notes</h2>
+				<p>Please chose the file you want to upload</p>
+				<form class="fileUpload" method="post" encType="multipart/form-data">
+					<input type="file" name="classNotes" accept=".txt,.pdf">
+					<input type="submit" value="send file"/> 
+				</form>
+				<label class="positiveServerResponse"> <%= locals.posServerRes %> </label>
+				<label class="errorMessage"> <%= locals.errorMsg %> </label>
+			</div>
 		</div>
 
 	</body>
