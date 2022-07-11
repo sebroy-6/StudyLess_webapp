@@ -1,4 +1,6 @@
 [
-	{ "username": "seb", "password": "roy" },
-	{ "username": "cass", "password": "roy" }
+	{
+		"username": "seb",
+		"password": "$2b$10$42aDJ79.3bop3q6hLRyBpOV84aZuBJwg7f6AebckgmRoRSkvoOrDe"
+	}
 ]
