@@ -1,11 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const bodyParser = require('body-parser'); // Middleware 
 
-router.use(bodyParser.urlencoded({ extended: false }));
 
 router.get("/", (req, res) => {
-  res.render("homePage");
+    console.log(req.session);
+    if(req.session.userid)
+        res.render("homePage");
+    else
+        res.redirect("/");
 });
 
 module.exports = router;

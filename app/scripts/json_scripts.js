@@ -30,4 +30,4 @@ async function addUser(username, password) {
     return user;
 }
 
-module.exports = { getUser, addUser };
+module.exports = { getData, getUser, addUser };

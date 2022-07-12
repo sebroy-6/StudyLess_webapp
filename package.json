@@ -1,21 +1,30 @@
 {
-  "name": "studyaid_webapp",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "devStart": "nodemon app/server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^5.0.1",
-    "ejs": "^3.1.8",
-    "express": "^4.18.1",
-    "express-fileupload": "^1.4.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.16"
-  }
+	"name": "studyaid_webapp",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"devStart": "nodemon app/server.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"bcrypt": "^5.0.1",
+		"connect-mongodb-session": "^3.1.1",
+		"cookie-parser": "^1.4.6",
+		"ejs": "^3.1.8",
+		"express": "^4.18.1",
+		"express-fileupload": "^1.4.0",
+		"express-session": "^1.17.3",
+		"mongoose": "^6.4.4"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.16"
+	},
+	"nodemonConfig": {
+		"ignore": [
+			"./app/data/*.json"
+		]
+	}
 }
