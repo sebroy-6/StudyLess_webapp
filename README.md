@@ -9,7 +9,7 @@ Reminder if you pull this project!
 If you pull this project and want to run it, here are some instructions :
 
 1) git clone this repository into a local folder on you computer
-2) execute the command "npm install" in the same local folder's terminal to install all the project's dependancies
+2) execute the command "npm install" in the same local folder's terminal to install all the project's dependencies
 3) host a mongodb server on your computer to give this app access to a mongodb server
 4) use the command "npm run devStart" int the same local folder's terminal to start the express server
 
