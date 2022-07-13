@@ -11,7 +11,7 @@ const app = express();
 const PORT = 5000;
 
 const viewsRoute = "../public/views";
-const sessionKey = "secretTestKey"
+const sessionKey = "secretTestKey";
 const maxSessionTime = 12 * 60 * 60 * 1000; // 12 hours
 
 mongoose.connect(mongodbURI, {
@@ -24,7 +24,7 @@ mongoose.connect(mongodbURI, {
 
 const store = new MongoDBSession({
     uri: mongodbURI,
-    collection: "Sessions",
+    collection: "sessions",
     saveUninitialized: false,
     useUnifiedTopology: true
 }); 
@@ -43,8 +43,8 @@ app.use(sessions({
     store: store
 }));
 
+
 app.get("/", (req, res) => {
-    console.log(req.session);
     if(req.session.userid) {
         res.redirect("homePage"); 
     }
@@ -52,6 +52,7 @@ app.get("/", (req, res) => {
         res.render("index"); 
     }
 });
+
 
 const signInRouter = require("./routes/signIn");
 app.use("/signIn", signInRouter);
@@ -61,5 +62,8 @@ app.use("/homePage", homePageRouter);
 
 const manageNotesRouter = require("./routes/manageNotes");
 app.use("/manageNotes", manageNotesRouter);
+
+const accountRouter = require("./routes/account");
+app.use("/account", accountRouter);
 
 app.listen(PORT, console.log(`Running server on port ${PORT}`));

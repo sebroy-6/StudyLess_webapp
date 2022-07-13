@@ -9,8 +9,8 @@ router.use(fileUpload());
 
 
 router.get("/", (req, res) => {
-  res.render("manageNotes");
-  res.redirect("/");
+    if (req.session.userid) res.render("manageNotes");
+    else res.redirect("/");
 });
 
 router.post("/", (req, res) => {
