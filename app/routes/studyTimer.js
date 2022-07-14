@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
     if(req.session.userid)
-        res.render("homePage");
+        res.render("studyTimer");
     else
         res.redirect("/");
 });

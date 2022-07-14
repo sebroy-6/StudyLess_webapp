@@ -100,7 +100,7 @@ label.errorMessage {
 /* homepage styles */
 
 body.homePage {
-    background-color: rgb(235, 234, 234);
+    background-color: rgba(0, 80, 93, 0.5);
     padding: 0;
     margin: 0;
     position: relative;
@@ -166,6 +166,9 @@ ul.bar-top {
 }
 
 li.bar-top {
+    height: 60px;
+    display: flex;
+    align-items: center;
     float: right;
     margin: 15px;
 }
@@ -178,6 +181,7 @@ li.bar-top > a.image {
 }
 
 li.bar-top > a.text {
+    font-size: 1.5em;
     text-decoration: none;
     color:rgb(235, 234, 234);
 }
@@ -199,7 +203,7 @@ li.bar-side > button.studyroom {
     width: 85%;
 }
 
-li.bar-side > button.manageNotesOption {
+li.bar-side > button.studyTool {
     display: none;
     margin-left: 15%;
     width: 85%;
@@ -230,20 +234,23 @@ div.app-container > div.text > p {
     font-size: 1.5vw;
 }
 
-form.fileUpload {
+
+/* account styles */
+
+.absCenter {
     display: flex;
     justify-content: center;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
+    align-items: center;
 }
 
-form.fileUpload > input {
-    height: 35px;
-    color: inherit;
+/* timer styles */
+
+body.light {
+    background-color: rgb(104, 104, 104);
 }
 
-label.positiveServerResponse {
-    color: green;
-    font-size: 20px;
+body.light::after {
+    opacity: 40%;
 }
+
 

@@ -60,10 +60,13 @@ app.use("/signIn", signInRouter);
 const homePageRouter = require("./routes/homePage");
 app.use("/homePage", homePageRouter);
 
-const manageNotesRouter = require("./routes/manageNotes");
-app.use("/manageNotes", manageNotesRouter);
-
 const accountRouter = require("./routes/account");
 app.use("/account", accountRouter);
+
+const studyTimerRouter = require("./routes/studyTimer");
+app.use("/studyTimer", studyTimerRouter);
+
+const studyScheduleRouter = require("./routes/studySchedule");
+app.use("/studySchedule", studyScheduleRouter);
 
 app.listen(PORT, console.log(`Running server on port ${PORT}`));
