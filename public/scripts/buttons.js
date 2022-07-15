@@ -15,3 +15,15 @@ function toggleClassDisplay(elementsClass) {
     }
 }
 
+function toggleTimerStartButton(elementId) {
+    if (typeof(elementId) === "string") {
+        let element = document.getElementById(elementId);
+        if (element.innerHTML !== "STOP") {
+            document.getElementById(elementId).innerHTML = "STOP";
+        }
+        else {
+            document.getElementById(elementId).innerHTML = "START";
+        }
+    }
+}
+

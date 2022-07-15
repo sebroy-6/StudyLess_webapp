@@ -8,5 +8,24 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	</head>
-	<body class="library light"></body>
+	<body class="library light">
+		<div id="timer" class="bubble" method="post">
+			<div class="timermode">
+				<button class="timermode">study</button>
+				<button class="timermode">break</button>
+				<button class="timermode">stopped</button>
+			</div>
+			<div class="clock" id="clock">05:00</div>
+			<button
+				class="default"
+				id="start"
+				onclick="toggleTimerStartButton(id); 
+                         toggleTimer(orderedTimeToSeconds(document.getElementById('clock').innerHTML), 'clock', 'start');"
+			>
+				START
+			</button>
+		</div>
+	</body>
+	<script src="../scripts/buttons.js"></script>
+	<script src="../scripts/timer.js"></script>
 </html>

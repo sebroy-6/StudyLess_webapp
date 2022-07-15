@@ -40,7 +40,7 @@ h1.pageheader {
     color: rgb(255, 255, 255);
 }
 
-button.signIn{
+button.default{
     font-size: 25px;
     border-radius: 20px;
     background-color: transparent;
@@ -48,7 +48,7 @@ button.signIn{
     color: white;
 }
 
-button.signIn:hover{
+button.default:hover{
     background-color: white;
     border-color: #0a0601;
     color: #0a0601;
@@ -57,7 +57,7 @@ button.signIn:hover{
 
 /* signIn styles */
 
-form.inputForm {
+form.bubble, div.bubble {
     background-color: rgba(41, 41, 41, 0.85);
     border-radius: 30px;
     width: 425px;
@@ -68,7 +68,7 @@ form.inputForm {
     margin-top: 10vh;
 }
 
-.inputForm > h1 {
+.bubble > h1 {
     margin-top: 30px;
 }
 
@@ -77,7 +77,7 @@ input {
     color: white;
 }
 
-.inputForm > input {
+.bubble > input {
     width: 80%;
     height: 35px;
     margin: 5%;
@@ -246,11 +246,57 @@ div.app-container > div.text > p {
 /* timer styles */
 
 body.light {
-    background-color: rgb(104, 104, 104);
+    background-color: rgb(90, 90, 90);
 }
 
 body.light::after {
-    opacity: 40%;
+    opacity: 50%;
+}
+
+div#timer {
+    background-color: rgb(0, 55, 82);
+    width: calc(10vw + 300px);
+    height: calc(40vh + 200px);
+    position: relative;
+}
+
+div#timer > div.clock {
+    font-size: calc(4vw + 60px);
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+}
+
+div#timer > button#start {
+    font-size: calc(1vw + 15px);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+div#timer > div.timermode {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+div.timermode > button.timermode {
+    font-size: calc(1vw + 10px);
+    margin: 0.5vw 1vw 0.5vw 1vw;
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+}
+
+div.timermode > button.timermode:hover {
+    color: rgb(187, 187, 187);
+    border-bottom-color: rgb(187, 187, 187);
+    cursor: pointer;
 }
 
 
