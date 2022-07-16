@@ -34,6 +34,7 @@ app.set("view engine", "ejs");
 app.set('views', path.join(__dirname, viewsRoute));
 
 app.use(express.static("public"));
+app.use(express.json({ limit: "1mb"}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(sessions({
     secret: sessionKey,

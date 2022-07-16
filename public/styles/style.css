@@ -276,7 +276,7 @@ div#timer > button#start {
     transform: translate(-50%, -50%);
 }
 
-div#timer > div.timermode {
+div#timer > form.timermode {
     position: absolute;
     top: 10%;
     left: 50%;
@@ -284,16 +284,16 @@ div#timer > div.timermode {
     width: 100%;
 }
 
-div.timermode > button.timermode {
+form.timermode > button.timermode {
     font-size: calc(1vw + 10px);
-    margin: 0.5vw 1vw 0.5vw 1vw;
+    margin: 0.5vw 1.25vw 0.5vw 1.25vw;
     background-color: transparent;
     color: white;
     border: none;
-    border-bottom: 1px solid white;
+    border-bottom: 2px solid white;
 }
 
-div.timermode > button.timermode:hover {
+form.timermode > button.timermode:hover {
     color: rgb(187, 187, 187);
     border-bottom-color: rgb(187, 187, 187);
     cursor: pointer;

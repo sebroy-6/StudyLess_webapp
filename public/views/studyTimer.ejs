@@ -10,17 +10,28 @@
 	</head>
 	<body class="library light">
 		<div id="timer" class="bubble" method="post">
-			<div class="timermode">
-				<button class="timermode">study</button>
-				<button class="timermode">break</button>
-				<button class="timermode">stopped</button>
-			</div>
-			<div class="clock" id="clock">05:00</div>
+			<form class="timermode" method="post">
+				<button class="timermode" name="button" value="study" id="studyTag">
+					study
+				</button>
+				<button class="timermode" name="button" value="break" id="breakTag">
+					break
+				</button>
+				<button
+					class="timermode"
+					name="button"
+					value="time-out"
+					id="time-outTag"
+				>
+					time-out
+				</button>
+			</form>
+			<div class="clock" id="clock"><%=time%></div>
 			<button
 				class="default"
 				id="start"
 				onclick="toggleTimerStartButton(id); 
-                         toggleTimer(orderedTimeToSeconds(document.getElementById('clock').innerHTML), 'clock', 'start');"
+            toggleTimer(orderedTimeToSeconds(document.getElementById('clock').innerHTML), 'clock', 'start');"
 			>
 				START
 			</button>

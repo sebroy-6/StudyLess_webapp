@@ -1,5 +1,9 @@
+const PORT = 5000;
 const SECONDS_IN_MINUTE = 60;
 const SECONDS_IN_HOUR = 3600;
+
+const ACTIVE_COLOR = "lightgrey";
+const DEFAULT_COLOR = "white";
 
 function isOrderedTime(time) {
     if (typeof(time) === "string") {
@@ -57,6 +61,19 @@ function secondsToOrderedTime(seconds) {
 }
 
 
+function getCurrentTimerState() {
+    let breakTagColor = document.getElementById("breakTag").style.color;
+    let timeoutTagColor = document.getElementById("time-outTag").style.color;
+    
+    if (breakTagColor === ACTIVE_COLOR)
+        return "break";
+    else if (timeoutTagColor === ACTIVE_COLOR)
+        return "time-out";
+    else 
+        return "study";
+}
+
+
 function orderedTimeToSeconds(time) {
     if (!isOrderedTime(time))
         return -1;
@@ -72,6 +89,30 @@ function orderedTimeToSeconds(time) {
         seconds += Number(timeElem.shift());
     }
     return seconds;
+}
+
+
+function shuffleTimerState() {
+    let nextState;
+    switch(getCurrentTimerState()) {
+        case "study":
+            nextState = "break";
+            document.getElementById("breakTag").style.color = ACTIVE_COLOR;
+            document.getElementById("studyTag").style.color = DEFAULT_COLOR;
+            break;
+        case "break":
+            nextState = "time-out";
+            document.getElementById("time-outTag").style.color = ACTIVE_COLOR;
+            document.getElementById("breakTag").style.color = DEFAULT_COLOR;
+            break;
+        case "time-out":
+            nextState = "study";
+            document.getElementById("studyTag").style.color = ACTIVE_COLOR;
+            document.getElementById("time-outTag").style.color = DEFAULT_COLOR;
+            break;
+    }
+    document.getElementById("start").innerHTML = "START";
+    return nextState;
 }
 
 
@@ -91,10 +132,22 @@ function toggleTimer(seconds, outputId, buttonId) {
                     clearInterval(timer);
                 }
                 else {
-                    document.getElementById(outputId).innerHTML = "0";
                     clearInterval(timer);
+                    document.getElementById(outputId).innerHTML = "0"; 
+                    let timerState = shuffleTimerState();
+                    const data = { timerState };
+                    fetch(`/studyTimer`, { 
+                        method : 'POST', 
+                        headers : {
+                            'Content-Type': 'application/json'
+                        },
+                        body : JSON.stringify(data)
+                    }).then((resp) => resp.json()).then((resp) => {
+                        document.getElementById(outputId).innerHTML = resp.newTime;
+                    });
                 }
             }, 50);
         }
     }
 }
+
