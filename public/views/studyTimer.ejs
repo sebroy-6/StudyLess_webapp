@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	<title>POLYSTUDY - studying timer</title>
+	<title id="browserTab"><%=time%> - POLYSTUDY</title>
 	<link rel="icon" type="image/x-icon" href="/images/webapp_logo.png" />
 	<link rel="stylesheet" type="text/css" href="/styles/style.css" />
 	<head>
@@ -11,17 +11,33 @@
 	<body class="library light">
 		<div id="timer" class="bubble" method="post">
 			<form class="timermode" method="post">
-				<button class="timermode" name="button" value="study" id="studyTag">
+				<button
+					class="timermode"
+					type="button"
+					name="button"
+					value="study"
+					id="studyTag"
+					onclick="setTimerByState(value);"
+				>
 					study
 				</button>
-				<button class="timermode" name="button" value="break" id="breakTag">
+				<button
+					class="timermode"
+					type="button"
+					name="button"
+					value="break"
+					id="breakTag"
+					onclick="setTimerByState(value);"
+				>
 					break
 				</button>
 				<button
 					class="timermode"
+					type="button"
 					name="button"
 					value="time-out"
 					id="time-outTag"
+					onclick="setTimerByState(value);"
 				>
 					time-out
 				</button>
