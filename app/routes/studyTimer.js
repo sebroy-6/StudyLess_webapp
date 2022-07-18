@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const STUDY_TIME = "00:25";
-const BREAK_TIME = "00:05";
-const TIME_OUT_TIME = "00:15";
+const STUDY_TIME = "25:00";
+const BREAK_TIME = "05:00";
+const TIME_OUT_TIME = "15:00";
 
 router.get("/", (req, res) => {
     if(req.session.userid)
@@ -13,6 +13,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+    console.log(req.session);
     if(req.session.userid === undefined)
         res.redirect("/");
     else {

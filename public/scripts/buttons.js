@@ -27,3 +27,33 @@ function toggleTimerStartButton(elementId) {
     }
 }
 
+
+function rotateElement(id) {
+    let element = document.getElementById(id);
+    console.log(element.style.transform);
+    if (element.style.transform === "rotate(45deg)") {
+        document.getElementById(id).style.transform = "rorate(0deg);"
+    }
+    else{
+        document.getElementById(id).style.transform = "rorate(45deg);"
+    }
+}
+
+
+function toggleClassToElement(id, cssClass) {
+    if (typeof(id) === "string" && typeof(id) === "string") {
+        let classes = document.getElementById(id).className.split(" ");
+        if (classes.includes(cssClass)) {
+            classes.pop();
+        }
+        else{
+            classes.push(cssClass);
+        }
+        if (classes.length > 1) {
+            document.getElementById(id).className = classes.join(" ");
+        }
+        else
+            document.getElementById(id).className = classes[0];
+    }
+}
+

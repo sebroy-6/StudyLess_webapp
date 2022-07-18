@@ -52,6 +52,29 @@
 				START
 			</button>
 		</div>
+		<div class="bar-top reduced" id="topRightBar">
+            <ul class="bar-top">
+				<li class="bar-top">
+					<a href="/account" class="image">
+						<img src="/images/defaultProfilePicture.png" />
+					</a>
+				</li>
+				<li class="bar-top">
+					<button class="image" id="settingsButton" 
+                    onclick="toggleClassToElement('settingsImage', 'rotated');
+                             toggleClassToElement('settingsPage', 'hidden');">
+						<img src="/images/gearPicture.png" id="settingsImage"/>
+                    </button>
+				</li>
+				<li class="bar-top">
+					<a href="" class="text"><b>CONTACT<b></a>
+				</li>
+			</ul>
+            <button class="bottomPullTag" onclick="toggleClassToElement('topRightBar', 'hidden');">
+                <div></div>
+            </button>
+        </div>
+        <div class="settingsPage hidden" id="settingsPage"></div>
 	</body>
 	<script src="../scripts/buttons.js"></script>
 	<script src="../scripts/timer.js"></script>

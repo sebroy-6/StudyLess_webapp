@@ -1,14 +1,8 @@
 const express = require("express"); 
 const bcrypt = require("bcrypt");
-const mongoose = require("mongoose");
+const mdbScripts = require("../scripts/editMongodb");
 
 const router = express.Router();
-
-const userScheme = mongoose.Schema({ username: String, password: String});
-userScheme.post("save", () => {
-    console.log(`new user was added to the database at ${Date().split(" ")[4]}`);
-});
-const User = mongoose.model("user", userScheme, "users");
 
 router.get("/", (req, res) => {
     if (req.session.userid)
@@ -19,13 +13,13 @@ router.get("/", (req, res) => {
 
 router.post("/", async (req, res) => {
     if (req.body.Button === "signUp"){
-        if (await User.findOne({ username: req.body.uname })){
+        if (await mdbScripts.getModel("user").findOne({ username: req.body.uname })){
             res.render("signIn", { errorMsg : "This user already exists" });
         } 
         else {
             if (req.body.uname !== "" && req.body.psw !== "") {
                 const hashedPassword = (await bcrypt.hash(req.body.psw, 10)).toString();
-                let newUser = new User({
+                let newUser = new mdbScripts.getModel("user")({
                     username: req.body.uname,
                     password: hashedPassword,
                 });
@@ -38,7 +32,7 @@ router.post("/", async (req, res) => {
     }
 
     else if (req.body.Button === "logIn") {
-        let user = await User.findOne({ username: req.body.uname });
+        let user = await mdbScripts.getModel("user").findOne({ username: req.body.uname });
         if (user){
             if (await bcrypt.compare(req.body.psw, user.password)) {
                 req.session.userid = req.body.uname;
