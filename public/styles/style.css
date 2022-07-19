@@ -126,15 +126,52 @@ body.homePage {
 
 ul.bar-side {
     position: fixed;
-    left: 0;
-    top: 0;
+    left: 0%;
+    top: 0%;
     background-color: var(--mainColor);
-    width: 20vw;
+    width: 18vw;
     height: 100vh;
     border-radius: 0px 40px 40px 0px;
-    z-index: 1;
+    z-index: 2;
     padding-left: 10px;
     margin-top: 0%;
+    transition: 0.3s;
+}
+
+ul.bar-side.hidden {
+    transform: translateX(-100%);
+    transition: 0.3s;
+}
+
+ul.bar-side > button.rightPullTag {
+    background-color: var(--mainColor);
+    padding: 0;
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 10%;
+    height: 15%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 2px solid lightgrey;
+    border-left: none;
+    z-index: inherit;
+}
+
+button.rightPullTag:hover {
+    cursor: pointer;
+}
+
+button.rightPullTag > div {
+    position: absolute;
+    left: 50%;
+    transform: translate(0, -50%);
+    height: 50%;
+    width: 15%;
+    background-color: white;
+    z-index: inherit;
+    border-radius: 10px;
 }
 
 li.bar-side {
@@ -174,6 +211,7 @@ div.bar-top {
     height: 75px;
     margin: 0;
     padding: 0;
+    z-index: 1;
 }
 
 ul.bar-top {
@@ -217,12 +255,6 @@ li.bar-side > button.back {
     border-radius: 30%;
 }
 
-li.bar-side > button.studyroom {
-    display: none;
-    margin-left: 15%;
-    width: 85%;
-}
-
 li.bar-side > button.studyTool {
     display: none;
     margin-left: 15%;
@@ -234,6 +266,13 @@ div.app-container {
     left: calc(20vw + 10px);
     top: 75px;
     width: calc(80% - 10px);
+    transition: 0.3s;
+}
+
+div.app-container.fullScreen {
+    width: 100%;
+    left: 0;
+    transition: 0.3s;
 }
 
 div.app-container > div.text {
@@ -253,7 +292,6 @@ div.app-container > div.text > p {
     padding: 0%;
     font-size: 1.5vw;
 }
-
 
 /* account styles */
 
@@ -352,6 +390,11 @@ button.bottomPullTag {
     padding: 0;
 }
 
+button.bottomPullTag:hover {
+    cursor: pointer;
+}
+
+
 button.bottomPullTag > div {
     position: absolute;
     left: 50%;
@@ -386,4 +429,29 @@ img#settingsImage.rotated {
 }
 
 
+/* schedule styles */
+
+div.app-container > table.schedule {
+    position: absolute;
+    border: 5px solid red;
+    top: 20vh;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-collapse: collapse;
+    width: 60vw;
+}
+
+td {
+    border: 5px solid var(--mainColor);
+    text-align: center;
+    width: calc(100% / 7);
+    font-size: 1.4vw;
+}
+
+div.app-container > h2 {
+    font-size: calc(15px + 2.5vw);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
 

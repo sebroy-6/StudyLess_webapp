@@ -14,13 +14,18 @@
 
 	<body class="homePage">
 
-		<ul class="bar-side">
+		<ul class="bar-side" id="bar-side">
 			<h1>POLYSTUDY</h1>
 			<li class="bar-side">
 				<button onclick="toggleClassDisplay('studyTool')">Study tools</button>
                 <button class="studyTool" onclick="location.href='/studyTimer'">Timer</button>
 				<button onclick="location.href='/studySchedule'"> See Schedule</button>
 			</li>
+            <button class="rightPullTag" 
+            onclick="toggleClassToElement('bar-side', 'hidden');
+                     toggleClassToElement('app-container', 'fullScreen');">
+                <div></div>
+            </button>
 		</ul>
 
 		<div class="bar-top">
@@ -40,7 +45,7 @@
 				</li>
 			</ul>
 		</div>
-		<div class="app-container">
+		<div class="app-container" id="app-container">
 			<div class="text">
 				<h2><u>How to use this site</u></h2>
 				<br>

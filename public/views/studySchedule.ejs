@@ -3,10 +3,62 @@
 	<title>POLYSTUDY - study schedule</title>
 	<link rel="icon" type="image/x-icon" href="/images/webapp_logo.png" />
 	<link rel="stylesheet" type="text/css" href="/styles/style.css" />
+    <script src="../scripts/buttons.js"></script>
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	</head>
-	<body></body>
+	<body class="homePage">
+
+		<ul class="bar-side" id="bar-side">
+			<h1>POLYSTUDY</h1>
+			<li class="bar-side">
+                <button onclick="location.href='/homePage'">HomePage</button>
+				<button onclick="toggleClassDisplay('studyTool')">Manage schedule</button>
+                <button class="studyTool" onclick="location.href='/studyTimer'">Timer</button>
+			</li>
+            <button class="rightPullTag" 
+            onclick="toggleClassToElement('bar-side', 'hidden');
+                     toggleClassToElement('app-container', 'fullScreen');">
+                <div></div>
+            </button>
+		</ul>
+
+		<div class="bar-top">
+			<ul class="bar-top">
+				<li class="bar-top">
+					<a href="/account" class="image">
+						<img src="/images/defaultProfilePicture.png" />
+					</a>
+				</li>
+				<li class="bar-top">
+					<button href="" class="image">
+						<img src="/images/gearPicture.png" />
+					</button>
+				</li>
+				<li class="bar-top">
+					<a href="" class="text"><b>CONTACT<b></a>
+				</li>
+                <li class="bar-top date">
+					<a class="text date"><b>07/14 july 2022<b></a>
+				</li>
+			</ul>
+		</div>
+		<div class="app-container" id="app-container">
+            <h2>07/14 juillet 2022</h2>
+			<table class="schedule">
+                <tr>
+                    <td>LUNDI</td>
+                    <td>MARDI</td>
+                    <td>MERCREDI</td>
+                    <td>JEUDI</td>
+                    <td>VENDREDI</td>
+                    <td>SAMEDI</td>
+                    <td>DIMANCHE</td>
+                </tr>
+            </table>
+		</div>
+
+	</body>
 </html>
