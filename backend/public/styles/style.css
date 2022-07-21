@@ -1,5 +1,7 @@
 :root {
     --mainColor: rgb(0, 55, 82);
+    --mainColorTransparent: rgba(0, 55, 82, 0.4);
+    --bar_side_width: 18vw;
 }
 
 html {
@@ -129,7 +131,7 @@ ul.bar-side {
     left: 0%;
     top: 0%;
     background-color: var(--mainColor);
-    width: 18vw;
+    width: var(--bar_side_width);
     height: 100vh;
     border-radius: 0px 40px 40px 0px;
     z-index: 2;
@@ -433,25 +435,58 @@ img#settingsImage.rotated {
 
 div.app-container > table.schedule {
     position: absolute;
-    border: 5px solid red;
-    top: 20vh;
-    left: 50%;
-    transform: translate(-50%, 0);
+    top: 10vh;
+    left: 95%;
+    transform: translate(-100%, 0);
     border-collapse: collapse;
-    width: 60vw;
+    width: 65vw;
 }
 
 td {
-    border: 5px solid var(--mainColor);
+    border: 3px solid var(--mainColor);
+    border-top-style: dotted;
+    border-bottom-style: dotted;
     text-align: center;
     width: calc(100% / 7);
     font-size: 1.4vw;
+    height: 30px;
 }
 
-div.app-container > h2 {
-    font-size: calc(15px + 2.5vw);
+tr:last-child > td {
+    border-bottom-style: solid;
+}
+
+td.title {
+    border: 5px solid;
+    background-color: var(--mainColorTransparent);
+}
+
+td.weekend {
+    border-color: darksalmon;
+}
+
+td.title.weekend {
+    background-color: rgba(233, 150, 122, 0.4);
+}
+
+li.bar-top.date {
     position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
+    left: calc(var(--bar_side_width) + 20%);    /* to be corrected for resizing*/
+    font-size: 2vw;
 }
 
+td > button {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+td > button.one {
+    background-color: rgba(255, 252, 98, 0.7);
+}

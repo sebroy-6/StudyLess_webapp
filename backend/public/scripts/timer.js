@@ -15,8 +15,18 @@ function isOrderedTime(time) {
         if (3 >= timeElem.length && timeElem.length >= 1){
             let areNumbers = true;
 
-            for (let elem in timeElem) {
-                if (!(/^[0-9]+$/.test(elem))) {
+            if (!(/^[0-5]+$/.test(timeElem[ timeElem.length - 1 ][0])) ||
+                !(/^[0-9]+$/.test(timeElem[ timeElem.length - 1 ][1]))) {
+                areNumbers = false;
+            }
+            if (timeElem.length >= 2) {
+                if (!(/^[0-5]+$/.test(timeElem[ timeElem.length - 2 ][0])) ||
+                    !(/^[0-9]+$/.test(timeElem[ timeElem.length - 2 ][1]))) {
+                    areNumbers = false;
+                }
+            }
+            if (timeElem.length === 3) {
+                if (!(/^[0-9]+$/.test(timeElem[ timeElem.length - 3 ]))) {
                     areNumbers = false;
                 }
             }
@@ -65,19 +75,6 @@ function secondsToOrderedTime(seconds) {
 }
 
 
-function getCurrentTimerState() {
-    let breakTagColor = document.getElementById("breakTag").style.color;
-    let timeoutTagColor = document.getElementById("time-outTag").style.color;
-    
-    if (breakTagColor === ACTIVE_COLOR)
-        return BREAK_MODE;
-    else if (timeoutTagColor === ACTIVE_COLOR)
-        return TIMEOUT_MODE;
-    else 
-        return STUDY_MODE;
-}
-
-
 function orderedTimeToSeconds(time) {
     if (!isOrderedTime(time))
         return -1;
@@ -93,6 +90,19 @@ function orderedTimeToSeconds(time) {
         seconds += Number(timeElem.shift());
     }
     return seconds;
+}
+
+
+function getCurrentTimerState() {
+    let breakTagColor = document.getElementById("breakTag").style.color;
+    let timeoutTagColor = document.getElementById("time-outTag").style.color;
+    
+    if (breakTagColor === ACTIVE_COLOR)
+        return BREAK_MODE;
+    else if (timeoutTagColor === ACTIVE_COLOR)
+        return TIMEOUT_MODE;
+    else 
+        return STUDY_MODE;
 }
 
 
@@ -181,3 +191,5 @@ function toggleTimer(seconds, outputId, buttonId) {
     }
 }
 
+
+module.exports = { isOrderedTime };

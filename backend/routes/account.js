@@ -2,21 +2,19 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    if(req.session.userid)
-        res.render("account");
-    else
-        res.redirect("/");
+    if(!req.session.userid)
+        return res.redirect("/");
+    res.json({"message" : "show account settings"});   //res.render("account");
 });
 
 router.post("/", (req, res) => {
+    
     if (req.body.button === "logout") {
         req.session.destroy();
-        res.redirect("/");
+        return res.redirect("/");
     }
-    else {
-        res.redirect("/account");
-    }
-
+    
+    res.render("account");
 });
 
 module.exports = router;

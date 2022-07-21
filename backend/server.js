@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const path = require("path");
 const bodyParser = require('body-parser');
@@ -5,13 +7,11 @@ const sessions = require("express-session");
 const mongoose = require("mongoose");
 const MongoDBSession = require("connect-mongodb-session")(sessions);
 
-const mongodbURI = "mongodb://localhost:27017/PolyStudy";
+const mongodbURI = process.env.MONGO_URI;
 
 const app = express();
-const PORT = 5000;
 
-const viewsRoute = "../public/views";
-const sessionKey = "secretTestKey";
+const viewsRoute = "./public/views";
 const maxSessionTime = 12 * 60 * 60 * 1000; // 12 hours
 
 mongoose.connect(mongodbURI, {
@@ -34,10 +34,10 @@ app.set("view engine", "ejs");
 app.set('views', path.join(__dirname, viewsRoute));
 
 app.use(express.static("public"));
-app.use(express.json({ limit: "1mb"}));
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(sessions({
-    secret: sessionKey,
+    secret: process.env.SECRET_SESSIONS_KEY,
     saveUninitialized: false,
     cookie: { maxAge: maxSessionTime },
     resave: false, 
@@ -55,7 +55,7 @@ app.get("/", (req, res) => {
 });
 
 
-const signInRouter = require("./routes/signIn");
+const signInRouter = require("./routes/authN");
 app.use("/signIn", signInRouter);
 
 const homePageRouter = require("./routes/homePage");
@@ -70,4 +70,7 @@ app.use("/studyTimer", studyTimerRouter);
 const studyScheduleRouter = require("./routes/studySchedule");
 app.use("/studySchedule", studyScheduleRouter);
 
-app.listen(PORT, console.log(`Running server on port ${PORT}`));
+const tasksRouter = require("./routes/tasks");
+app.use("/tasks", tasksRouter);
+
+app.listen(process.env.PORT, console.log(`Running server on port ${process.env.PORT}`));
