@@ -8,7 +8,7 @@ async function signIn(req, res) {
     else {
         if (req.body.uname !== "" && req.body.psw !== "") {
             const hashedPassword = (await hash(req.body.psw, 10)).toString();
-            let newUser = new userModel({
+            let newUser = new User({
                 username: req.body.uname,
                 password: hashedPassword,
             });

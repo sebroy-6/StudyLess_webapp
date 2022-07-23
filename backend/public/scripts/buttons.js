@@ -4,7 +4,7 @@ function toggleClassDisplay(elementsClass) {
         for (let i = 0; i < collection.length; i++) {
             if (collection[i].style.display === "block") 
                 collection[i].style.display = "none";
-            else 
+            else
                 collection[i].style.display = "block";
         }
     }
