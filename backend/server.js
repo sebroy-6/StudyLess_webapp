@@ -55,8 +55,8 @@ app.get("/", (req, res) => {
 });
 
 
-const signInRouter = require("./routes/authN");
-app.use("/signIn", signInRouter);
+const userRouter = require("./routes/user");
+app.use("/user", userRouter);
 
 const homePageRouter = require("./routes/homePage");
 app.use("/homePage", homePageRouter);

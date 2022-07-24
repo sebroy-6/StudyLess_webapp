@@ -1,16 +1,16 @@
-import { Component } from "react";
+import React from "react";
 import AuthNForm from "../components/AuthNFormComponent";
 
-class LoginPage extends Component {
+class SignupPage extends React.Component {
 
     render () {
         return (
             <div className="library">
-		        <AuthNForm type="login"/>
+		        <AuthNForm type="signup"/>
             </div>
         );
     }
 
 }
 
-export default LoginPage;
+export default SignupPage;
