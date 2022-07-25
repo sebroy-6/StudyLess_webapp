@@ -1,26 +1,27 @@
-const { hash, compare } = require("bcrypt");
 const User = require("../models/userModel");
 
 async function signupUser(req, res) {
     const { username, email, password } = req.body;
     
     try {
-        const newUser = await User.signup(username, email, password);
-        res.status(200).json(newUser);
+        const JWToken = await User.signup(username, email, password);
+        res.status(200).json({authorisation: JWToken});
     } 
     catch (error) {
         res.status(400).json(error.message);
     }
 }
 
-
 async function loginUser(req, res) {
     const { username, password } = req.body;
+    if (!username || !password) {
+        return res.status(400).json("missing username and/or passord");
+    }
 
     try {
-        const user = await User.login(username, password);
+        const JWToken = await User.login(username, password);
 
-        res.status(200).json(user);
+        res.status(200).json({authorisation: JWToken});
     }
     catch (error) {
         res.status(400).json(error.message);
