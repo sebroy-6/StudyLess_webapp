@@ -1,15 +1,13 @@
 import React from "react";
 import AuthNForm from "../components/AuthNFormComponent";
 
-class SignupPage extends React.Component {
+const SignupPage = () => {
 
-    render () {
-        return (
-            <div className="library">
-		        <AuthNForm type="signup"/>
-            </div>
-        );
-    }
+    return (
+        <div className="library">
+		    <AuthNForm type="signup"/>
+        </div>
+    );
 
 }
 

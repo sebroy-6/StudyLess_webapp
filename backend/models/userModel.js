@@ -36,7 +36,7 @@ UserSchema.statics.signup = async function(username, email, password) {
     }
 
     const hashedPassword = (await hash(password, 10)).toString();
-    let user = await this.create({ username, email, password: hashedPassword}).toJson();
+    let user = await this.create({ username, email, password: hashedPassword});
     user.password = undefined;
     user.email = undefined;
     console.log(user);

@@ -1,5 +1,6 @@
 import React from "react";
-import { useState } from "react"
+import "./css/AuthNFormComponent.css";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AuthNForm = ({ type }) => {
@@ -18,7 +19,7 @@ const AuthNForm = ({ type }) => {
         event.preventDefault();
         const data = { username, password };
 
-        const response  = await fetch("/user/login", {
+        const response  = await fetch("/api/user/login", {
             method : "POST",
             body: JSON.stringify(data),
             headers: {
@@ -28,8 +29,7 @@ const AuthNForm = ({ type }) => {
 
         const json = await response.json();
         if (!response.ok)
-            return setError(json.error);
-        console.log(json.message);
+            return setError(json);
         return navigate("/homePage");
     };
 
@@ -37,7 +37,7 @@ const AuthNForm = ({ type }) => {
         event.preventDefault();
         const data = { username, email, password };
 
-        const response  = await fetch("/user/signup", {
+        const response  = await fetch("/api/user/signup", {
             method : "POST",
             body: JSON.stringify(data),
             headers: {
@@ -47,8 +47,8 @@ const AuthNForm = ({ type }) => {
 
         const json = await response.json();
         if (!response.ok)
-            return setError(json.error);
-        return navigate("/login");
+            return setError(json);
+        return navigate("/homePage");
     };
 
 
@@ -84,10 +84,10 @@ const AuthNForm = ({ type }) => {
 			Login
 			</button> }
 			<button
-			    className="default"
+                className="default"
 			    value="signUp"
 			    title="Create account"
-                onClick={ type === "logIn"? goToSignUp : sendSignUpForm }
+                onClick={ type === "login"? goToSignUp : sendSignUpForm }
 			>
 			signUp
 			</button>

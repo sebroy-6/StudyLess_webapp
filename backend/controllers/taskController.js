@@ -22,13 +22,15 @@ async function getTask(req, res) {
 };
 
 async function createTask(req, res) {
-    try {
+    //try {
         const createdTask = await Task.createOne(req.user, req.body.task);
         return res.status(200).json(createdTask);
-    }
-    catch(error) {
+    //}
+    //catch(error) {
+        //console.log
         return res.status(400).json(error.message);
-    }
+    //}
+    return res.status(400).json(error.message);
 
 };
 
