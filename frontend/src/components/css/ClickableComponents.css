@@ -1,0 +1,14 @@
+img#gearImg {
+    transform: rotate(0deg);
+    transition: 0.5s;
+}
+
+img#gearImg.rotated {
+    transform: rotate(45deg);
+    transition: 0.5s;
+}
+
+.image > img {
+    width: 60px;
+    height: 60px;
+}

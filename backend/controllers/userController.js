@@ -5,7 +5,7 @@ async function signupUser(req, res) {
     
     try {
         const JWToken = await User.signup(username, email, password);
-        res.status(200).json({authorisation: JWToken});
+        res.status(200).json({authentication: JWToken});
     } 
     catch (error) {
         res.status(400).json(error.message);
@@ -20,8 +20,7 @@ async function loginUser(req, res) {
 
     try {
         const JWToken = await User.login(username, password);
-
-        res.status(200).json({authorisation: JWToken});
+        res.status(200).json({authentication: JWToken});
     }
     catch (error) {
         res.status(400).json(error.message);

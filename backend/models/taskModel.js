@@ -1,19 +1,28 @@
 const mongoose = require("mongoose");
 
 const TaskSchema = new mongoose.Schema({
+    userId: {
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true,
     },
-    userId: {
-        type: String,
-        required: true
+    difficulty: {
+        type: Number
+    },
+    subject: {
+        type: String
+    },
+    duration: {
+        type: String
     }
 }, { timestamps: true });
 
 
 TaskSchema.statics.getAll = async function(user) {
-    const tasks = await this.find({ userId: user._id });
+    const tasks = await this.find({ userId: user._id }).sort({name: 1});
     return tasks;
 };
 

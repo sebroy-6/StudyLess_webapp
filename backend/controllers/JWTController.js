@@ -2,10 +2,10 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
 function authenticateJWT(req, res, next) {
-    const authorizationHearder = req.body.authorisation;
+    const authorizationHearder = req.headers.authentication;
 
     if (!authorizationHearder) {
-        return res.status(401).json("authorisation header was not found (for JWT authentication)");
+        return res.status(401).json("No authentication token was provided");
     }
 
     const clientToken = authorizationHearder.split(" ").pop();

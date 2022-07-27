@@ -28,8 +28,12 @@ const AuthNForm = ({ type }) => {
         });
 
         const json = await response.json();
-        if (!response.ok)
+        if (!response.ok) {
             return setError(json);
+        }
+        if (json.authentication) {
+            localStorage.setItem("authentication", json.authentication);
+        }
         return navigate("/homePage");
     };
 
@@ -46,8 +50,12 @@ const AuthNForm = ({ type }) => {
         });
 
         const json = await response.json();
-        if (!response.ok)
+        if (!response.ok) {
             return setError(json);
+        }
+        if (json.authentication) {
+            localStorage.setItem("authentication", json.authentication);
+        }
         return navigate("/homePage");
     };
 

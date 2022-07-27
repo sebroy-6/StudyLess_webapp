@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/NavBarComponents.css"
-import profileImage from "../images/defaultProfilePicture.png";
-import settingsImage from "../images/gearPicture.png";
+import { SettingsButton, ProfileLink } from "./ClickableComponents";
+
 
 export const FullSideBar = () => {
     const [isHidden, setIsHidden] = useState("");
@@ -14,8 +14,17 @@ export const FullSideBar = () => {
     }
 
     const toggleIsHidden = () => {
-        if (isHidden === "") setIsHidden("hidden");
-        else setIsHidden("");
+        let appContainer = document.getElementsByClassName("app-container")[0];
+        if (isHidden === ""){
+            setIsHidden("hidden");
+            appContainer.style.marginLeft = "0px";
+            appContainer.style.width = "100%";
+        }
+        else {
+            setIsHidden("");
+            appContainer.style.marginLeft = "280px";
+            appContainer.style.width = "calc(100% - 280px)";
+        }
     };
 
     const toggleIsShow= () => {
@@ -36,31 +45,23 @@ export const FullSideBar = () => {
 }
 
 
-export const FullTopBar = () => {
-    const [isRotated, setIsRotated] = useState();
-
-    const toggleIsRotated = () => {
-        if(!isRotated) setIsRotated("rotated");
-        else setIsRotated("");
-        console.log(isRotated);
-    }
+export const FullTopBar = (props) => {
     
     return (
         <div className="bar-top">
 			<ul className="bar-top">
 				<li className="bar-top">
-					<a href="/account" className="image">
-						<img src={profileImage} alt="Profile"/>
-					</a>
+					<ProfileLink/>
 				</li>
 				<li className="bar-top">
-					<button onClick={toggleIsRotated} className="image">
-						<img id="gearImg" className={isRotated} src={settingsImage} alt="settings" />
-					</button>
+					<SettingsButton/>
 				</li>
 				<li className="bar-top">
-					<a href="" className="text"><b>CONTACT</b></a>
+					<a href="/contactMe"><b>CONTACT</b></a>
 				</li>
+                <li className="bar-top">
+                    <h1>{props.pageTitle}</h1>
+                </li>
 			</ul>
         </div>
     );

@@ -5,17 +5,18 @@ import SignupPage from "./pages/SignUpPage";
 import HomePage from "./pages/HomePage";
 
 function App() {
-  return (
-    <div className="App">
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<WelcomePage />}/>
-                <Route path="/logIn" element={ <LoginPage /> }/>
-                <Route path="/signUp" element={ <SignupPage /> }/>
-                <Route path="/homePage" element={ <HomePage /> }/>
-            </Routes>
-        </BrowserRouter>
-    </div>
+
+    return (
+        <div className="App">
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={ <WelcomePage /> }/>
+                    <Route path="/logIn" element={ <LoginPage /> }/>
+                    <Route path="/signUp" element={ <SignupPage /> }/>
+                    <Route path="/homePage" element={ <HomePage /> }/>
+                </Routes>
+            </BrowserRouter>
+        </div>
   );
 }
 

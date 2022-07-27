@@ -8,7 +8,7 @@ div.bar-side {
     border-radius: 0px 40px 40px 0px;
     z-index: 2;
     padding-left: 10px;
-    padding-right: 30px;
+    padding-right: 20px;
     margin-top: 0%;
     transition: 0.3s;
 }
@@ -66,7 +66,7 @@ button.rightPullTag > div {
     padding: 10px;
     padding-top: 15px;
     padding-bottom: 15px;
-    width: 100%;
+    width: 90%;
     text-align: left;
     border-radius: 10px;
 }
@@ -92,6 +92,8 @@ button.rightPullTag > div {
     color:rgba(41, 41, 41, 0.85);
     cursor: pointer;
 }
+
+/* style for bar-top*/
 
 div.bar-top {
     display: flex;
@@ -131,29 +133,55 @@ li.bar-top > .image {
     padding: 0%;
 }
 
-li.bar-top > a.text {
-    font-size: 1.5em;
+li.bar-top > a {
+    font-size: 1.25em;
     text-decoration: none;
     color:rgb(235, 234, 234);
 }
 
-img#gearImg {
-    transform: rotate(0deg);
-    transition: 0.5s;
-}
-
-img#gearImg.rotated {
-    transform: rotate(45deg);
-    transition: 0.5s;
-}
-
-.image > img {
-    width: 60px;
-    height: 60px;
+li.bar-top > h1 {
+    font-size: 3.5em;
+    text-decoration: none;
+    color:rgb(235, 234, 234);
+    margin-right: 40px;
 }
 
 .bar-side > button.back {
     width: fit-content;
     font-size: 2vw;
     border-radius: 30%;
+}
+
+/* styles for app-container */
+
+div.app-container {
+    position: absolute;
+    margin-left: 280px;
+    top: 75px;
+    width: calc(100% - 280px);
+    transition: 0.3s;
+}
+
+div.app-container.fullScreen {
+    width: 100%;
+    left: 0;
+    transition: 0.3s;
+}
+
+div.app-container > div.text {
+    padding: 0 5vw 0 5vw;
+    font-family: Arial, sans-serif;
+    color:rgb(25, 18, 18);
+}
+
+div.app-container > div.text > h2 {
+    color: inherit;
+    padding: 0%;
+    font-size: 2.5vw;
+}
+
+div.app-container > div.text > p {
+    color: inherit;
+    padding: 0%;
+    font-size: 1.5vw;
 }
