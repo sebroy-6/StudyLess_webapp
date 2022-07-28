@@ -3,7 +3,7 @@ import "./css/AuthNFormComponent.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const AuthNForm = ({ type }) => {
+export const AuthNForm = ({ type }) => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -99,9 +99,6 @@ const AuthNForm = ({ type }) => {
 			>
 			signUp
 			</button>
-
         </form>
     );
 }
-
-export default AuthNForm;

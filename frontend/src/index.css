@@ -12,6 +12,7 @@ html {
 
 body {
     margin: 0;
+    background-color: lightgrey;
 }
 
 h1 {
@@ -33,8 +34,6 @@ button.default:hover{
     color: #0a0601;
     cursor: pointer;
 }
-
-
 
 /* index styles */ 
 

@@ -1,45 +1,29 @@
-import React, { useEffect, useState } from "react";
-import "./css/TasksComponents.css";
+import React, { useState, useEffect } from "react";
+import "./css/TasksComponents.modules.css";
 
 export const Task = (props) => {
+    const [difficulty, setdifficulty] = useState("");
+    
+    useEffect(() => {
+        if (props.task.difficulty) {
+
+            if (props.task.difficulty <= 2)
+                setdifficulty("easy");
+            else if (props.task.difficulty <= 4)
+                setdifficulty("medium");
+            else if (props.task.difficulty === 5)
+                setdifficulty("hard");
+        }
+    }, [props.task.difficulty]);
+    
     return (
         <div className="task">
-            <b>{props.task.name}</b>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+            <h3><b>{props.task.name}</b></h3>
+            <div className="taskProps">
+                <p className={"difficulty " + difficulty}>{difficulty}</p>
+                <p className="subject">{props.task.subject}</p>
+            </div>
         </div>
     );
 }
-
-export const TasksList = (props) => {
-    const [tasks, setTasks] = useState(null);
-
-    const getTasks = async () => {
-        const token = localStorage.getItem("authentication");
-        const response  = await fetch("/api/task", {
-            method : "GET",
-            headers: {
-                "authentication" : token
-            }
-        });
-        const json = await response.json();
-        
-        if (!response.ok) {
-            if (response.status === 403) {
-                return window.location = "/login";
-            }
-        }
-        setTasks(json);
-        return json;
-    };
-
-    useEffect( () => { getTasks(); });
-
-    return (
-        <div className={"tasksList " + props.page}>
-            { tasks && tasks.map((task) => (
-                <Task key={task._id} task={task}/>
-            )) }
-        </div>
-    );
-};
 

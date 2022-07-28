@@ -1,0 +1,51 @@
+.task {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 8vw;
+    width: calc(150px + 25vw);
+    height: 15%;
+    font-family: Gill Sans Extrabold, sans-serif;
+    font-size: 20px;
+    margin-top: 40px;
+    padding: 10px;
+    background-color: white;
+}
+
+.task:first-child {
+    margin-top: 75px;
+}
+
+.task > h3 {
+    margin: 10px;
+}
+
+.task > p.difficulty {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0%;
+}
+
+.task > p.subject {
+    position: absolute;
+    right: 0px;
+    transform: translateX(-100%);
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0%;
+}
+
+.easy {
+    color: green;
+}
+
+.medium {
+    color: rgb(206, 165, 0);
+}
+
+.hard {
+    color: red;
+}
+
+.taskProps > p {
+    /*margin-top: 0%;*/
+}

@@ -140,10 +140,12 @@ li.bar-top > a {
 }
 
 li.bar-top > h1 {
-    font-size: 3.5em;
+    position: absolute;
+    left: 36vw;
+    transform: translateX(-50%);
+    font-size: 5vw;
     text-decoration: none;
     color:rgb(235, 234, 234);
-    margin-right: 40px;
 }
 
 .bar-side > button.back {
@@ -155,6 +157,7 @@ li.bar-top > h1 {
 /* styles for app-container */
 
 div.app-container {
+    min-height: calc(100vh - 75px);
     position: absolute;
     margin-left: 280px;
     top: 75px;

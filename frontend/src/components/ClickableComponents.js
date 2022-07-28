@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./css/ClickableComponents.css";
+import "./css/ClickableComponents.modules.css";
 import settingsImage from "../images/gearPicture.png";
 import profileImage from "../images/defaultProfilePicture.png";
 
@@ -26,5 +26,18 @@ export const ProfileLink = () => {
         <a href="/account" className="image">
 			<img src={profileImage} alt="Profile"/>
 		</a>
+    );
+};
+
+
+export const AddButton = (props) => {
+    const toggleAddButton = () => {
+
+    };
+
+    return (
+        <button className="addButton top-right">
+            {"Add " + props?.type + ""}<span className="symbole">+</span>
+        </button>
     );
 };

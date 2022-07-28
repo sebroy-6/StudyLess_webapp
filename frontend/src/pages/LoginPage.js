@@ -1,5 +1,5 @@
 import React from "react";
-import AuthNForm from "../components/AuthNFormComponent";
+import { AuthNForm } from "../components/FormComponents";
 
 const LoginPage = () => {
 

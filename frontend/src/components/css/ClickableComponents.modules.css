@@ -1,0 +1,55 @@
+/* settingsButton */
+
+img#gearImg {
+    transform: rotate(0deg);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+img#gearImg.rotated {
+    transform: rotate(45deg);
+    transition: 0.5s;
+}
+
+/* settingsButton & ProfileLink */
+
+.image > img {
+    width: 60px;
+    height: 60px;
+}
+
+/* PlusButton */
+
+.symbole {
+    font-weight: 900;
+    font-size: 40px;
+    margin-left: 10px;
+}
+
+
+/* AddButton */
+
+button.addButton {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    font-family: 'Courier New', monospace;
+    font-weight: 900;
+    font-size: 25px;
+    padding: 15px;
+    border: none;
+    border-radius: 20px;
+    color: dimgray;
+    background-color: white;
+    cursor: pointer;
+}
+
+button.addButton:active {
+    transform: scale(0.95);
+}
+
+.top-right {
+    position: fixed;
+    right: 4%;
+    top: calc(75px + 2%);
+}

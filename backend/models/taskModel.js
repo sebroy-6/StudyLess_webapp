@@ -17,6 +17,9 @@ const TaskSchema = new mongoose.Schema({
     },
     duration: {
         type: String
+    },
+    description: {
+        type: String
     }
 }, { timestamps: true });
 
