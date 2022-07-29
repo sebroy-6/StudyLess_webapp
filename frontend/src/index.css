@@ -59,6 +59,9 @@ div.library::after {
     position: absolute;
     z-index: -1;
 }
+ div.library.palle {
+    background-color: rgba(255, 255, 255, 0.05);
+ }
 
 h1.pageheader {
     margin: 0;

@@ -1,7 +1,7 @@
-import React from "react";
-import "./css/AuthNFormComponent.css";
-import { useState } from "react";
+import React, { useState } from "react";
+import "./css/FormComponent.css";
 import { useNavigate } from "react-router-dom";
+import { AddButton } from "./ClickableComponents.js";
 
 export const AuthNForm = ({ type }) => {
     const [username, setUsername] = useState("");
@@ -102,3 +102,55 @@ export const AuthNForm = ({ type }) => {
         </form>
     );
 }
+
+
+
+export const TaskForm = () => {
+    const [title, setTitle] = useState("");
+    const [difficulty, setDiff] = useState(0);
+    const [subject, setSubject] = useState("");
+    const [error, setError] = useState("");
+
+    const createTask = async (event) => {
+        event.preventDefault();
+        const token = localStorage.getItem("authentication");
+        const data = { title, difficulty, subject };
+        console.log(data);
+
+        const response  = await fetch("/api/task", {
+            method : "POST",
+            body: JSON.stringify({ "task": data }),
+            headers: {
+                "content-Type": "application/json",
+                "authentication" : token
+            }
+        });
+        
+
+        const json = await response.json();
+        if (!response.ok) {
+            return setError(json);
+        }
+    };
+
+    return (
+        <div>
+            <AddButton type="task" element={document.getElementById("TaskForm")}/>
+            <form className="taskForm" id="TaskForm">
+                <h2><b><u>New Task</u></b></h2>
+                <h3>title :</h3>
+                <input className="text" type="text" 
+                    onChange={ (e) => { setTitle(e.target.value)}} value={ title }/>
+                <div className="inputBox">
+                    <h3>Difficulty (out of 5) :</h3>
+                    <input className="number" type="number" min="1" max="5" 
+                        onChange={ (e) => { setDiff(e.target.value)}} value={ difficulty }/>
+                </div>
+                <h3>subject :</h3>
+                <input className="text" type="text" 
+                    onChange={ (e) => { setSubject(e.target.value)}} value={ subject }/>
+                <button onClick={createTask}>CREATE</button>
+            </form>
+        </div>
+    );
+};

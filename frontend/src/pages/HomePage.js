@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FullTopBar, FullSideBar } from "../components/NavBarComponents";
 import { Task } from "../components/TasksComponents";
-import { AddButton } from "../components/ClickableComponents.js";
+import { TaskForm } from "../components/FormComponents";
 
 
 const HomePage = () => {
@@ -27,7 +27,7 @@ const HomePage = () => {
         return json;
     };
 
-    useEffect( () => { getTasks(); });
+    useEffect( () => { getTasks(); }, []);
 
     return (
         <div>
@@ -38,7 +38,7 @@ const HomePage = () => {
                 <Task key={task._id} task={task}/>
                 )) : <h1>There is no tasks yet</h1> }
             </div>
-            <AddButton type="task"/>
+            <TaskForm/>
         </div>
     );
 

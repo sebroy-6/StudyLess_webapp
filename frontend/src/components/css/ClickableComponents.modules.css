@@ -39,8 +39,8 @@ button.addButton {
     padding: 15px;
     border: none;
     border-radius: 20px;
-    color: dimgray;
-    background-color: white;
+    color: white;
+    background-color: var(--secondaryColor);
     cursor: pointer;
 }
 

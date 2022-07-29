@@ -11,14 +11,14 @@ export const Task = (props) => {
                 setdifficulty("easy");
             else if (props.task.difficulty <= 4)
                 setdifficulty("medium");
-            else if (props.task.difficulty === 5)
+            else
                 setdifficulty("hard");
         }
-    }, [props.task.difficulty]);
+    }, []);
     
     return (
         <div className="task">
-            <h3><b>{props.task.name}</b></h3>
+            <h3><b>{props.task.title}</b></h3>
             <div className="taskProps">
                 <p className={"difficulty " + difficulty}>{difficulty}</p>
                 <p className="subject">{props.task.subject}</p>

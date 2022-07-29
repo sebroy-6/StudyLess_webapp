@@ -32,12 +32,20 @@ export const ProfileLink = () => {
 
 export const AddButton = (props) => {
     const toggleAddButton = () => {
-
+        let symbole = document.getElementById("symbole");
+        if (symbole.innerHTML === "+") { 
+            symbole.innerHTML = "-"; 
+            props.element.style.display = "inline-block";
+        }
+        else { 
+            symbole.innerHTML = "+";
+            props.element.style.display = "none";
+        }
     };
 
     return (
-        <button className="addButton top-right">
-            {"Add " + props?.type + ""}<span className="symbole">+</span>
+        <button className="addButton top-right" onClick={toggleAddButton}>
+            {"Add " + props?.type + ""}<span className="symbole" id="symbole">+</span>
         </button>
     );
 };

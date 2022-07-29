@@ -22,16 +22,13 @@ async function getTask(req, res) {
 };
 
 async function createTask(req, res) {
-    //try {
+    try {
         const createdTask = await Task.createOne(req.user, req.body.task);
         return res.status(200).json(createdTask);
-    //}
-    //catch(error) {
-        //console.log
+    }
+    catch(error) {
         return res.status(400).json(error.message);
-    //}
-    return res.status(400).json(error.message);
-
+    }
 };
 
 async function deleteTask(req, res) {

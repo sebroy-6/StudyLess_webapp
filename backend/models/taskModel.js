@@ -5,12 +5,12 @@ const TaskSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    name: {
+    title: {
         type: String,
         required: true,
     },
     difficulty: {
-        type: Number
+        type: String
     },
     subject: {
         type: String

@@ -39,3 +39,44 @@ form.bubble, div.bubble {
     color: red;
     font-size: 20px;
 }
+
+/* styles for timer */
+
+.taskForm {
+    display: none;
+    position: fixed;
+    top: 175px;
+    right: 25px;
+    background-color: lightgrey;
+    width: 300px;
+    font-size: 15px;
+    font-family: Gill Sans Extrabold, sans-serif;
+    transition: 0.3s;
+}
+
+.taskForm > input.text,
+.taskForm > div > input.number {
+    margin-bottom: 5px;
+}
+
+.taskForm > div > h3 {
+    display: inline-block;
+}
+
+.taskForm > input.text {
+    background-color: white;
+    font-size: large;
+    height: 30px;
+    width: 90%;
+    border: none;
+}
+
+.taskForm > div > input.number {
+    display: inline-block;
+    margin-left: 15px;
+    background-color: white;
+    font-size: 30px;
+    border: none;
+}
+
+
