@@ -1,6 +1,6 @@
 ### Personal study assistant - Website
 
-The goal of this project is to create a website (using express and json) to help students learn and memorise and understand their class notes.
+The goal of this project is to create a website that help students simplify and optimise their studying schedule. This project is ongoing and will receive new features as time goes on.
 
 ### QuickStart guide
 
