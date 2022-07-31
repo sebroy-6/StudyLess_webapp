@@ -1,6 +1,6 @@
 ### Personal study assistant - Website
 
-The goal of this project is to create a website (using express and json) to help students learn and memorise and understand their class notes.
+The goal of this project is to create a website that help students simplify and optimise their studying schedule. This project is ongoing and will receive new features as time goes on.
 
 ### QuickStart guide
 
@@ -9,9 +9,11 @@ Reminder if you pull this project!
 If you pull this project and want to run it, here are some instructions :
 
 1) git clone this repository into a local folder on you computer
-2) execute the command "npm install" in the same local folder's terminal to install all the project's dependencies
+2) execute the command "npm install" in the "frontend" and "backend" folders seperatly
 3) host a mongodb server on your computer to give this app access to a mongodb server
-4) use the command "npm run devStart" int the same local folder's terminal to start the express server
+4) try the "npm run devStart" in the backend folder and follow the messages to set up the backend environment variables in a ".env" file located in the "backend" folder
+5) use the command "npm run devStart" int the "backend" folder to start the backend express API and "npm start" in the "frontend" folder to start the frontend react.js app
+6) enjoy!
 
 Also, make sure you have downloaded the necessary software which includes :
   - mongodb (community version 5 or more) (https://www.mongodb.com/try/download/community)
@@ -19,17 +21,15 @@ Also, make sure you have downloaded the necessary software which includes :
 
 ## In progress...
 
-- homepage html/css design
-- login/signin form css to make it adjust to size of client browser
-- login/signin logic for user password authentification
+- timer page
+- authentication in react using JWT
 
 ## functionnalities to implement
 
-- user data management
-- upload class notes to use for studying (accept different types of files)
-  ...
+- delete tasks
+- account page (for logging out)
 
-## Learning methods to implement
+## Learning and organisation tools to implement
 
+- schedule
 - Flash Card
-  ...
