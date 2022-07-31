@@ -1,18 +1,26 @@
+/* task styles */
+
 .task {
+    text-align: right;
     display: flex;
     justify-content: space-between;
     margin-left: 8vw;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 10px;
     width: calc(150px + 25vw);
     height: 15%;
     font-family: Gill Sans Extrabold, sans-serif;
     font-size: 20px;
-    margin-top: 40px;
-    padding: 10px;
     background-color: white;
 }
 
 .task:first-child {
     margin-top: 75px;
+}
+
+.taskProps > p {
+    margin: 10px;
 }
 
 .task > h3 {
@@ -32,6 +40,7 @@
     font-size: 22px;
     font-weight: 500;
     margin: 0%;
+    padding: 5px;
 }
 
 .easy {
@@ -44,8 +53,4 @@
 
 .hard {
     color: red;
-}
-
-.taskProps > p {
-    /*margin-top: 0%;*/
 }

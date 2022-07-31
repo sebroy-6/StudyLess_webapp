@@ -1,3 +1,6 @@
+/* This css file is used as a kind of global file where the 
+   styles can be used by any other page or component */
+
 :root {
     --mainColor: rgb(0, 55, 82);
     --secondaryColor: rgb(0, 82, 123);
@@ -20,6 +23,18 @@ h1 {
     font-size: 200%;
 }
 
+.error {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: rgba(255, 0, 0, 0.2);
+    border: 4px solid rgba(255, 0, 0, 0.7);
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+
+/* button.default */
+
 button.default {
     font-size: 25px;
     border-radius: 20px;
@@ -35,12 +50,22 @@ button.default:hover{
     cursor: pointer;
 }
 
-/* index styles */ 
+button.default.welcomePage {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 37.5%;
+}
+
+
+/* div.library */
 
 div.library {
     margin: 0;
     padding: 0%;
-    position: relative;
+    position: absolute;
+    left: 0;
+    top: 0;
     background-color: rgba(5, 3, 1, 0.3);
     min-width: 100vw;
     min-height: 100vh;
@@ -59,224 +84,69 @@ div.library::after {
     position: absolute;
     z-index: -1;
 }
+
  div.library.palle {
     background-color: rgba(255, 255, 255, 0.05);
  }
 
 h1.pageheader {
-    margin: 0;
     position: absolute;
-    top: 22.5%;
     left: 50%;
+    top: 18%;
+    transform: translateX(-50%);
     font-weight: normal;
     font-size: 75px;
     color: rgb(255, 255, 255);
-    transform: translate(-50%, 0);
 }
 
-button#logSignIn {
+/* bubble styles */
+
+form.bubble, div.bubble {
+    background-color: rgba(41, 41, 41, 0.85);
     position: absolute;
     left: 50%;
-    top: 37.5%;
-    transform: translate(-50%, 0);
-}
-
-/* homepage styles */
-
-body.homePage {
-    background-color: lightgrey;
-    padding: 0;
-    margin: 0;
-    position: relative;
-}
-
-/* account styles */
-
-.absCenter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* timer styles */
-
-body.light {
-    background-color: rgb(90, 90, 90);
-}
-
-body.light::after {
-    opacity: 50%;
-}
-
-div#timer {
-    background-color: var(--mainColor);
-    width: calc(10vw + 300px);
-    height: calc(40vh + 200px);
-    margin: 0;
-}
-
-div#timer > div.clock {
-    font-size: calc(4vw + 60px);
-    position: absolute;
-    left: 50%;
-    top: 30%;
-    transform: translate(-50%, -50%);
-}
-
-div#timer > button#start {
-    font-size: calc(1vw + 15px);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-div#timer > form.timermode {
-    position: absolute;
     top: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-}
-
-form.timermode > button.timermode {
-    font-size: calc(1vw + 10px);
-    margin: 0.5vw 1.25vw 0.5vw 1.25vw;
-    background-color: transparent;
-    color: white;
-    border: none;
-    border-bottom: 2px solid white;
-}
-
-form.timermode > button.timermode:hover {
-    color: rgb(187, 187, 187);
-    border-bottom-color: rgb(187, 187, 187);
-    cursor: pointer;
-}
-
-form.timermode > button.timermode:first-child {
-    color: grey;
-}
-
-div.bar-top.reduced {
-    width: 27vw;
-    left: 100%;
-    transform: translate(-100%, 0);
-    border-bottom-left-radius: 20px;
-    background-color: var(--mainColor);
-    transition: 0.4s;
-}
-
-div.bar-top.hidden {
-    transform: translate(-100%, -100%);
-    transition: 0.4s;
-}
-
-button.bottomPullTag {
-    background-color: var(--mainColor);
-    position: absolute;
-    width: 20%;
-    height: 30%;
-    left: 50%;
-    top: 100%;
     transform: translate(-50%, 0);
-    border: 2px solid white;
-    border-top-width: 0;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding: 0;
-}
-
-button.bottomPullTag:hover {
-    cursor: pointer;
-}
-
-
-button.bottomPullTag > div {
-    position: absolute;
-    left: 50%;
-    top: 20%;
-    transform: translate(-50%, -50%);
-    margin-top: 10%;
-    width: 50%;
-    height: 20%;
-    background-color: white;
-    border-radius: 2px;
-}
-
-div.settingsPage {
-    background-color: lightgrey;
-    position: absolute;
-    left: 100%;
-    top: 75px;
-    transform: translate(-100%, 0);
-    width: calc(20vw + 125px);
-    height: calc(40vh + 150px);
-    border: 5px solid var(--mainColor);
-    border-radius: 20px;
-}
-
-div.settingsPage.hidden {
-    display: none;
-}
-
-
-/* schedule styles */
-
-div.app-container > table.schedule {
-    position: absolute;
-    top: 10vh;
-    left: 95%;
-    transform: translate(-100%, 0);
-    border-collapse: collapse;
-    width: 65vw;
-}
-
-td {
-    border: 3px solid var(--mainColor);
-    border-top-style: dotted;
-    border-bottom-style: dotted;
+    border-radius: 30px;
+    width: 425px;
+    height: 475px;
     text-align: center;
-    width: calc(100% / 7);
-    font-size: 1.4vw;
-    height: 30px;
+    font-size: 30px;
+    color: white;
 }
 
-tr:last-child > td {
+.bubble.mainColor {
+    background-color: var(--mainColor);
+}
+
+.bubble.secondaryColor {
+    background-color: var(--secondaryColor);
+}
+
+.bubble > h1 {
+    margin-top: 30px;
+}
+
+.bubble > input {
+    font-size: 20px;
+    color: white;
+}
+
+.bubble > input {
+    width: 80%;
+    height: 35px;
+    margin: 5%;
+    border-style: hidden;
     border-bottom-style: solid;
+    background-color : transparent;
+    border-bottom-color: white;
 }
 
-td.title {
-    border: 5px solid;
-    background-color: var(--mainColorTransparent);
+.bubble > input::placeholder {
+    color: rgb(189, 189, 189);
 }
 
-td.weekend {
-    border-color: darksalmon;
-}
-
-td.title.weekend {
-    background-color: rgba(233, 150, 122, 0.4);
-}
-
-li.bar-top.date {
-    position: absolute;
-    left: calc(var(--bar_side_width) + 20%);    /* to be corrected for resizing*/
-    font-size: 2vw;
-}
-
-td > button {
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    background-color: transparent;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-td > button.one {
-    background-color: rgba(255, 252, 98, 0.7);
+.bubble > label.errorMessage {
+    color: red;
+    font-size: 20px;
 }

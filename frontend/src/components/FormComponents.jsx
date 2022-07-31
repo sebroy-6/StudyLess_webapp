@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./css/FormComponent.css";
+import "./css/FormComponent.modules.css";
 import { useNavigate } from "react-router-dom";
-import { AddButton } from "./ClickableComponents.js";
+import { AddButton } from "./ClickableComponents.jsx";
 
 export const AuthNForm = ({ type }) => {
     const [username, setUsername] = useState("");
@@ -109,12 +109,13 @@ export const TaskForm = () => {
     const [title, setTitle] = useState("");
     const [difficulty, setDiff] = useState(0);
     const [subject, setSubject] = useState("");
+    const [duration, setDuration] = useState("");
     const [error, setError] = useState("");
 
     const createTask = async (event) => {
         event.preventDefault();
         const token = localStorage.getItem("authentication");
-        const data = { title, difficulty, subject };
+        const data = { title, difficulty, subject, duration };
         console.log(data);
 
         const response  = await fetch("/api/task", {
@@ -125,12 +126,13 @@ export const TaskForm = () => {
                 "authentication" : token
             }
         });
-        
 
         const json = await response.json();
         if (!response.ok) {
             return setError(json);
         }
+        
+        setError("");
     };
 
     return (
@@ -140,16 +142,20 @@ export const TaskForm = () => {
                 <h2><b><u>New Task</u></b></h2>
                 <h3>title :</h3>
                 <input className="text" type="text" 
-                    onChange={ (e) => { setTitle(e.target.value)}} value={ title }/>
+                    onChange={ (e) => { setTitle(e.target.value) } } value={ title }/>
                 <div className="inputBox">
                     <h3>Difficulty (out of 5) :</h3>
                     <input className="number" type="number" min="1" max="5" 
-                        onChange={ (e) => { setDiff(e.target.value)}} value={ difficulty }/>
+                        onChange={ (e) => { setDiff(e.target.value) } } value={ difficulty }/>
                 </div>
+                <h3>duration :</h3>
+                <input className="text" type="text" 
+                    onChange={ (e) => { setDuration(e.target.value) } } value={ duration }/>
                 <h3>subject :</h3>
                 <input className="text" type="text" 
-                    onChange={ (e) => { setSubject(e.target.value)}} value={ subject }/>
+                    onChange={ (e) => { setSubject(e.target.value) } } value={ subject }/>
                 <button onClick={createTask}>CREATE</button>
+                { error !== "" && <div className="error">{ error }</div> }
             </form>
         </div>
     );

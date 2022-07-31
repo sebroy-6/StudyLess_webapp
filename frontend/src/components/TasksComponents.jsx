@@ -20,8 +20,9 @@ export const Task = (props) => {
         <div className="task">
             <h3><b>{props.task.title}</b></h3>
             <div className="taskProps">
+                <p className={"duration"}>{props.task?.duration}</p>
                 <p className={"difficulty " + difficulty}>{difficulty}</p>
-                <p className="subject">{props.task.subject}</p>
+                <p className="subject"><b>{props.task.subject}</b></p>
             </div>
         </div>
     );

@@ -1,3 +1,5 @@
+/* side-bar styles */
+
 div.bar-side {
     position: fixed;
     left: 0%;
@@ -93,7 +95,7 @@ button.rightPullTag > div {
     cursor: pointer;
 }
 
-/* style for bar-top*/
+/* FullBarTop styles */
 
 div.bar-top {
     display: flex;
@@ -154,7 +156,56 @@ li.bar-top > h1 {
     border-radius: 30%;
 }
 
-/* styles for app-container */
+/* ShortTopBar */
+
+div.bar-top.reduced {
+    width: 350px;
+    left: 100%;
+    transform: translate(-100%, 0);
+    border-bottom-left-radius: 20px;
+    background-color: var(--mainColor);
+    transition: 0.4s;
+}
+
+div.bar-top.hidden {
+    transform: translate(-100%, -100%);
+    transition: 0.4s;
+}
+
+button.bottomPullTag {
+    background-color: var(--mainColor);
+    position: absolute;
+    width: 20%;
+    height: 30%;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, 0);
+    border: 2px solid white;
+    border-top-width: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 0;
+}
+
+button.bottomPullTag:hover {
+    cursor: pointer;
+}
+
+
+button.bottomPullTag > div {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    margin-top: 10%;
+    width: 50%;
+    height: 20%;
+    background-color: white;
+    border-radius: 2px;
+}
+
+
+/* app-container styles */
 
 div.app-container {
     min-height: calc(100vh - 75px);

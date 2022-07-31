@@ -1,9 +1,9 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import WelcomePage from "./pages/Welcome";
-import LoginPage from "./pages/LoginPage";
-import SignupPage from "./pages/SignUpPage";
-import HomePage from "./pages/HomePage";
-import Timer from "./pages/Timer";
+import WelcomePage from "./pages/WelcomePage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import SignupPage from "./pages/SignUpPage.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import TimerPage from "./pages/TimerPage.jsx";
 
 function App() {
 
@@ -15,7 +15,7 @@ function App() {
                     <Route path="/logIn" element={ <LoginPage /> }/>
                     <Route path="/signUp" element={ <SignupPage /> }/>
                     <Route path="/homePage" element={ <HomePage /> }/>
-                    <Route path="/timer" element={ <Timer /> }/>
+                    <Route path="/timer" element={ <TimerPage /> }/>
                 </Routes>
             </BrowserRouter>
         </div>

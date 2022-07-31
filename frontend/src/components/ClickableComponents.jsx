@@ -21,6 +21,7 @@ export const SettingsButton = () => {
     );
 };
 
+
 export const ProfileLink = () => {
     return (
         <a href="/account" className="image">

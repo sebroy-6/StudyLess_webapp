@@ -18,15 +18,6 @@ img#gearImg.rotated {
     height: 60px;
 }
 
-/* PlusButton */
-
-.symbole {
-    font-weight: 900;
-    font-size: 40px;
-    margin-left: 10px;
-}
-
-
 /* AddButton */
 
 button.addButton {
@@ -52,4 +43,10 @@ button.addButton:active {
     position: fixed;
     right: 4%;
     top: calc(75px + 2%);
+}
+
+.symbole {
+    font-weight: 900;
+    font-size: 40px;
+    margin-left: 10px;
 }
