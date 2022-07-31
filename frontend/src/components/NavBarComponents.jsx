@@ -1,13 +1,13 @@
 import React from "react";
-import { useHide } from "./hooks/useHide";
+import { useSwitch } from "./hooks/useSwitch";
 import { useNavigate } from "react-router-dom";
 import "./css/NavBarComponents.modules.css"
 import { SettingsButton, ProfileLink } from "./ClickableComponents";
 
 
 export const FullSideBar = () => {
-    const [barIsHidden, toggleBarIsHidden] = useHide(false);
-    const [optionIsHidden, toggleOptionIsHidden] = useHide(true);
+    const [barIsHidden, toggleBarIsHidden] = useSwitch("", "hidden");
+    const [optionIsHidden, toggleOptionIsHidden] = useSwitch("hidden", "");
     const navigate = useNavigate();
 
     const goToTimer = () => {
@@ -64,7 +64,7 @@ export const FullTopBar = (props) => {
 
 
 export const ShortTopBar = () => {
-    const [topBarIsHidden, toggleTopBarIsHidden] = useHide(false);
+    const [topBarIsHidden, toggleTopBarIsHidden] = useSwitch("", "hidden");
     
     return (
         <div className={"bar-top reduced " + topBarIsHidden}>
@@ -76,7 +76,7 @@ export const ShortTopBar = () => {
 					<SettingsButton/>
 				</li>
 				<li className="bar-top">
-					<a href="/contactMe" class="text"><b>CONTACT</b></a>
+					<a href="/contactMe" className="text"><b>CONTACT</b></a>
 				</li>
 			</ul>
             <button className="bottomPullTag" onClick={toggleTopBarIsHidden}>

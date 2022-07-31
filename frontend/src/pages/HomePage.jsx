@@ -35,8 +35,9 @@ const HomePage = () => {
             <FullSideBar/>
             <div className="app-container">
                 { tasks && tasks.length ? tasks.map((task) => (
-                <Task key={task._id} task={task}/>
-                )) : <h1>There is no tasks yet</h1> }
+                    <Task key={task._id} task={task}/>
+                    )) : <h1>There is no tasks yet</h1> 
+                }
             </div>
             <TaskForm/>
         </div>

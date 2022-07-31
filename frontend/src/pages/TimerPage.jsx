@@ -8,7 +8,7 @@ const TimerPage = () => {
     return (
         <div className="library palle">
             <ShortTopBar/>
-            <Timer/>
+            <Timer minutes={25}/>
         </div>
     );
 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSwitch } from "./hooks/useSwitch";
 import "./css/ClickableComponents.modules.css";
 import settingsImage from "../images/gearPicture.png";
 import profileImage from "../images/defaultProfilePicture.png";
@@ -50,3 +51,20 @@ export const AddButton = (props) => {
         </button>
     );
 };
+
+export const StartStopButton = (props) => {
+    const [innerHtml, toggleInnerHtml] = useSwitch("Start", "Stop");
+
+    const whenClicked = () => {
+        toggleInnerHtml();
+        props?.onClick();
+    };
+
+    return (
+        <button onClick={whenClicked} className="default">
+            {innerHtml}
+        </button>
+    );
+}
+
+

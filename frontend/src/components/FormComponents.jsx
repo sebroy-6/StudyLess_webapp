@@ -131,6 +131,13 @@ export const TaskForm = () => {
         if (!response.ok) {
             return setError(json);
         }
+        else {
+            setTitle("");
+            setDiff(0);
+            setSubject("");
+            setDuration("");
+            setError("");
+        }
         
         setError("");
     };
