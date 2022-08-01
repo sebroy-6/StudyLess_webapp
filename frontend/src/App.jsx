@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignUpPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import TimerPage from "./pages/TimerPage.jsx";
+import { ContactMePage } from "./pages/ContactMePage.jsx";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
                     <Route path="/signUp" element={ <SignupPage /> }/>
                     <Route path="/homePage" element={ <HomePage /> }/>
                     <Route path="/timer" element={ <TimerPage /> }/>
+                    <Route path="/contactMe" element={ <ContactMePage /> }/>
                 </Routes>
             </BrowserRouter>
         </div>

@@ -14,10 +14,14 @@ function secondsToTimestring(time) {
     return `${hoursString}${minutesString}${secondsString}`;
 }
 
-export const useTimer = (hours = 0, minutes = 0, seconds = 0) => {
+export const useTimer = ({hours = 0, minutes = 0, seconds = 0}) => {
     const [time, setTime] = useState(hours * 3600 + minutes * 60 + seconds);
     const [isRunning, setIsRunning] = useState(false);
 
+    const resetTime = () => {
+        setTime(hours * 3600 + minutes * 60 + seconds);
+    };
+    
     useEffect(() => {
         const timeout = setTimeout( () => {
             if (isRunning && time > 0) {
@@ -33,5 +37,5 @@ export const useTimer = (hours = 0, minutes = 0, seconds = 0) => {
     }
 
     let timeString = secondsToTimestring(time);
-    return [timeString, toggleIsRunning];
+    return [timeString, toggleIsRunning, resetTime];
 }

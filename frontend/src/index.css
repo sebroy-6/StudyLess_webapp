@@ -150,3 +150,12 @@ form.bubble, div.bubble {
     color: red;
     font-size: 20px;
 }
+
+/* alignment divs */
+
+div.verticalAlign {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: 2px solid red;
+}

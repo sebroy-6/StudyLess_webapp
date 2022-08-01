@@ -1,28 +1,28 @@
 import React from "react";
 import { StartStopButton } from "./ClickableComponents";
-import { useTimer } from "./hooks/useTimer.jsx";
 import "./css/TimerComponent.modules.css";
+import { useStudyTimer } from "./hooks/useStudyTimer";
 
 const TimerTopMenu = (props) => {
-    
-    
+
     return (
         <div className="timerTopMenu-container">
-            <button>Study</button>
-            <button>Break</button>
-            <button>timeout</button>
+            <button className={props.timerMode === "study"? "selected" : ""}>Study</button>
+            <button className={props.timerMode === "break"? "selected" : ""}>Break</button>
+            <button className={props.timerMode === "timeout"? "selected" : ""}>Timeout</button>
         </div>
     );
 };
 
-export const Timer = (props) => {
-    const [time, toggleTimer] = useTimer(props?.hours, props?.minutes, props?.seconds);
-
+export const Timer = () => {
+    const [time, toggleTimer, timerMode, reps] = useStudyTimer({"minutes": 25}, {"minutes": 5}, {"minutes": 30}, 3);
     return (
         <div className="bubble mainColor">
-            <TimerTopMenu/>
-            <h1>{time}</h1>
-            <StartStopButton onClick={toggleTimer}/>
+            <TimerTopMenu timerMode={timerMode}/>
+            <h1 className="time">{time}</h1>
+            <StartStopButton onClick={ toggleTimer} />
+            <h2>{reps}</h2>
+            <h2>{timerMode}</h2>
 		</div>
     );
 };
