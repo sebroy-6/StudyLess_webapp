@@ -1,10 +1,10 @@
 import React from "react";
 
-export const ContactMePage = () => {
+const ContactMePage = () => {
     return (
         <div className="verticalAlign">
             <h1>
-                Sebastien Roy
+                Sebastien Roy<br/>
             </h1>
             <p>Github : https://github.com/sebroy-6<br/>
                email adress : sebroy1216@hotmail.com<br/>
@@ -13,3 +13,5 @@ export const ContactMePage = () => {
         </div>
     );
 };
+
+export default ContactMePage;

@@ -11,7 +11,6 @@ export const SettingsButton = () => {
     const toggleIsRotated = () => {
         if (!isRotated) setIsRotated("rotated");
         else setIsRotated("");
-        console.log(isRotated);
     }
 
     return (

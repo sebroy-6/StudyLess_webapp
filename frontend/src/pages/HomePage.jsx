@@ -32,7 +32,7 @@ const HomePage = () => {
     return (
         <div>
             <FullTopBar pageTitle={`${Date().split(" ")[1]} ${Date().split(" ")[2]} tasks`}/>
-            <FullSideBar/>
+            <FullSideBar hasAppContainer={true}/>
             <div className="app-container">
                 { tasks && tasks.length ? tasks.map((task) => (
                     <Task key={task._id} task={task}/>

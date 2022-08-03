@@ -1,31 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSwitch } from "./hooks/useSwitch";
 import { useNavigate } from "react-router-dom";
 import "./css/NavBarComponents.modules.css"
 import { SettingsButton, ProfileLink } from "./ClickableComponents";
 
 
-export const FullSideBar = () => {
+export const FullSideBar = (props) => {
     const [barIsHidden, toggleBarIsHidden] = useSwitch("", "hidden");
     const [optionIsHidden, toggleOptionIsHidden] = useSwitch("hidden", "");
     const navigate = useNavigate();
 
-    const goToTimer = () => {
-        navigate("/timer");
-    }
+    const goToTimer = () => { navigate("/timer"); }
+    const goToDailyTasks = () => { navigate("/homePage"); }
 
     const toggleBarDisplay = () => {
         toggleBarIsHidden();
-        let appContainer = document.getElementsByClassName("app-container")[0];
-        if (!barIsHidden) {
-            appContainer.style.marginLeft = "0px";
-            appContainer.style.width = "100%";
-        }
-        else {
-            appContainer.style.marginLeft = "280px";
-            appContainer.style.width = "calc(100% - 280px)";
+        if (props?.hasAppContainer) {
+            let appContainer = document.getElementsByClassName("app-container")[0];
+            if (!barIsHidden) {
+                appContainer.style.marginLeft = "0px";
+                appContainer.style.width = "100%";
+            }
+            else {
+                appContainer.style.marginLeft = "280px";
+                appContainer.style.width = "calc(100% - 280px)";
+            }
         }
     }
+
+    useEffect(() => { if (props?.isHidden) { toggleBarDisplay(); } }, []);
 
     return (
         <div className={"bar-side " + barIsHidden}>
@@ -33,7 +36,7 @@ export const FullSideBar = () => {
             <button className="option " onClick={toggleOptionIsHidden}>Study tools</button>
             <button className={"option secondary " + optionIsHidden} onClick={goToTimer}>Timer</button>
             <button className="option " >See Schedule</button>
-            <button className="option " >See daily tasks</button>
+            <button className="option " onClick={goToDailyTasks}>See daily tasks</button>
             <button className="rightPullTag" onClick={toggleBarDisplay}><div></div></button>
         </div>
     );

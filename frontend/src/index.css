@@ -154,8 +154,7 @@ form.bubble, div.bubble {
 /* alignment divs */
 
 div.verticalAlign {
-    display: flex;
-    justify-content: center;
+    text-align: center;
     width: 100%;
     border: 2px solid red;
 }
