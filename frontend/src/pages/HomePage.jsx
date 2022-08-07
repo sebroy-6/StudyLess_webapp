@@ -42,7 +42,6 @@ const HomePage = () => {
             <TaskForm/>
         </div>
     );
-
 }
 
 export default HomePage;

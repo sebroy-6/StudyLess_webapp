@@ -14,13 +14,13 @@ export const AuthNForm = ({ type }) => {
     const goToSignUp = () => {
         navigate("/signup");
     }
-    
+
     const verifyLogin = async (event) => {
         event.preventDefault();
         const data = { username, password };
 
-        const response  = await fetch("/api/user/login", {
-            method : "POST",
+        const response = await fetch("/api/user/login", {
+            method: "POST",
             body: JSON.stringify(data),
             headers: {
                 "content-Type": "application/json"
@@ -41,8 +41,8 @@ export const AuthNForm = ({ type }) => {
         event.preventDefault();
         const data = { username, email, password };
 
-        const response  = await fetch("/api/user/signup", {
-            method : "POST",
+        const response = await fetch("/api/user/signup", {
+            method: "POST",
             body: JSON.stringify(data),
             headers: {
                 "content-Type": "application/json"
@@ -61,44 +61,44 @@ export const AuthNForm = ({ type }) => {
 
 
     return (
-		<form className="bubble" method="post">
-            { type==="login"? <h2><b>Login</b></h2> : <h2><b>SignUp</b></h2> }
-            { error && <label className="errorMessage">{ error }</label> }
-			<input
-			    className="inputBox"
-			    type="text"
-			    placeholder="enter your username"
-                onChange={ (e) => { setUsername( e.target.value ) } }
-                value={ username }
-			/>
-            {type==="signup" && 
+        <form className="bubble" method="post">
+            {type === "login" ? <h2><b>Login</b></h2> : <h2><b>SignUp</b></h2>}
+            {error && <label className="errorMessage">{error}</label>}
             <input
-			    className="inputBox"
-			    type="email"
-			    placeholder="enter your email adress"
-                onChange={ (e) => { setEmail( e.target.value ) } }
-                value={ email }
-			/> }
+                className="inputBox"
+                type="text"
+                placeholder="enter your username"
+                onChange={(e) => { setUsername(e.target.value) }}
+                value={username}
+            />
+            {type === "signup" &&
+                <input
+                    className="inputBox"
+                    type="email"
+                    placeholder="enter your email adress"
+                    onChange={(e) => { setEmail(e.target.value) }}
+                    value={email}
+                />}
 
-			<input
-			    className="inputBox"
-			    type="password"
-			    placeholder="enter your password"
-                onChange={ (e) => { setPassword( e.target.value ) } }
-                value={ password }
-			/>
-			<br />
-			{ type === "login" && <button className="default" value="logIn" title="Login" onClick={ verifyLogin }>
-			Login
-			</button> }
-			<button
+            <input
+                className="inputBox"
+                type="password"
+                placeholder="enter your password"
+                onChange={(e) => { setPassword(e.target.value) }}
+                value={password}
+            />
+            <br />
+            {type === "login" && <button className="default" value="logIn" title="Login" onClick={verifyLogin}>
+                Login
+            </button>}
+            <button
                 className="default"
-			    value="signUp"
-			    title="Create account"
-                onClick={ type === "login"? goToSignUp : sendSignUpForm }
-			>
-			signUp
-			</button>
+                value="signUp"
+                title="Create account"
+                onClick={type === "login" ? goToSignUp : sendSignUpForm}
+            >
+                signUp
+            </button>
         </form>
     );
 }
@@ -110,20 +110,20 @@ export const TaskForm = () => {
     const [difficulty, setDiff] = useState(0);
     const [subject, setSubject] = useState("");
     const [duration, setDuration] = useState("");
+    const [dueDate, setDueDate] = useState("");
     const [error, setError] = useState("");
 
     const createTask = async (event) => {
         event.preventDefault();
         const token = localStorage.getItem("authentication");
-        const data = { title, difficulty, subject, duration };
-        console.log(data);
+        const data = { title, difficulty, subject, duration, dueDate };
 
-        const response  = await fetch("/api/task", {
-            method : "POST",
+        const response = await fetch("/api/task", {
+            method: "POST",
             body: JSON.stringify({ "task": data }),
             headers: {
                 "content-Type": "application/json",
-                "authentication" : token
+                "authentication": token
             }
         });
 
@@ -138,32 +138,43 @@ export const TaskForm = () => {
             setDuration("");
             setError("");
         }
-        
+
+
         setError("");
     };
 
     return (
         <div>
-            <AddButton type="task" element={document.getElementById("TaskForm")}/>
+            <AddButton type="task" element={document.getElementById("TaskForm")} />
             <form className="taskForm" id="TaskForm">
                 <h2><b><u>New Task</u></b></h2>
                 <h3>title :</h3>
-                <input className="text" type="text" 
-                    onChange={ (e) => { setTitle(e.target.value) } } value={ title }/>
+                <input className="text" type="text"
+                    onChange={(e) => { setTitle(e.target.value) }} value={title} />
                 <div className="inputBox">
                     <h3>Difficulty (out of 5) :</h3>
-                    <input className="number" type="number" min="1" max="5" 
-                        onChange={ (e) => { setDiff(e.target.value) } } value={ difficulty }/>
+                    <input className="number" type="number" min="1" max="5"
+                        onChange={(e) => { setDiff(e.target.value) }} value={difficulty} />
                 </div>
                 <h3>duration :</h3>
-                <input className="text" type="text" 
-                    onChange={ (e) => { setDuration(e.target.value) } } value={ duration }/>
+                <input className="text" type="text"
+                    onChange={(e) => { setDuration(e.target.value) }} value={duration} />
                 <h3>subject :</h3>
-                <input className="text" type="text" 
-                    onChange={ (e) => { setSubject(e.target.value) } } value={ subject }/>
+                <input className="text" type="text"
+                    onChange={(e) => { setSubject(e.target.value) }} value={subject} />
+                <h3>due date :</h3>
+                <input className="text" type="date"
+                    onChange={(e) => { setDueDate(e.target.value) }} value={dueDate} />
                 <button onClick={createTask}>CREATE</button>
-                { error !== "" && <div className="error">{ error }</div> }
+                {error !== "" && <div className="error">{error}</div>}
             </form>
         </div>
     );
+};
+
+
+export const SettingsWindow = () => {
+    const [nbCycles, setNbCycles] = useState(1);
+
+
 };

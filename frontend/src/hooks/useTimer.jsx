@@ -25,7 +25,7 @@ export const useTimer = ({hours = 0, minutes = 0, seconds = 0}) => {
     useEffect(() => {
         const timeout = setTimeout( () => {
             if (isRunning && time > 0) {
-                setTime(time - 1); 
+                setTime(time - 1);
             }
         }, 1000);
 

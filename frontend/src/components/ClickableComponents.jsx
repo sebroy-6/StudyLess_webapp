@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSwitch } from "./hooks/useSwitch";
+import { useSwitch } from "../hooks/useSwitch";
 import "./css/ClickableComponents.modules.css";
 import settingsImage from "../images/gearPicture.png";
 import profileImage from "../images/defaultProfilePicture.png";

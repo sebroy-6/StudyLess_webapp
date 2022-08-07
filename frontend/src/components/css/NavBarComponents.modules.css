@@ -141,15 +141,6 @@ li.bar-top > a {
     color:rgb(235, 234, 234);
 }
 
-li.bar-top > h1 {
-    position: absolute;
-    left: 36vw;
-    transform: translateX(-50%);
-    font-size: 5vw;
-    text-decoration: none;
-    color:rgb(235, 234, 234);
-}
-
 .bar-side > button.back {
     width: fit-content;
     font-size: 2vw;

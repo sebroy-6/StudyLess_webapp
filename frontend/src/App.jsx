@@ -6,7 +6,8 @@ import { ProtectedRoutes } from "./protectedRoutes";
 import HomePage from "./pages/HomePage.jsx";
 import TimerPage from "./pages/TimerPage.jsx";
 import ContactMePage from "./pages/ContactMePage.jsx";
-import AccountPage from "./pages/accountPage.jsx";
+import AccountPage from "./pages/AccountPage.jsx";
+import SchedulePage from "./pages/SchedulePage.jsx";
 
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
                         <Route path="/homePage" element={ <HomePage /> }/>
                         <Route path="/timer" element={ <TimerPage /> }/>
                         <Route path="/contactMe" element={ <ContactMePage /> }/>
-                        <Route path="/account" element={ <AccountPage /> } />
+                        <Route path="/account" element={ <AccountPage /> }/>
+                        <Route path="/schedule" element={ <SchedulePage /> }/>
                     </Route>
                 </Routes>
             </BrowserRouter>

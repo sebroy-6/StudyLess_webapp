@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useSwitch } from "./hooks/useSwitch";
+import { useSwitch } from "../hooks/useSwitch";
 import { useNavigate } from "react-router-dom";
 import "./css/NavBarComponents.modules.css"
 import { SettingsButton, ProfileLink } from "./ClickableComponents";
@@ -12,6 +12,7 @@ export const FullSideBar = (props) => {
 
     const goToTimer = () => { navigate("/timer"); }
     const goToDailyTasks = () => { navigate("/homePage"); }
+    const goToSchedule = () => { navigate("/schedule"); }
 
     const toggleBarDisplay = () => {
         toggleBarIsHidden();
@@ -33,10 +34,10 @@ export const FullSideBar = (props) => {
     return (
         <div className={"bar-side " + barIsHidden}>
             <a href="homePage" ><h1>POLYSTUDY</h1></a>
+            <button className="option " onClick={goToDailyTasks}>See daily tasks</button>
+            <button className="option " onClick={goToSchedule}>See Schedule</button>
             <button className="option " onClick={toggleOptionIsHidden}>Study tools</button>
             <button className={"option secondary " + optionIsHidden} onClick={goToTimer}>Timer</button>
-            <button className="option " >See Schedule</button>
-            <button className="option " onClick={goToDailyTasks}>See daily tasks</button>
             <button className="rightPullTag" onClick={toggleBarDisplay}><div></div></button>
         </div>
     );
@@ -57,9 +58,6 @@ export const FullTopBar = (props) => {
 				<li className="bar-top">
 					<a href="/contactMe"><b>CONTACT</b></a>
 				</li>
-                <li className="bar-top">
-                    <h1>{props.pageTitle}</h1>
-                </li>
 			</ul>
         </div>
     );

@@ -8,8 +8,8 @@ div.timerTopMenu-container > button{
     margin: 30px;
     border: none;
     background-color: transparent;
-    color: white;
-    border-bottom: 2px solid white;
+    color: grey;
+    border-bottom: 2px solid grey;
     font-size: 20px;
     cursor: pointer;
 }
@@ -20,9 +20,25 @@ div.timerTopMenu-container > button:active{
 }
 
 div.timerTopMenu-container > button.selected {
-    color: grey;
+    color: white;
+    border-color: white;
 }
 
+/* cycle count*/
+div.cycleCount {
+    position: absolute;
+    bottom: 50px;
+    right: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid grey;
+    border-radius: 50px;
+    height: 10%;
+    padding: 20px;
+    padding-top: 0%;
+    padding-bottom: 0%;
+}
 
 /* timer */
 

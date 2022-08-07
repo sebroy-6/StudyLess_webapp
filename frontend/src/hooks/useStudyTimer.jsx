@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTimer } from "./useTimer";
 
 const TIMER_END_VALUE = "0";

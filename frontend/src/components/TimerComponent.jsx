@@ -1,7 +1,7 @@
 import React from "react";
 import { StartStopButton } from "./ClickableComponents";
 import "./css/TimerComponent.modules.css";
-import { useStudyTimer } from "./hooks/useStudyTimer";
+import { useStudyTimer } from "../hooks/useStudyTimer";
 
 const TimerTopMenu = (props) => {
 
@@ -21,8 +21,9 @@ export const Timer = () => {
             <TimerTopMenu timerMode={timerMode}/>
             <h1 className="time">{time}</h1>
             <StartStopButton onClick={ toggleTimer} />
-            <h2>{reps}</h2>
-            <h2>{timerMode}</h2>
+            <div className="cycleCount">
+                cycles: {reps}
+            </div>
 		</div>
     );
 };
