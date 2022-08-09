@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./css/TasksComponents.modules.css";
 import checkIcon from "../images/checkIcon.png";
 import deleteIcon from "../images/garbageIcon.png";
+import { TasksContext } from "../contexts/TasksContext";
 
 export const Task = (props) => {
+    const { dispatch } = useContext(TasksContext);
     const [difficulty, setdifficulty] = useState("");
 
     useEffect(() => {
@@ -20,34 +22,38 @@ export const Task = (props) => {
 
     async function deleteTask() {
         const token = localStorage.getItem("authentication");
-        fetch(`/api/task/${props.task._id}`, {
+        const response = await fetch(`/api/task/${props.task._id}`, {
             method: "DELETE",
             headers: {
                 "content-Type": "application/json",
                 "authentication": token
             }
-        }).then((response) => {
-            if (response.ok) { console.log(`task ${props.task._id} has been deleted`); }
-        })
+        });
+
+        if (response.ok) {
+            dispatch({ type: "REMOVE_TASK", payload: props.task });
+            console.log(`task ${props.task._id} has been deleted`);
+        }
     }
 
     async function completeTask() {
         const token = localStorage.getItem("authentication");
         props.task.isCompleted = true;
-        console.log(props.task);
-        fetch(`/api/task/${props.task._id}`, {
+        const response = await fetch(`/api/task/${props.task._id}`, {
             method: "PATCH",
             body: JSON.stringify({ "task": props.task }),
             headers: {
                 "content-Type": "application/json",
                 "authentication": token
             }
-        }).then((response) => {
-            if (response.ok) { console.log(`task ${props.task._id} has been completed`); }
-        }).catch((error) => {
-            props.task.isCompleted = false;
-            console.log(error.message);
         });
+        if (response.ok) {
+            dispatch({ type: "REMOVE_TASK", payload: props.task });
+            console.log(`task ${props.task._id} has been completed`);
+        }
+        else {
+            props.task.isCompleted = false;
+        }
     }
 
     return (

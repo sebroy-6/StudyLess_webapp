@@ -8,6 +8,8 @@ function reduceTasks(state, action) {
             return { tasks: action.payload };
         case "ADD_TASK":
             return { tasks: [action.payload, ...state.tasks] };
+        case "REMOVE_TASK":
+            return { tasks: state.tasks.filter((task) => task._id !== action.payload._id) };
         default:
             return state;
     }

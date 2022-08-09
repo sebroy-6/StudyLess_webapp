@@ -15,7 +15,7 @@ const TimerTopMenu = (props) => {
 };
 
 export const Timer = () => {
-    const [time, toggleTimer, timerMode, reps] = useStudyTimer({ "minutes": 25 }, { "minutes": 5 }, { "minutes": 30 }, 2);
+    const [time, toggleTimer, timerMode, reps] = useStudyTimer({ "minutes": 25 }, { "minutes": 5 }, { "minutes": 30 }, 4);
 
     return (
         <div className="bubble mainColor">
