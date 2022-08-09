@@ -11,8 +11,8 @@ If you pull this project and want to run it, here are some instructions :
 1) git clone this repository into a local folder on you computer
 2) execute the command "npm install" in the "frontend" and "backend" folders seperatly
 3) host a mongodb server on your computer to give this app access to a mongodb server
-4) try the "npm run devStart" in the backend folder and follow the messages to set up the backend environment variables in a ".env" file located in the "backend" folder
-5) use the command "npm run devStart" int the "backend" folder to start the backend express API and "npm start" in the "frontend" folder to start the frontend react.js app
+4) In the global application folder, try "npm run startBackend" and follow the messages to set up the backend environment variables in a ".env" file located in the "backend" folder
+5) In the global application folder, use "npm run startBackend" in a first terminal and "npm run startFront" in a second seperate terminal
 6) enjoy!
 
 Also, make sure you have downloaded the necessary software which includes :
@@ -21,15 +21,15 @@ Also, make sure you have downloaded the necessary software which includes :
 
 ## In progress...
 
-- timer page
-- authentication in react using JWT
+- schedule page
+- task complete button animation (possibility)
 
 ## functionnalities to implement
 
-- delete tasks
-- account page (for logging out)
+- see daily tasks
+- add different types of events in calender
 
 ## Learning and organisation tools to implement
 
-- schedule
-- Flash Card
+- post-it notes
+- flash cards study tool
