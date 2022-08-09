@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./css/FormComponent.modules.css";
 import { useNavigate } from "react-router-dom";
 import { AddButton } from "./ClickableComponents.jsx";
+import { TasksContext } from "../contexts/TasksContext";
 
 export const AuthNForm = ({ type }) => {
     const [username, setUsername] = useState("");
@@ -112,6 +113,7 @@ export const TaskForm = () => {
     const [duration, setDuration] = useState("");
     const [dueDate, setDueDate] = useState("");
     const [error, setError] = useState("");
+    const { dispatch } = useContext(TasksContext);
 
     const createTask = async (event) => {
         event.preventDefault();
@@ -132,14 +134,13 @@ export const TaskForm = () => {
             return setError(json);
         }
         else {
+            dispatch({ type: "ADD_TASK", payload: json });
             setTitle("");
             setDiff(0);
             setSubject("");
             setDuration("");
             setError("");
         }
-
-
         setError("");
     };
 
@@ -170,11 +171,4 @@ export const TaskForm = () => {
             </form>
         </div>
     );
-};
-
-
-export const SettingsWindow = () => {
-    const [nbCycles, setNbCycles] = useState(1);
-
-
 };

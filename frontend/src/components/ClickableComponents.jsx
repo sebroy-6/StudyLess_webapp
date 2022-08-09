@@ -25,8 +25,8 @@ export const SettingsButton = () => {
 export const ProfileLink = () => {
     return (
         <a href="/account" className="image">
-			<img src={profileImage} alt="Profile"/>
-		</a>
+            <img src={profileImage} alt="Profile" />
+        </a>
     );
 };
 
@@ -34,11 +34,11 @@ export const ProfileLink = () => {
 export const AddButton = (props) => {
     const toggleAddButton = () => {
         let symbole = document.getElementById("symbole");
-        if (symbole.innerHTML === "+") { 
-            symbole.innerHTML = "-"; 
+        if (symbole.innerHTML === "+") {
+            symbole.innerHTML = "-";
             props.element.style.display = "inline-block";
         }
-        else { 
+        else {
             symbole.innerHTML = "+";
             props.element.style.display = "none";
         }

@@ -45,20 +45,20 @@ export const FullSideBar = (props) => {
 
 
 export const FullTopBar = (props) => {
-    
+
     return (
         <div className="bar-top">
-			<ul className="bar-top">
-				<li className="bar-top">
-					<ProfileLink/>
-				</li>
-				<li className="bar-top">
-					<SettingsButton/>
-				</li>
-				<li className="bar-top">
-					<a href="/contactMe"><b>CONTACT</b></a>
-				</li>
-			</ul>
+            <ul className="bar-top">
+                <li className="bar-top">
+                    <ProfileLink />
+                </li>
+                <li className="bar-top">
+                    <SettingsButton />
+                </li>
+                <li className="bar-top">
+                    <a href="/contactMe"><b>CONTACT</b></a>
+                </li>
+            </ul>
         </div>
     );
 }
@@ -66,20 +66,20 @@ export const FullTopBar = (props) => {
 
 export const ShortTopBar = () => {
     const [topBarIsHidden, toggleTopBarIsHidden] = useSwitch("", "hidden");
-    
+
     return (
         <div className={"bar-top reduced " + topBarIsHidden}>
             <ul className="bar-top">
-				<li className="bar-top">
-					<ProfileLink/>
-				</li>
-				<li className="bar-top">
-					<SettingsButton/>
-				</li>
-				<li className="bar-top">
-					<a href="/contactMe" className="text"><b>CONTACT</b></a>
-				</li>
-			</ul>
+                <li className="bar-top">
+                    <ProfileLink />
+                </li>
+                <li className="bar-top">
+                    <SettingsButton />
+                </li>
+                <li className="bar-top">
+                    <a href="/contactMe" className="text"><b>CONTACT</b></a>
+                </li>
+            </ul>
             <button className="bottomPullTag" onClick={toggleTopBarIsHidden}>
                 <div></div>
             </button>

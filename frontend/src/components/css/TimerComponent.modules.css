@@ -25,7 +25,7 @@ div.timerTopMenu-container > button.selected {
 }
 
 /* cycle count*/
-div.cycleCount {
+button.cycleCount {
     position: absolute;
     bottom: 50px;
     right: 30px;
@@ -38,6 +38,9 @@ div.cycleCount {
     padding: 20px;
     padding-top: 0%;
     padding-bottom: 0%;
+    font-size: 25px;
+    color: white;
+    background-color: var(--mainColor);
 }
 
 /* timer */
