@@ -1,0 +1,58 @@
+/* WorkWeekSchedule */
+
+.workWeekSchedule {
+    display: flex;
+    margin: 20px;
+}
+
+
+/* weekSchedule */
+
+table.weekSchedule {
+    background-color: white;
+    width: fit-content;
+}
+
+table.weekSchedule, 
+table.weekSchedule > tbody > tr > th, 
+table.weekSchedule > tbody > tr > td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table.weekSchedule > tbody > tr > th, 
+table.weekSchedule > tbody > tr > td {
+    width: 175px;
+}
+
+table.weekSchedule > tbody > tr.weekend > th{
+    background-color: var(--thirnaryColor);
+}
+
+table.weekSchedule > tbody > tr {
+    height: 25px;
+}
+
+table.weekSchedule > tbody > tr > th {
+    color: white;
+    background-color: var(--mainColor);
+    margin: 0;
+}
+
+table.weekSchedule > tbody > tr:nth-child(odd) {
+    background-color: lightgrey;
+}
+
+/* ScheduleTimeColumn */
+
+table.timerColumn, 
+table.timerColumn > tbody > tr > td  {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+table.timeColumn > tbody > tr {
+    height: 25px;
+    justify-items: center;
+    text-align: right;
+}

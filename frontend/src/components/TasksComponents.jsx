@@ -57,7 +57,7 @@ export const Task = (props) => {
     }
 
     return (
-        <div className="task">
+        <div className="task" draggable>
             <h3><b>{props.task.title}</b></h3>
             <span className="taskProps">
                 <p className={"duration"}>{props.task?.duration}</p>
@@ -70,6 +70,15 @@ export const Task = (props) => {
             <button className="delete" onClick={deleteTask} >
                 <img src={deleteIcon} alt="delete" className="icon" />
             </button>
+        </div>
+    );
+}
+
+
+export const reducedTask = () => {
+    return (
+        <div className="task" draggable>
+            TASK
         </div>
     );
 }

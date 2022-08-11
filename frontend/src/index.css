@@ -4,6 +4,7 @@
 :root {
     --mainColor: rgb(0, 55, 82);
     --secondaryColor: rgb(0, 82, 123);
+    --thirnaryColor: rgb(0, 111, 167);
     --mainColorTransparent: rgba(0, 55, 82, 0.4);
     --bar_side_width: 250px;
 }
@@ -31,7 +32,6 @@ h1 {
     border-radius: 10px;
     font-weight: 500;
 }
-
 
 /* button.default */
 
@@ -97,6 +97,41 @@ h1.pageheader {
     font-weight: normal;
     font-size: 75px;
     color: rgb(255, 255, 255);
+}
+
+/* app-container styles */
+
+div.app-container {
+    min-height: calc(100vh - 75px);
+    position: absolute;
+    margin-left: 280px;
+    top: 75px;
+    width: calc(100% - 280px);
+    transition: 0.3s;
+}
+
+div.app-container.fullScreen {
+    width: 100%;
+    left: 0;
+    transition: 0.3s;
+}
+
+div.app-container > div.text {
+    padding: 0 5vw 0 5vw;
+    font-family: Arial, sans-serif;
+    color:rgb(25, 18, 18);
+}
+
+div.app-container > div.text > h2 {
+    color: inherit;
+    padding: 0%;
+    font-size: 2.5vw;
+}
+
+div.app-container > div.text > p {
+    color: inherit;
+    padding: 0%;
+    font-size: 1.5vw;
 }
 
 /* bubble styles */
