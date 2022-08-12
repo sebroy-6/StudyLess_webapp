@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSwitch } from "../hooks/useSwitch";
 import { useNavigate } from "react-router-dom";
-import "./css/NavBarComponents.modules.css"
+import "./css/NavBarComponents.css"
 import { SettingsButton, ProfileLink } from "./ClickableComponents";
 
 

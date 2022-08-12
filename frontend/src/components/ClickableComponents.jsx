@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSwitch } from "../hooks/useSwitch";
-import "./css/ClickableComponents.modules.css";
+import "./css/ClickableComponents.css";
 import settingsImage from "../images/gearPicture.png";
 import profileImage from "../images/defaultProfilePicture.png";
 
@@ -31,32 +31,32 @@ export const ProfileLink = () => {
 };
 
 
-export const AddButton = (props) => {
+export const AddButton = ({ onClick, type }) => {
     const toggleAddButton = () => {
+        onClick();
         let symbole = document.getElementById("symbole");
         if (symbole.innerHTML === "+") {
             symbole.innerHTML = "-";
-            props.element.style.display = "inline-block";
         }
         else {
             symbole.innerHTML = "+";
-            props.element.style.display = "none";
         }
     };
 
     return (
         <button className="addButton top-right" onClick={toggleAddButton}>
-            {"Add " + props?.type + ""}<span className="symbole" id="symbole">+</span>
+            {"Add " + type + ""}<span className="symbole" id="symbole">+</span>
         </button>
     );
 };
 
-export const StartStopButton = (props) => {
+
+export const StartStopButton = ({ onClick }) => {
     const [innerHtml, toggleInnerHtml] = useSwitch("Start", "Stop");
 
     const whenClicked = () => {
         toggleInnerHtml();
-        props?.onClick();
+        onClick();
     };
 
     return (

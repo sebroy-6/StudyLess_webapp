@@ -14,8 +14,6 @@ const ScheduleTimeColumn = ({ nbRows }) => {
         rows.push(<tr key={i}><td>{time[i]}</td></tr>);
     }
 
-    console.log(rows);
-
     return (
         <table className="timeColumn">
             <tbody>

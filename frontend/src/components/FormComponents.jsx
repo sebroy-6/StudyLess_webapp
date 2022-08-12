@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import "./css/FormComponent.modules.css";
+import "./css/FormComponents.css";
 import { useNavigate } from "react-router-dom";
 import { AddButton } from "./ClickableComponents.jsx";
 import { TasksContext } from "../contexts/TasksContext";
@@ -105,8 +105,8 @@ export const AuthNForm = ({ type }) => {
 }
 
 
-
 export const TaskForm = () => {
+    const [isShow, setIsShown] = useState(false);
     const [title, setTitle] = useState("");
     const [difficulty, setDiff] = useState(0);
     const [subject, setSubject] = useState("");
@@ -114,6 +114,14 @@ export const TaskForm = () => {
     const [dueDate, setDueDate] = useState("");
     const [error, setError] = useState("");
     const { dispatch } = useContext(TasksContext);
+
+    const toggleIsShown = () => {
+        setIsShown(!isShow);
+        let formStyle = document.getElementById("form").style;
+        formStyle.display = !isShow ? "inline-block" : "none";
+        // the ! is because change in state is not immediate, 
+        // the component has to rerender to update the state
+    }
 
     const createTask = async (event) => {
         event.preventDefault();
@@ -146,8 +154,8 @@ export const TaskForm = () => {
 
     return (
         <div>
-            <AddButton type="task" element={document.getElementById("TaskForm")} />
-            <form className="taskForm" id="TaskForm">
+            <AddButton type="task" onClick={toggleIsShown} />
+            <form className="taskForm" id="form">
                 <h2><b><u>New Task</u></b></h2>
                 <h3>title :</h3>
                 <input className="text" type="text"

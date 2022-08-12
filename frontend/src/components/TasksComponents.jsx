@@ -57,10 +57,10 @@ export const Task = (props) => {
     }
 
     return (
-        <div className="task" draggable>
+        <div className="task">
             <h3><b>{props.task.title}</b></h3>
             <span className="taskProps">
-                <p className={"duration"}>{props.task?.duration}</p>
+                <p className="duration">{props.task?.duration}</p>
                 <p className={"difficulty " + difficulty}>{difficulty}</p>
                 <p className="subject"><b>{props.task.subject}</b></p>
             </span>
@@ -76,10 +76,25 @@ export const Task = (props) => {
 
 
 export const ReducedTask = ({ task }) => {
+    const [difficulty, setdifficulty] = useState("");
+
+    useEffect(() => {
+        if (task.difficulty) {
+            if (task.difficulty <= 2)
+                setdifficulty("easy");
+            else if (task.difficulty <= 4)
+                setdifficulty("medium");
+            else
+                setdifficulty("hard");
+        }
+    }, []);
+
     return (
-        <div className="task reduced" draggable>
-            <h3><b>{task.title}</b></h3>
-        </div>
+        <div className="task reduced">
+            <h3>{task.title}</h3>
+            <p className="duration">{task.duration}</p>
+            <p className={"difficulty " + difficulty}>{difficulty}</p>
+        </div >
     );
 }
 
