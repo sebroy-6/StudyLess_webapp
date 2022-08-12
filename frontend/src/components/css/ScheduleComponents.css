@@ -3,8 +3,16 @@
 .workWeekSchedule {
     display: flex;
     margin: 20px;
+    float: right;
 }
 
+/* WeekendSchedule */
+
+.weekendSchedule {
+    display: flex;
+    margin: 20px;
+    float: right;
+}
 
 /* weekSchedule */
 

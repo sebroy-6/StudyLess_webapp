@@ -86,3 +86,13 @@ button.delete:hover {
     bottom: 12px;
     right: 10px;
 }
+
+/* ReducedTask */
+
+.task.reduced {
+    font-size: small;
+    width: 60%;
+    min-height: 20px;
+    margin-left: 12%;
+}
+

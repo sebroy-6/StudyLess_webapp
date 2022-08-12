@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import "./css/TasksComponents.modules.css";
+import "./css/TasksComponents.css";
 import checkIcon from "../images/checkIcon.png";
 import deleteIcon from "../images/garbageIcon.png";
 import { TasksContext } from "../contexts/TasksContext";
@@ -75,10 +75,10 @@ export const Task = (props) => {
 }
 
 
-export const reducedTask = () => {
+export const ReducedTask = ({ task }) => {
     return (
-        <div className="task" draggable>
-            TASK
+        <div className="task reduced" draggable>
+            <h3><b>{task.title}</b></h3>
         </div>
     );
 }

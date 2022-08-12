@@ -27,7 +27,11 @@ const HomePage = () => {
         return json;
     };
 
-    useEffect(() => { getTasks(); }, []);
+    useEffect(() => {
+        if (!tasks) {
+            getTasks();
+        }
+    }, []);
 
     return (
         <div>

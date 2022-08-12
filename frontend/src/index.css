@@ -102,6 +102,7 @@ h1.pageheader {
 /* app-container styles */
 
 div.app-container {
+    display: inline-block;
     min-height: calc(100vh - 75px);
     position: absolute;
     margin-left: 280px;
@@ -209,4 +210,25 @@ div.verticalAlign {
 
 .arrow.up {
     transform: rotate(135deg);
+}
+
+
+/* SchedulePage styles */
+
+/* schedule-container */
+
+.schedule-container {
+    float: right;
+    width: 70%;
+    overflow-y: scroll;
+}
+
+/* leftTask-container */
+
+.leftTask-container {
+    position: fixed;
+    width: 30%;
+    float: left;
+    height: 400px;
+    overflow-y: scroll;
 }
