@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import "./css/FormComponents.css";
 import { useNavigate } from "react-router-dom";
-import { AddButton } from "./ClickableComponents.jsx";
+import { SymboleButton } from "./ClickableComponents.jsx";
 import { TasksContext } from "../contexts/TasksContext";
 
 export const AuthNForm = ({ type }) => {
@@ -154,7 +154,7 @@ export const TaskForm = () => {
 
     return (
         <div>
-            <AddButton type="task" onClick={toggleIsShown} />
+            <SymboleButton text="task" onClick={toggleIsShown} logo1="+" logo2="-" />
             <form className="taskForm" id="form">
                 <h2><b><u>New Task</u></b></h2>
                 <h3>title :</h3>

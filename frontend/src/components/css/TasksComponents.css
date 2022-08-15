@@ -96,3 +96,12 @@ button.delete:hover {
     margin-left: 12%;
 }
 
+/* leftTask-container */
+
+.leftTask-container {
+    position: fixed;
+    width: 30%;
+    float: left;
+    height: 400px;
+    overflow-y: scroll;
+}

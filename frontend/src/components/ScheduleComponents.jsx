@@ -1,5 +1,71 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDrop } from "react-dnd";
 import "./css/ScheduleComponents.css";
+
+const TimeSlot = () => {
+    const [events, setEvents] = useState([])
+    const [{ isOver }, dropRef] = useDrop({
+        accept: "task",
+        drop: (item) => setEvents((event) =>
+            !events.includes(item) ? [...events, item] : events),
+        collect: (monitor) => ({
+            isOver: monitor.isOver()
+        })
+    })
+
+    return (
+        <tr className="timeSlot" ref={dropRef}>
+            <td>
+                {events.map((event) => {
+                    return `${event.title} \n`
+                })}
+                {isOver && "HERE"}
+            </td>
+        </tr>
+    );
+}
+
+export const DayPlanner = ({ date, nbRows = 1, type = "" }) => {
+    const rows = [];
+    for (let i = 0; i < nbRows; i++) {
+        rows.push(<TimeSlot key={i} />);
+    }
+    return (
+        <table className="schedule">
+            <tbody>
+                <tr className={type}><th>{date}</th></tr>
+                {rows}
+            </tbody>
+        </table>
+    );
+}
+
+export const FullWeekPlanner = () => {
+    return (
+        <div className="fullWeek">
+            <DayPlanner date={"9 monday"} nbRows={12} />
+            <DayPlanner date={"10 tuesday"} nbRows={12} />
+            <DayPlanner date={"11 wednesday"} nbRows={12} />
+            <DayPlanner date={"12 thursday"} nbRows={12} />
+            <DayPlanner date={"13 friday"} nbRows={12} />
+            <DayPlanner date={"14 saturday"} nbRows={12} type={"weekend"} />
+            <DayPlanner date={"15 sunday"} nbRows={12} type={"weekend"} />
+        </div>
+    );
+}
+
+export const WorkWeekPlanner = () => {
+    return (
+        <div className="workWeek">
+            <ScheduleTimeColumn nbRows={12} />
+            <DayPlanner date={"9 monday"} nbRows={12} />
+            <DayPlanner date={"10 tuesday"} nbRows={12} />
+            <DayPlanner date={"11 wednesday"} nbRows={12} />
+            <DayPlanner date={"12 thursday"} nbRows={12} />
+            <DayPlanner date={"13 friday"} nbRows={12} />
+        </div>
+    );
+}
 
 const ScheduleTimeColumn = ({ nbRows }) => {
     const rows = [<tr key={-1}><td></td></tr>];
@@ -23,34 +89,6 @@ const ScheduleTimeColumn = ({ nbRows }) => {
     );
 }
 
-export const WorkWeekSchedule = () => {
-    return (
-        <div className="workWeekSchedule">
-            <ScheduleTimeColumn nbRows={22} />
-            <table className="weekSchedule">
-                <tbody>
-                    <tr>
-                        <th>Monday</th>
-                        <th>Tuesday</th>
-                        <th>Wednesday</th>
-                        <th>Thursday</th>
-                        <th>Friday</th>
-                    </tr>
-                    {[...Array(22)].map((_, i) => (
-                        <tr key={i}>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
-}
-
 export const WeekEndSchedule = () => {
     return (
         <div className="weekendSchedule">
@@ -63,8 +101,8 @@ export const WeekEndSchedule = () => {
                     </tr>
                     {[...Array(22)].map((_, i) => (
                         <tr key={i}>
-                            <td></td>
-                            <td></td>
+                            <TimeSlot />
+                            <TimeSlot />
                         </tr>
                     ))}
                 </tbody>

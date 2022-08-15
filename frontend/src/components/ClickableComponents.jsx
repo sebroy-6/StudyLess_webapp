@@ -31,21 +31,21 @@ export const ProfileLink = () => {
 };
 
 
-export const AddButton = ({ onClick, type }) => {
+export const SymboleButton = ({ onClick, text, logo1, logo2 }) => {
     const toggleAddButton = () => {
         onClick();
         let symbole = document.getElementById("symbole");
-        if (symbole.innerHTML === "+") {
-            symbole.innerHTML = "-";
+        if (symbole.innerHTML === logo1) {
+            symbole.innerHTML = logo2;
         }
         else {
-            symbole.innerHTML = "+";
+            symbole.innerHTML = logo1;
         }
     };
 
     return (
         <button className="addButton top-right" onClick={toggleAddButton}>
-            {"Add " + type + ""}<span className="symbole" id="symbole">+</span>
+            {"Add " + text + ""}<span className="symbole" id="symbole">{logo1}</span>
         </button>
     );
 };

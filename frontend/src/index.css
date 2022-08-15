@@ -222,13 +222,3 @@ div.verticalAlign {
     width: 70%;
     overflow-y: scroll;
 }
-
-/* leftTask-container */
-
-.leftTask-container {
-    position: fixed;
-    width: 30%;
-    float: left;
-    height: 400px;
-    overflow-y: scroll;
-}

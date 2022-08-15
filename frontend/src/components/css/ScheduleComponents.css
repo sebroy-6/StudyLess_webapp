@@ -1,53 +1,38 @@
-/* WorkWeekSchedule */
+/* DayPlanner style */
 
-.workWeekSchedule {
-    display: flex;
-    margin: 20px;
-    float: right;
-}
-
-/* WeekendSchedule */
-
-.weekendSchedule {
-    display: flex;
-    margin: 20px;
-    float: right;
-}
-
-/* weekSchedule */
-
-table.weekSchedule {
+table.schedule {
+    display: inline-block;
     background-color: white;
-    width: fit-content;
 }
 
-table.weekSchedule, 
-table.weekSchedule > tbody > tr > th, 
-table.weekSchedule > tbody > tr > td {
+table.schedule, 
+table.schedule > tbody > tr > th, 
+table.schedule > tbody > tr > td {
     border: 1px solid black;
     border-collapse: collapse;
 }
 
-table.weekSchedule > tbody > tr > th, 
-table.weekSchedule > tbody > tr > td {
-    width: 175px;
+table.schedule > tbody > tr > th, 
+table.schedule > tbody > tr > td {
+    min-width: 125px;
+    max-width: 175px;
 }
 
-table.weekSchedule > tbody > tr.weekend > th{
+table.schedule > tbody > tr.weekend > th{
     background-color: var(--thirnaryColor);
 }
 
-table.weekSchedule > tbody > tr {
-    height: 25px;
+table.schedule > tbody > tr {
+    height: 30px;
 }
 
-table.weekSchedule > tbody > tr > th {
+table.schedule > tbody > tr > th {
     color: white;
     background-color: var(--mainColor);
     margin: 0;
 }
 
-table.weekSchedule > tbody > tr:nth-child(odd) {
+table.schedule > tbody > tr:nth-child(odd) {
     background-color: lightgrey;
 }
 

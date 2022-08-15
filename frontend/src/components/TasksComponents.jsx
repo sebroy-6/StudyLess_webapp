@@ -3,17 +3,18 @@ import "./css/TasksComponents.css";
 import checkIcon from "../images/checkIcon.png";
 import deleteIcon from "../images/garbageIcon.png";
 import { TasksContext } from "../contexts/TasksContext";
+import { useDrag } from "react-dnd";
 
-export const Task = (props) => {
+export const Task = ({ task }) => {
     const { dispatch } = useContext(TasksContext);
     const [difficulty, setdifficulty] = useState("");
 
     useEffect(() => {
-        if (props.task.difficulty) {
+        if (task.difficulty) {
 
-            if (props.task.difficulty <= 2)
+            if (task.difficulty <= 2)
                 setdifficulty("easy");
-            else if (props.task.difficulty <= 4)
+            else if (task.difficulty <= 4)
                 setdifficulty("medium");
             else
                 setdifficulty("hard");
@@ -22,7 +23,7 @@ export const Task = (props) => {
 
     async function deleteTask() {
         const token = localStorage.getItem("authentication");
-        const response = await fetch(`/api/task/${props.task._id}`, {
+        const response = await fetch(`/api/task/${task._id}`, {
             method: "DELETE",
             headers: {
                 "content-Type": "application/json",
@@ -31,38 +32,38 @@ export const Task = (props) => {
         });
 
         if (response.ok) {
-            dispatch({ type: "REMOVE_TASK", payload: props.task });
-            console.log(`task ${props.task._id} has been deleted`);
+            dispatch({ type: "REMOVE_TASK", payload: task });
+            console.log(`task ${task._id} has been deleted`);
         }
     }
 
     async function completeTask() {
         const token = localStorage.getItem("authentication");
-        props.task.isCompleted = true;
-        const response = await fetch(`/api/task/${props.task._id}`, {
+        task.isCompleted = true;
+        const response = await fetch(`/api/task/${task._id}`, {
             method: "PATCH",
-            body: JSON.stringify({ "task": props.task }),
+            body: JSON.stringify({ "task": task }),
             headers: {
                 "content-Type": "application/json",
                 "authentication": token
             }
         });
         if (response.ok) {
-            dispatch({ type: "REMOVE_TASK", payload: props.task });
-            console.log(`task ${props.task._id} has been completed`);
+            dispatch({ type: "REMOVE_TASK", payload: task });
+            console.log(`task ${task._id} has been completed`);
         }
         else {
-            props.task.isCompleted = false;
+            task.isCompleted = false;
         }
     }
 
     return (
         <div className="task">
-            <h3><b>{props.task.title}</b></h3>
+            <h3><b>{task.title}</b></h3>
             <span className="taskProps">
-                <p className="duration">{props.task?.duration}</p>
+                <p className="duration">{task?.duration}</p>
                 <p className={"difficulty " + difficulty}>{difficulty}</p>
-                <p className="subject"><b>{props.task.subject}</b></p>
+                <p className="subject"><b>{task.subject}</b></p>
             </span>
             <button className="complete" onClick={completeTask}>
                 <img src={checkIcon} alt="☑" className="icon" />
@@ -77,6 +78,13 @@ export const Task = (props) => {
 
 export const ReducedTask = ({ task }) => {
     const [difficulty, setdifficulty] = useState("");
+    const [{ isDragging }, dragRef] = useDrag({
+        type: "task",
+        item: task,
+        collect: (monitor) => ({
+            isDragging: monitor.isDragging()
+        })
+    });
 
     useEffect(() => {
         if (task.difficulty) {
@@ -90,7 +98,7 @@ export const ReducedTask = ({ task }) => {
     }, []);
 
     return (
-        <div className="task reduced">
+        <div className="task reduced" ref={dragRef}>
             <h3>{task.title}</h3>
             <p className="duration">{task.duration}</p>
             <p className={"difficulty " + difficulty}>{difficulty}</p>
@@ -98,3 +106,51 @@ export const ReducedTask = ({ task }) => {
     );
 }
 
+export const TaskList = ({ type }) => {
+    const { tasks, dispatch } = useContext(TasksContext);
+
+    const getTasks = async () => {
+        const token = localStorage.getItem("authentication");
+        const response = await fetch("/api/task", {
+            method: "GET",
+            headers: {
+                authentication: token
+            }
+        });
+        const json = await response.json();
+
+        if (!response.ok) {
+            if (response.status === 403) {
+                return window.location = "/login";
+            }
+        }
+        dispatch({ type: "SET_TASKS", payload: json });
+        return json;
+    };
+
+    useEffect(() => {
+        if (!tasks) {
+            getTasks();
+        }
+    }, []);
+
+    if (type === "reduced") {
+        return (
+            <div className="leftTask-container">
+                {tasks && tasks.length ? tasks.map((task) => (
+                    !task.isCompleted && <ReducedTask key={task._id} task={task} />
+                )) : <h1>There is no tasks yet</h1>
+                }
+            </div>
+        );
+    }
+
+    return (
+        <div>
+            {tasks && tasks.length ? tasks.map((task) => (
+                !task.isCompleted && <Task key={task._id} task={task} />
+            )) : <h1>There is no tasks yet</h1>
+            }
+        </div>
+    );
+}
