@@ -35,7 +35,7 @@ export const AuthNForm = ({ type }) => {
         if (json.authentication) {
             localStorage.setItem("authentication", json.authentication);
         }
-        return navigate("/homePage");
+        return document.location.href = "/homePage";
     };
 
     const sendSignUpForm = async (event) => {
@@ -57,7 +57,7 @@ export const AuthNForm = ({ type }) => {
         if (json.authentication) {
             localStorage.setItem("authentication", json.authentication);
         }
-        return navigate("/homePage");
+        return document.location.href = "/homePage";
     };
 
 
@@ -114,6 +114,7 @@ export const TaskForm = () => {
     const [dueDate, setDueDate] = useState("");
     const [error, setError] = useState("");
     const { dispatch } = useContext(TasksContext);
+    const navigate = useNavigate();
 
     const toggleIsShown = () => {
         setIsShown(!isShow);
@@ -139,6 +140,10 @@ export const TaskForm = () => {
 
         const json = await response.json();
         if (!response.ok) {
+            if (response.status === 403) {
+                localStorage.removeItem("authentication");
+                return navigate("/login");
+            }
             return setError(json);
         }
         else {
