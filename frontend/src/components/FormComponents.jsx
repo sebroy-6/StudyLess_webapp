@@ -9,9 +9,8 @@ export const AuthNForm = ({ type }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-
-
     const navigate = useNavigate();
+
     const goToSignUp = () => {
         navigate("/signup");
     }
@@ -35,7 +34,7 @@ export const AuthNForm = ({ type }) => {
         if (json.authentication) {
             localStorage.setItem("authentication", json.authentication);
         }
-        return document.location.href = "/homePage";
+        return window.location = "/homePage";
     };
 
     const sendSignUpForm = async (event) => {
@@ -57,7 +56,7 @@ export const AuthNForm = ({ type }) => {
         if (json.authentication) {
             localStorage.setItem("authentication", json.authentication);
         }
-        return document.location.href = "/homePage";
+        return window.location = "/homePage";
     };
 
 
@@ -114,12 +113,11 @@ export const TaskForm = () => {
     const [dueDate, setDueDate] = useState("");
     const [error, setError] = useState("");
     const { dispatch } = useContext(TasksContext);
-    const navigate = useNavigate();
 
     const toggleIsShown = () => {
         setIsShown(!isShow);
         let formStyle = document.getElementById("form").style;
-        formStyle.display = !isShow ? "inline-block" : "none";
+        formStyle.display = !isShow ? "inline-block" : "";
         // the ! is because change in state is not immediate, 
         // the component has to rerender to update the state
     }
@@ -142,7 +140,7 @@ export const TaskForm = () => {
         if (!response.ok) {
             if (response.status === 403) {
                 localStorage.removeItem("authentication");
-                return navigate("/login");
+                return window.location = "/login";
             }
             return setError(json);
         }

@@ -11,6 +11,18 @@ img#gearImg.rotated {
     transition: 0.5s;
 }
 
+/* settingsWindow */
+
+.settingsWindow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background-color: rgba(0, 0, 0);
+    display: none;
+}
+
 /* settingsButton & ProfileLink */
 
 .image > img {
@@ -18,7 +30,7 @@ img#gearImg.rotated {
     height: 60px;
 }
 
-/* AddButton */
+/* SymboleButton */
 
 button.addButton {
     display: flex;

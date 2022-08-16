@@ -12,7 +12,7 @@ function authenticateJWT(req, res, next) {
 
 	try {
 		const object = jwt.verify(clientToken, process.env.SECRET_JWT_KEY);
-		req.user = object.user; // so we can identify who is the user
+		req.user = object.user;
 		next();
 	} catch (error) {
 		return res.status(403).json(error.message);

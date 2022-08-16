@@ -121,6 +121,7 @@ export const TaskList = ({ type }) => {
 
         if (!response.ok) {
             if (response.status === 403) {
+                localStorage.removeItem("authentication");
                 return window.location = "/login";
             }
         }

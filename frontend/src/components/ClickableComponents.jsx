@@ -8,15 +8,21 @@ import profileImage from "../images/defaultProfilePicture.png";
 export const SettingsButton = () => {
     const [isRotated, setIsRotated] = useState("");
 
-    const toggleIsRotated = () => {
-        if (!isRotated) setIsRotated("rotated");
-        else setIsRotated("");
+    const toggleSettingsDisplay = () => {
+        setIsRotated(!isRotated ? "rotated" : "");
+        let windowStyle = document.getElementById("settingsWindow").style;
+        windowStyle.display =
+            !windowStyle.display || windowStyle.display === "none" ? "inline-block" : "";
     }
 
     return (
-        <button onClick={toggleIsRotated} className="image">
-            <img id="gearImg" className={isRotated} src={settingsImage} alt="settings" />
-        </button>
+        <div>
+            <button onClick={toggleSettingsDisplay} className="image">
+                <img id="gearImg" className={isRotated} src={settingsImage} alt="settings" />
+            </button>
+            <div className="settingsWindow" id="settingsWindow">
+            </div>
+        </div >
 
     );
 };
