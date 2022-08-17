@@ -2,6 +2,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const { hash, compare } = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { reqError } = require("../utils/requestError");
 
 const JWTLifeTime = "6h";
 
@@ -27,13 +28,13 @@ const UserSchema = new mongoose.Schema(
 
 UserSchema.statics.signup = async function (username, email, password) {
 	if (await this.findOne({ username })) {
-		throw Error("ERROR! This username is taken");
+		throw reqError("This username is taken");
 	}
 	if (await this.findOne({ email })) {
-		throw Error("ERROR! This email adress is taken");
+		throw reqError("This email adress is taken");
 	}
 	if (!username || !email || !password) {
-		throw Error("ERROR! Some text fields have not been filled");
+		throw reqError("Some text fields have not been filled");
 	}
 
 	const hashedPassword = (await hash(password, 10)).toString();
@@ -51,10 +52,10 @@ UserSchema.statics.signup = async function (username, email, password) {
 UserSchema.statics.login = async function (username, password) {
 	let user = await this.findOne({ username });
 	if (!user) {
-		throw Error("ERROR! This user does not exist");
+		throw reqError("This user does not exist");
 	} else {
 		if (!(await compare(password, user.password))) {
-			throw Error("ERROR! Incorrect password for this username");
+			throw reqError("Incorrect password for this username");
 		}
 	}
 	user.password = undefined;

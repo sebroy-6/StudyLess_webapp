@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const { isValidDate } = require("../utils/DateFunctions");
+const { isValidDate } = require("../utils/dateFunctions");
+const { reqError } = require("../utils/requestError");
 
 const EventSchema = new mongoose.Schema(
 	{
@@ -35,7 +36,7 @@ const EventSchema = new mongoose.Schema(
 
 EventSchema.statics.getByDay = async function (user, day) {
 	if (!isValidDate(new Date(day))) {
-		throw new Error("ERROR! invalid day string was given");
+		throw new reqError("invalid day string was given");
 	}
 	const start = new Date(day);
 	const end = new Date(day);
@@ -53,16 +54,34 @@ EventSchema.statics.createOne = async function (user, event) {
 
 EventSchema.statics.deleteOneById = async function (user, id) {
 	if (!mongoose.isValidObjectId(id)) {
-		throw Error("ERROR! event id is not valid");
+		throw reqError("event id is not valid");
 	}
 	const event = await this.findOne({ _id: id });
 	if (!event) {
-		throw Error("ERROR! Cannot delete event that doesn't exist");
+		throw reqError("Cannot delete an event that doesn't exist");
 	}
 	if (event.userId !== user._id) {
-		throw Error("ERROR! Cannot delete event that doesn't belong to you");
+		throw reqError("Cannot delete an event that doesn't belong to you");
 	}
 	return await this.deleteOne({ _id: id });
+};
+
+EventSchema.statics.updateOneById = async function (user, id, newEvent) {
+	if (!mongoose.isValidObjectId(id)) {
+		throw reqError("event id is not valid");
+	}
+	const event = await this.findOne({ _id: id });
+	if (!event) {
+		throw reqError("Cannot update an event that doesn't exist");
+	}
+	if (event.userId !== user._id) {
+		throw reqError("Cannot update an event that doesn't belong to you");
+	}
+	if (event.userId !== newEvent.userId) {
+		throw reqError("Cannot change the ownership of an event");
+	}
+	newEvent._id = id;
+	return await this.replaceOne({ _id: id }, newEvent);
 };
 
 module.exports = mongoose.model("Event", EventSchema);

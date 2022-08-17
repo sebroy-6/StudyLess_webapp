@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { reqError } = require("../utils/requestError");
 
 const TaskSchema = new mongoose.Schema(
 	{
@@ -36,14 +37,14 @@ TaskSchema.statics.getAll = async function (user) {
 
 TaskSchema.statics.getOneById = async function (user, id) {
 	if (!mongoose.isValidObjectId(id)) {
-		throw Error("ERROR! Task id is not valid");
+		throw reqError("Task id is not valid");
 	}
 	const task = await this.findOne({ _id: id });
 	if (!task) {
-		throw Error("ERROR! Cannot get task that doesn't exist");
+		throw reqError("Cannot get task that doesn't exist");
 	}
 	if (task.userId !== user._id) {
-		throw Error("ERROR! Cannot get task that doesn't belong to you");
+		throw reqError("Cannot get task that doesn't belong to you");
 	}
 	return task;
 };
@@ -55,32 +56,34 @@ TaskSchema.statics.createOne = async function (user, newTask) {
 
 TaskSchema.statics.deleteOneById = async function (user, id) {
 	if (!mongoose.isValidObjectId(id)) {
-		throw Error("ERROR! Task id is not valid");
+		throw reqError("Task id is not valid");
 	}
 	const task = await this.findOne({ _id: id });
 	if (!task) {
-		throw Error("ERROR! Cannot delete task that doesn't exist");
+		throw reqError("Cannot delete task that doesn't exist");
 	}
 	if (task.userId !== user._id) {
-		throw Error("ERROR! Cannot delete task that doesn't belong to you");
+		throw reqError("Cannot delete task that doesn't belong to you");
 	}
 	return await this.deleteOne({ _id: id });
 };
 
 TaskSchema.statics.updateOneById = async function (user, id, newTask) {
 	if (!mongoose.isValidObjectId(id)) {
-		throw Error("ERROR! Task id is not valid");
+		throw reqError("Task id is not valid");
 	}
 	const task = await this.findOne({ _id: id });
 	if (!task) {
-		throw Error("ERROR! Cannot update task that doesn't exist");
+		throw reqError("Cannot update a task that doesn't exist");
 	}
 	if (task.userId !== user._id) {
-		throw Error("ERROR! Cannot update task that doesn't belong to you");
+		throw reqError("Cannot update a task that doesn't belong to you");
 	}
-
-	const deletedTask = await this.replaceOne({ _id: id }, newTask);
-	return deletedTask;
+	if (task.userId !== newTask.userId) {
+		throw reqError("Cannot change the ownership of a task");
+	}
+	newTask._id = id;
+	return await this.replaceOne({ _id: id }, newTask);
 };
 
 module.exports = mongoose.model("Task", TaskSchema);
