@@ -1,8 +1,7 @@
-import React, { useEffect, useContext } from "react";
+import React from "react";
 import { FullTopBar, FullSideBar } from "../components/NavBarComponents";
 import { TaskList } from "../components/TasksComponents";
 import { TaskForm } from "../components/FormComponents";
-import { TasksContext } from "../contexts/TasksContext";
 
 
 const HomePage = () => {

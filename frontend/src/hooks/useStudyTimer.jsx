@@ -4,29 +4,29 @@ import { useTimer } from "./useTimer";
 const TIMER_END_VALUE = "0";
 
 export const useStudyTimer = (totalStudyTime, totalBreakTime, totalTimeoutTime, totalReps = 1) => {
-    
+
     let [studyTime, toggleStudyTimer, resetStudyTime] = useTimer(totalStudyTime);
     const [breakTime, toggleBreakTimer, resetBreakTime] = useTimer(totalBreakTime);
-    const [timeoutTime, toggleTimeoutTimer, resetTimeoutTime] = useTimer(totalTimeoutTime);
+    const [timeoutTime, toggleTimeoutTimer] = useTimer(totalTimeoutTime);
     const [timerMode, setTimerMode] = useState("study");
     const [reps, setReps] = useState(totalReps);
 
-    useEffect( () => {
+    useEffect(() => {
         if (reps >= 1) {
             if (timerMode === "study") {
-                if (studyTime ===  TIMER_END_VALUE) {
+                if (studyTime === TIMER_END_VALUE) {
                     toggleStudyTimer();
                     resetStudyTime();
                     toggleBreakTimer();
-                    setTimerMode("break"); 
+                    setTimerMode("break");
                 }
             }
             else if (timerMode === "break") {
-                if (breakTime ===  TIMER_END_VALUE) {
+                if (breakTime === TIMER_END_VALUE) {
                     resetBreakTime();
-                    if (reps === 1) { 
+                    if (reps === 1) {
                         toggleTimeoutTimer();
-                        setTimerMode("timeout"); 
+                        setTimerMode("timeout");
                     }
                     else {
                         toggleBreakTimer();
@@ -38,12 +38,12 @@ export const useStudyTimer = (totalStudyTime, totalBreakTime, totalTimeoutTime, 
                 }
             }
         }
-        else if (reps === 0){
+        else if (reps === 0) {
             if (timerMode === "timeout" && timeoutTime === TIMER_END_VALUE) {
                 setTimerMode("end");
             }
         }
-    },[studyTime, breakTime, timeoutTime]);
+    }, [studyTime, breakTime, timeoutTime]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const toggleIsRunning = () => {
         if (timerMode === "study") { toggleStudyTimer(); }

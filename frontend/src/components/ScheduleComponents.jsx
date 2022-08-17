@@ -3,7 +3,7 @@ import { useDrop } from "react-dnd";
 import "./css/ScheduleComponents.css";
 
 const TimeSlot = () => {
-    const [events, setEvents] = useState([])
+    const [events, setEvents] = useState([]);
     const [{ isOver }, dropRef] = useDrop({
         accept: "task",
         drop: (item) => setEvents((event) =>
@@ -11,13 +11,13 @@ const TimeSlot = () => {
         collect: (monitor) => ({
             isOver: monitor.isOver()
         })
-    })
+    });
 
     return (
         <tr className="timeSlot" ref={dropRef}>
             <td>
                 {events.map((event) => {
-                    return `${event.title} \n`
+                    return `${event.title} \n`;
                 })}
                 {isOver && "HERE"}
             </td>

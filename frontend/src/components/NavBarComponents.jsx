@@ -29,7 +29,7 @@ export const FullSideBar = (props) => {
         }
     }
 
-    useEffect(() => { if (props?.isHidden) { toggleBarDisplay(); } }, []);
+    useEffect(() => { if (props?.isHidden) { toggleBarDisplay(); } }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className={"bar-side " + barIsHidden}>

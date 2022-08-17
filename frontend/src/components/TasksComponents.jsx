@@ -19,7 +19,7 @@ export const Task = ({ task }) => {
             else
                 setdifficulty("hard");
         }
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     async function deleteTask() {
         const token = localStorage.getItem("authentication");
@@ -78,7 +78,7 @@ export const Task = ({ task }) => {
 
 export const ReducedTask = ({ task }) => {
     const [difficulty, setdifficulty] = useState("");
-    const [{ isDragging }, dragRef] = useDrag({
+    const [{ isDragging }, dragRef] = useDrag({ // eslint-disable-line
         type: "task",
         item: task,
         collect: (monitor) => ({
@@ -95,7 +95,7 @@ export const ReducedTask = ({ task }) => {
             else
                 setdifficulty("hard");
         }
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className="task reduced" ref={dragRef}>
@@ -133,7 +133,7 @@ export const TaskList = ({ type }) => {
         if (!tasks) {
             getTasks();
         }
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     if (type === "reduced") {
         return (

@@ -1,7 +1,6 @@
-import React, { useEffect, useContext } from "react";
+import React from "react";
 import { FullSideBar, FullTopBar } from "../components/NavBarComponents";
 import { FullWeekPlanner } from "../components/ScheduleComponents";
-import { TasksContext } from "../contexts/TasksContext";
 import { TaskList } from "../components/TasksComponents";
 
 const SchedulePage = () => {
