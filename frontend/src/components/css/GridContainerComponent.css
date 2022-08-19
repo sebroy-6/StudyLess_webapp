@@ -1,13 +1,9 @@
 .gridContainer {
-    padding: 15px;
     display: grid;
-    gap: 10px;
-    height: calc(100vh - 105px);
+    height: 100%;
 }
 
 .gridContainer > div {
-    background-color: #FFF;
-    margin: 10px;
+    background-color: white;
     text-align: center;
-    font-size: 30px;
 }

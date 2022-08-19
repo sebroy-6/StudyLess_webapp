@@ -109,6 +109,7 @@ div.app-container {
     top: 75px;
     width: calc(100% - 280px);
     transition: 0.3s;
+    overflow-y: auto;
 }
 
 div.app-container.fullScreen {

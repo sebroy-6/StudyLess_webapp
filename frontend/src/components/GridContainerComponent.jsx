@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import "./css/GridContainerComponent.css";
 
-export const GridContainer = ({ children, nbRows, nbColumns }) => {
+export const GridContainer = ({ children, nbRows, nbColumns, _id }) => {
     useEffect(() => {
         if (nbRows)
-            document.getElementById("grid").style.gridTemplateRows = `repeat(${nbRows}, 1fr)`;
+            document.getElementById(_id).style.gridTemplateRows = `repeat(${nbRows}, 1fr)`;
         if (nbColumns)
-            document.getElementById("grid").style.gridTemplateColumns = `repeat(${nbColumns}, 1fr)`;
+            document.getElementById(_id).style.gridTemplateColumns = `repeat(${nbColumns}, 1fr)`;
 
-        children.map((child) => {   //eslint-disable-line
+        React.Children.toArray(children).forEach((child) => {
             if (child.props.width)
                 document.getElementById(child.props.id).style.gridColumn = `span ${child.props.width}`;
             if (child.props.height)
@@ -18,7 +18,7 @@ export const GridContainer = ({ children, nbRows, nbColumns }) => {
 
 
     return (
-        <div className="gridContainer" id="grid">
+        <div className="gridContainer" id={_id}>
             {children}
         </div>
     );
