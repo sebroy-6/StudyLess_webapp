@@ -39,9 +39,9 @@ const HomePage = () => {
             <FullTopBar pageTitle={`${Date().split(" ")[1]} ${Date().split(" ")[2]} tasks`} />
             <FullSideBar hasAppContainer={true} />
             <div className="app-container">
-                < TaskList title="TODO" tasks={tasks} />
-                < TaskList title="for today" />
-                < TaskList title="completed this week" />
+                < TaskList title="TODO" tasks={!tasks ? getTasks() : tasks} />
+                < TaskList title="for today" tasks={[]} />
+                < TaskList title="completed this week" tasks={[]} />
             </div>
             <TaskForm />
         </div>

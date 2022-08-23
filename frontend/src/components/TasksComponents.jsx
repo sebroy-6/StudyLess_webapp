@@ -3,11 +3,18 @@ import "./css/TasksComponents.css";
 import optionsIcon from "../images/optionsIcon.png";
 import sortIcon from "../images/sortIcon.png";
 import { TasksContext } from "../contexts/TasksContext";
-import { useDrag } from "react-dnd";
+import { useDrag, useDrop } from "react-dnd";
 
 export const Task = ({ task }) => {
     const { dispatch } = useContext(TasksContext);
     const [difficulty, setdifficulty] = useState("");
+    const [{ }, dragRef] = useDrag({
+        type: "task",
+        item: task,
+        collect: (monitor) => {
+            return { isDragging: monitor.isDragging() };
+        }
+    })
 
     useEffect(() => {
         if (task.difficulty) {
@@ -58,7 +65,7 @@ export const Task = ({ task }) => {
     }
 
     return (
-        <div className="task" draggable>
+        <div className="task" ref={dragRef}>
             <h3><b>{task.title}</b></h3>
             <p className="duration">{task?.duration}</p>
             <p className={"difficulty " + difficulty}>{difficulty}</p>
@@ -70,61 +77,34 @@ export const Task = ({ task }) => {
     );
 }
 
-
-export const ReducedTask = ({ task }) => {
-    const [difficulty, setdifficulty] = useState("");
-    const [{ isDragging }, dragRef] = useDrag({ // eslint-disable-line
-        type: "task",
-        item: task,
+export const TaskList = ({ title, tasks, onDrop }) => {
+    const [currentTasks, setTasks] = useState(tasks);
+    const [{ }, dropRef] = useDrop({
+        accept: 'task',
+        drop: (item) => {
+            console.log(tasks?.length)
+            if (tasks?.length !== undefined) {
+                return setTasks(!currentTasks.includes(item) ? [...currentTasks, item] : currentTasks);
+            }
+        },
         collect: (monitor) => ({
-            isDragging: monitor.isDragging()
+            isOver: monitor.isOver()
         })
     });
 
-    useEffect(() => {
-        if (task.difficulty) {
-            if (task.difficulty <= 2)
-                setdifficulty("easy");
-            else if (task.difficulty <= 4)
-                setdifficulty("medium");
-            else
-                setdifficulty("hard");
-        }
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
     return (
-        <div className="task reduced" ref={dragRef}>
-            <h3>{task.title}</h3>
-            <p className="duration">{task.duration}</p>
-            <p className={"difficulty " + difficulty}>{difficulty}</p>
-        </div >
-    );
-}
-
-export const TaskList = ({ taskType, title, tasks }) => {
-
-    if (taskType === "reduced") {
-        return (
-            <div className="leftTask-container">
-                <h1>{title}</h1>
-                {tasks && tasks.length ? tasks.map((task) => (
-                    !task.isCompleted && <ReducedTask key={task._id} task={task} />
-                )) : <h2>There is no tasks yet</h2>
-                }
-            </div>
-        );
-    }
-
-    return (
-        <div className="taskList">
+        <div className="taskList" ref={dropRef}>
             <h1>{title}</h1>
             <button className="sortButton">
                 <img className="sortIcon" src={sortIcon} alt="v^"></img>
             </button>
             <div className="content">
-                {tasks && tasks.length ? tasks.map((task) => (
+                {currentTasks && currentTasks?.length ? currentTasks.map((task) => (
                     !task.isCompleted && <Task key={task._id} task={task} />
-                )) : <h2>There is no tasks yet</h2>
+                )) : tasks && tasks?.length ? tasks.map((task) => (
+                    !task.isCompleted && <Task key={task._id} task={task} />
+                )) :
+                    <h2>There are no tasks yet</h2>
                 }
             </div>
         </div >
