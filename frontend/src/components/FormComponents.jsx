@@ -116,7 +116,7 @@ export const TaskForm = () => {
 
     const toggleIsShown = () => {
         setIsShown(!isShow);
-        let formStyle = document.getElementById("form").style;
+        let formStyle = document.getElementById("taskForm").style;
         formStyle.display = !isShow ? "inline-block" : "";
         // the ! is because change in state is not immediate, 
         // the component has to rerender to update the state
@@ -158,7 +158,7 @@ export const TaskForm = () => {
     return (
         <div>
             <SymboleButton text="task" onClick={toggleIsShown} logo1="+" logo2="-" />
-            <form className="taskForm" id="form">
+            <form className="basicForm" id="taskForm">
                 <h2><b><u>New Task</u></b></h2>
                 <h3>title :</h3>
                 <input className="text" type="text"

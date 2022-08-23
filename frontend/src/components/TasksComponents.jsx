@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./css/TasksComponents.css";
-import checkIcon from "../images/checkIcon.png";
-import deleteIcon from "../images/garbageIcon.png";
+import optionsIcon from "../images/optionsIcon.png";
+import sortIcon from "../images/sortIcon.png";
 import { TasksContext } from "../contexts/TasksContext";
 import { useDrag } from "react-dnd";
 
@@ -58,20 +58,15 @@ export const Task = ({ task }) => {
     }
 
     return (
-        <div className="task">
+        <div className="task" draggable>
             <h3><b>{task.title}</b></h3>
-            <span className="taskProps">
-                <p className="duration">{task?.duration}</p>
-                <p className={"difficulty " + difficulty}>{difficulty}</p>
-                <p className="subject"><b>{task.subject}</b></p>
-            </span>
-            <button className="complete" onClick={completeTask}>
-                <img src={checkIcon} alt="☑" className="icon" />
+            <p className="duration">{task?.duration}</p>
+            <p className={"difficulty " + difficulty}>{difficulty}</p>
+            <p className="subject">{task.subject}</p>
+            <button className="options">
+                <img src={optionsIcon} alt="..." className="icon" />
             </button>
-            <button className="delete" onClick={deleteTask} >
-                <img src={deleteIcon} alt="delete" className="icon" />
-            </button>
-        </div>
+        </div >
     );
 }
 
@@ -106,52 +101,32 @@ export const ReducedTask = ({ task }) => {
     );
 }
 
-export const TaskList = ({ type }) => {
-    const { tasks, dispatch } = useContext(TasksContext);
+export const TaskList = ({ taskType, title, tasks }) => {
 
-    const getTasks = async () => {
-        const token = localStorage.getItem("authentication");
-        const response = await fetch("/api/task", {
-            method: "GET",
-            headers: {
-                authentication: token
-            }
-        });
-        const json = await response.json();
-
-        if (!response.ok) {
-            if (response.status === 403) {
-                localStorage.removeItem("authentication");
-                return window.location = "/login";
-            }
-        }
-        dispatch({ type: "SET_TASKS", payload: json });
-        return json;
-    };
-
-    useEffect(() => {
-        if (!tasks) {
-            getTasks();
-        }
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-    if (type === "reduced") {
+    if (taskType === "reduced") {
         return (
             <div className="leftTask-container">
+                <h1>{title}</h1>
                 {tasks && tasks.length ? tasks.map((task) => (
                     !task.isCompleted && <ReducedTask key={task._id} task={task} />
-                )) : <h1>There is no tasks yet</h1>
+                )) : <h2>There is no tasks yet</h2>
                 }
             </div>
         );
     }
 
     return (
-        <div>
-            {tasks && tasks.length ? tasks.map((task) => (
-                !task.isCompleted && <Task key={task._id} task={task} />
-            )) : <h1>There is no tasks yet</h1>
-            }
-        </div>
+        <div className="taskList">
+            <h1>{title}</h1>
+            <button className="sortButton">
+                <img className="sortIcon" src={sortIcon} alt="v^"></img>
+            </button>
+            <div className="content">
+                {tasks && tasks.length ? tasks.map((task) => (
+                    !task.isCompleted && <Task key={task._id} task={task} />
+                )) : <h2>There is no tasks yet</h2>
+                }
+            </div>
+        </div >
     );
 }

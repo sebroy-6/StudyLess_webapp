@@ -1,9 +1,9 @@
 /* TaskForm styles */
 
-.taskForm {
+.basicForm {
     display: none;
     position: fixed;
-    top: 140px;
+    top: 15%;
     right: 25px;
     background-color: lightgrey;
     width: 300px;
@@ -12,16 +12,16 @@
     transition: 0.3s;
 }
 
-.taskForm > input.text,
-.taskForm > div > input.number {
+.basicForm > input.text,
+.basicForm > div > input.number {
     margin-bottom: 5px;
 }
 
-.taskForm > div > h3 {
+.basicForm > div > h3 {
     display: inline-block;
 }
 
-.taskForm > input.text {
+.basicForm > input.text {
     background-color: white;
     font-size: large;
     height: 30px;
@@ -29,7 +29,7 @@
     border: none;
 }
 
-.taskForm > div > input.number {
+.basicForm > div > input.number {
     display: inline-block;
     margin-left: 15px;
     background-color: white;
@@ -37,7 +37,7 @@
     border: none;
 }
 
-.taskForm > button {
+.basicForm > button {
     margin-top: 10px;
     color:white;
     font-size: large;
@@ -47,7 +47,7 @@
     height: 30px;
 }
 
-.taskForm > button:active {
+.basicForm > button:active {
     transform: scale(0.97);
 }
 

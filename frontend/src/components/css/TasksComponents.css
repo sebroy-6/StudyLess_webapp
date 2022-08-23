@@ -5,49 +5,46 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    margin-left: 8vw;
     margin-top: 30px;
     margin-bottom: 30px;
     padding: 10px;
-    width: calc(150px + 25vw);
-    min-height: 100px;
+    width: 350px;
+    min-height: 50px;
     font-family: Gill Sans Extrabold, sans-serif;
-    font-size: 20px;
+    font-size: 15px;
     background-color: white;
-}
-
-.task:first-child {
-    margin-top: 75px;
-}
-
-.taskProps {
-    margin-right: 75px;
-}
-
-.taskProps > p {
-    margin: 10px;
+    border-radius: 10px;
 }
 
 .task > h3 {
     margin: 10px;
     text-align: left;
     width: 300px;
+    margin-bottom: 45px;
+    margin-right: 90px;
+}
+
+.task > p {
+    position: absolute;
+    margin: 0;
 }
 
 .task > p.difficulty {
-    font-size: 18px;
     font-weight: 600;
-    margin: 0%;
+    bottom: 12px;
+    right: 15px;
+    font-size: 18px;
 }
 
 .task > p.subject {
-    position: absolute;
-    right: 0px;
-    transform: translateX(-100%);
-    font-size: 22px;
-    font-weight: 500;
-    margin: 0%;
-    padding: 5px;
+    font-weight: 600;
+    bottom: 12px;
+}
+
+.task > p.duration {
+    right: 15px;
+    bottom: 40px;
+    font-size: 18px;
 }
 
 .easy {
@@ -62,29 +59,25 @@
     color: red;
 }
 
-button.complete:hover {
-    background-color: rgba(0, 255, 0, 0.629);
+.task > button {
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
 }
 
-button.delete:hover {
-    background-color: rgba(255, 0, 0, 0.629);
+.task > button:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+}
+
+.task > button.options {
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }
 
 .icon {
-    height: 30px;
     width: 30px;
-}
-
-.complete {
-    position: absolute;
-    top: 12px;
-    right: 10px;
-}
-
-.delete {
-    position: absolute;
-    bottom: 12px;
-    right: 10px;
 }
 
 /* ReducedTask */
@@ -104,4 +97,57 @@ button.delete:hover {
     float: left;
     height: 400px;
     overflow-y: scroll;
+}
+
+/* taskList styles */
+
+.taskList {
+    display: inline-block;
+    background-color: var(--thirnaryColor);
+    width: fit-content;
+    margin-left: 2.5%;
+    margin-top: 2.5%;
+    padding: 1%;
+    border-radius: 10px;
+}
+
+.taskList > h1 {
+    display: inline-block;
+}
+
+.taskList > .content {
+    max-height: 70vh;
+    -ms-overflow-style: none;  /* for Internet Explorer 10+ */
+    scrollbar-width: none;  /* for Firefox */
+    overflow-y: scroll;
+}
+
+.taskList > .content::-webkit-scrollbar { 
+    display: none;  /* for Safari and Chrome */
+}
+
+.taskList > h1 {
+    color: white;
+    font-family: Gill Sans Extrabold, sans-serif;
+    font-size: 35px;
+}
+
+.taskList > button {
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+}
+
+.taskList > button:hover {
+    background-color: rgba(169, 169, 169, 0.7);
+}
+
+.taskList > button > img.sortIcon {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+}
+
+.taskList > .sortButton {
+    float: right;
 }

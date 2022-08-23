@@ -10,8 +10,7 @@ const timeStamps = [
 ];
 
 const events = [
-    { title: "basketball", time: 45, id: 134908 },
-    { title: "soccer", time: 30, id: 2834876 },
+    { title: "basketball", startTime: "2022-08-17T00:00:00.000+00:00", id: 134908 },
 ];
 
 const EventTag = ({ id, height, title }) => {
@@ -45,6 +44,7 @@ const TimeStamp = () => {
 }
 
 const DaySchedule = ({ _id, date, events }) => {
+
     return (
         <GridContainer nbRows={timeStamps.length * 4} nbColumns={1} _id={_id}>
             {events && events.map((event) => {
@@ -74,13 +74,12 @@ export const WeekSchedule = () => {
             // prevent default action (open as link for some elements)
             event.preventDefault();
             // move dragged element to the selected drop target
-            console.log(event.target.className);
             if (event.target.className === "gridContainer") {
                 dragged.parentNode.removeChild(dragged);
                 event.target.appendChild(dragged);
             }
         });
-    })
+    }, []);  //eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <GridContainer nbRows={20} nbColumns={23} _id="scheduleGrid">
