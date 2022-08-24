@@ -108,6 +108,7 @@
 .taskList {
     display: inline-block;
     background-color: var(--secondaryColor);
+    min-width: 370px;
     width: fit-content;
     margin-left: 2.5%;
     margin-top: 2.5%;

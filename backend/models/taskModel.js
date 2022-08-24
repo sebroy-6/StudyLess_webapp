@@ -23,9 +23,9 @@ const TaskSchema = new mongoose.Schema(
 		description: {
 			type: String,
 		},
-		isCompleted: {
-			type: Boolean,
-			default: false,
+		progress: {
+			type: String,
+			default: "todo",
 		},
 	},
 	{ timestamps: true }
