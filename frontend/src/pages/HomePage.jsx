@@ -40,8 +40,8 @@ const HomePage = () => {
             <FullSideBar hasAppContainer={true} />
             <div className="app-container">
                 < TaskList id="todo" title="TODO" />
-                < TaskList id="inProgress" title="for today" />
-                < TaskList id="completed" title="completed this week" />
+                < TaskList id="inProgress" title="Today" />
+                < TaskList id="completed" title="Completed" />
             </div>
             <TaskForm />
         </div>

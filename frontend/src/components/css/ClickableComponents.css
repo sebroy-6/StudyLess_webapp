@@ -53,8 +53,8 @@ button.addButton:active {
 
 .top-right {
     position: fixed;
-    right: 4%;
-    top: calc(75px + 2%);
+    right: 3%;
+    top: calc(75px + 1%);
 }
 
 .symbole {

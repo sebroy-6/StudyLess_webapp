@@ -4,11 +4,14 @@ import optionsIcon from "../images/optionsIcon.png";
 import sortIcon from "../images/sortIcon.png";
 import { TasksContext } from "../contexts/TasksContext";
 import { useDrag, useDrop } from "react-dnd";
-import { updateTask } from "../utils/TaskAPIRequests";
+import { deleteTask, updateTask } from "../utils/TaskAPIRequests";
+import { useSwitch } from "../hooks/useSwitch";
 
 export const Task = ({ task }) => {
+    const { dispatch } = useContext(TasksContext);
+    const [menuDisplay, toggleMenuDisplay] = useSwitch("none", "inline-block");
     const [difficulty, setdifficulty] = useState("");
-    const [{ }, dragRef] = useDrag({ // eslint-disable-line
+    const [{ isDragging }, dragRef] = useDrag({ // eslint-disable-line
         type: "task",
         item: task,
         collect: (monitor) => {
@@ -28,14 +31,29 @@ export const Task = ({ task }) => {
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-        <div className="task" ref={dragRef}>
-            <h3><b>{task.title}</b></h3>
-            <p className="duration">{task?.duration}</p>
-            <p className={"difficulty " + difficulty}>{difficulty}</p>
-            <p className="subject">{task.subject}</p>
-            <button className="options">
-                <img src={optionsIcon} alt="..." className="icon" />
-            </button>
+        <div className="taskContainer" > {!isDragging ?
+            <div className="task" ref={dragRef}>
+                <h3><b>{task.title}</b></h3>
+                <p className="duration">{task?.duration}</p>
+                <p className={"difficulty " + difficulty}>{difficulty}</p>
+                <p className="subject">{task.subject}</p>
+                <button className="options" onClick={toggleMenuDisplay}>
+                    <img src={optionsIcon} alt="..." className="icon" />
+                </button>
+            </div > : null
+        }
+            <div
+                id={task._id + "menu"}
+                className="taskMenu"
+                style={
+                    { "display": menuDisplay }}
+            >
+                <button onClick={() => {
+                    const token = localStorage.getItem("authentication");
+                    deleteTask(token, task);
+                    dispatch({ type: "REMOVE_TASK", payload: task });
+                }}>Delete</button>
+            </div>
         </div >
     );
 }
@@ -45,11 +63,13 @@ export const TaskList = ({ id, title }) => {
     const [{ }, dropRef] = useDrop({ // eslint-disable-line
         accept: 'task',
         drop: (task) => {
-            dispatch({ type: "REMOVE_TASK", payload: task });
-            task.progress = id;
-            dispatch({ type: "ADD_TASK", payload: task });
-            const token = localStorage.getItem("authentication");
-            updateTask(token, task);
+            if (task.progress !== id) {
+                dispatch({ type: "REMOVE_TASK", payload: task });
+                task.progress = id;
+                dispatch({ type: "ADD_TASK", payload: task });
+                const token = localStorage.getItem("authentication");
+                updateTask(token, task);
+            }
         },
         collect: (monitor) => ({
             isOver: monitor.isOver()
