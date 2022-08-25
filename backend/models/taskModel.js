@@ -51,6 +51,13 @@ TaskSchema.statics.getOneById = async function (user, id) {
 
 TaskSchema.statics.createOne = async function (user, newTask) {
 	newTask.userId = user._id;
+	if (newTask.difficulty <= 2) {
+		newTask.difficulty = "easy";
+	} else if (newTask.difficulty <= 4) {
+		newTask.difficulty = "medium";
+	} else {
+		newTask.difficulty = "hard";
+	}
 	return await this.create(newTask);
 };
 

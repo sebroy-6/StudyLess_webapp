@@ -13,7 +13,7 @@ export const Divider = ({ title, filterFunc = () => { return true; }, tasks }) =
                 filteredTasks && filteredTasks?.length ?
                     <div className="divider">
                         <button onClick={toggleOpen}>
-                            <h3>{title}</h3>
+                            <h3>{title ? title : "Others"}</h3>
                             {isOpen ? <div className="arrow down" /> : <div className="arrow up" />}
                         </button>
                         <div className="divider-content">

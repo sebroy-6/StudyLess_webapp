@@ -57,6 +57,10 @@ button.default.welcomePage {
     top: 37.5%;
 }
 
+button.default.block {
+    display: block;
+    margin-top: 25px;
+}
 
 /* div.library */
 
@@ -200,7 +204,8 @@ div.verticalAlign {
 
 .arrow {
     display: inline-block;
-    border: solid lightgrey;
+    border-style: solid;
+    border-color: inherit;
     border-width: 0 4px 4px 0;
     margin-left: 10px;
     width: 10px;

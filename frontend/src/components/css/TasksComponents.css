@@ -164,3 +164,40 @@
 .taskList > .sortButton {
     float: right;
 }
+
+/* taskList sortMenu styles */
+
+.sortMenu {
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 500px;
+    width: fit-content;
+    height: 40%;
+    background-color: var(--mainColor);
+    border: 7px solid white;
+    padding: 20px;
+    color: white;
+    z-index: 2;
+}
+
+button.appContainer_curtain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    border: none;
+    border-radius: 0;
+}
+
+button.appContainer_curtain:hover {
+    cursor: default;
+}
+
+button.appContainer_curtain:active {
+    background-color: rgba(0, 0, 0, 0.4);
+}
