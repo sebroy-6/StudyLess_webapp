@@ -1,6 +1,6 @@
 import React from "react";
 import { StartStopButton } from "./ClickableComponents";
-import "./css/TimerComponent.modules.css";
+import "./css/TimerComponent.css";
 import { useStudyTimer } from "../hooks/useStudyTimer";
 
 const TimerTopMenu = (props) => {

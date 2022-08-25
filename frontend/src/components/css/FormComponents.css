@@ -3,7 +3,7 @@
 .basicForm {
     display: none;
     position: fixed;
-    top: 15%;
+    top: 160px;
     right: 25px;
     background-color: lightgrey;
     width: 300px;

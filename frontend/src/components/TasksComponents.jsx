@@ -2,10 +2,12 @@ import React, { useState, useEffect, useContext } from "react";
 import "./css/TasksComponents.css";
 import optionsIcon from "../images/optionsIcon.png";
 import sortIcon from "../images/sortIcon.png";
+import deleteIcon from "../images/garbageIcon.png";
 import { TasksContext } from "../contexts/TasksContext";
 import { useDrag, useDrop } from "react-dnd";
 import { deleteTask, updateTask } from "../utils/TaskAPIRequests";
 import { useSwitch } from "../hooks/useSwitch";
+import { Divider } from "./DividerComponent";
 
 export const Task = ({ task }) => {
     const { dispatch } = useContext(TasksContext);
@@ -52,7 +54,9 @@ export const Task = ({ task }) => {
                     const token = localStorage.getItem("authentication");
                     deleteTask(token, task);
                     dispatch({ type: "REMOVE_TASK", payload: task });
-                }}>Delete</button>
+                }}>
+                    <img src={deleteIcon} alt="delete" className="icon" />
+                </button>
             </div>
         </div >
     );
@@ -76,6 +80,19 @@ export const TaskList = ({ id, title }) => {
         })
     });
 
+
+    function getAllSubjects() {
+        const subjects = [];
+        if (tasks?.length) {
+            tasks.forEach((task) => {
+                if (!subjects.includes(task.subject)) {
+                    subjects.push(task.subject);
+                }
+            });
+        }
+        return subjects;
+    }
+
     return (
         <div className="taskList" ref={dropRef}>
             <h1>{title}</h1>
@@ -83,9 +100,15 @@ export const TaskList = ({ id, title }) => {
                 <img className="sortIcon" src={sortIcon} alt="v^"></img>
             </button>
             <div className="content">
-                {tasks && tasks?.length ? tasks.map((task) => (
-                    task.progress === id && <Task key={task._id} task={task} />
-                )) : <h2>There are no tasks yet</h2>
+                {
+                    getAllSubjects().map((subject) => {
+                        return <Divider
+                            key={subject}
+                            title={subject}
+                            filterFunc={(task) => task.subject === subject}
+                            tasks={tasks.filter((task) => task.progress === id)}
+                        />
+                    })
                 }
             </div>
         </div >
