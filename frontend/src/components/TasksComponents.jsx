@@ -7,7 +7,6 @@ import { TasksContext } from "../contexts/TasksContext";
 import { useDrag, useDrop } from "react-dnd";
 import { deleteTask, updateTask } from "../utils/TaskAPIRequests";
 import { useSwitch } from "../hooks/useSwitch";
-import { Divider } from "./DividerComponent";
 
 export const Task = ({ task }) => {
     const { dispatch } = useContext(TasksContext);
@@ -49,6 +48,34 @@ export const Task = ({ task }) => {
         </div >
     );
 }
+
+
+const TaskDivider = ({ title, filterFunc, tasks }) => {
+    const [isOpen, toggleOpen] = useSwitch(true);
+    const filteredTasks = tasks.filter(filterFunc);
+    return (
+        < div>
+            {
+                filteredTasks && filteredTasks?.length ?
+                    <div className="divider">
+                        <button onClick={toggleOpen}>
+                            <h3>{title ? title : "Others"}</h3>
+                            {isOpen ? <div className="arrow down" /> : <div className="arrow up" />}
+                        </button>
+                        <div className="divider-content">
+                            {isOpen ?
+                                filteredTasks.map((task) => {
+                                    return <Task key={task.id} task={task} />
+                                }) : null
+                            }
+                        </div>
+                    </div> : null
+            }
+        </div >
+    );
+
+}
+
 
 export const TaskList = ({ id, title, sortParam }) => {
     const [menuDisplay, toggleMenuDisplay] = useSwitch("none", "inline-block");
@@ -126,7 +153,7 @@ export const TaskList = ({ id, title, sortParam }) => {
                 {
                     firstSortParam === "subject" ?
                         getAllSubjects().map((subject) => {
-                            return <Divider
+                            return <TaskDivider
                                 key={subject}
                                 title={subject}
                                 filterFunc={(task) => task.subject === subject}
@@ -135,7 +162,7 @@ export const TaskList = ({ id, title, sortParam }) => {
                         })
                         : firstSortParam === "difficulty" ?
                             getAllDifficulty().map((diffLevel) => {
-                                return <Divider
+                                return <TaskDivider
                                     key={diffLevel}
                                     title={diffLevel}
                                     filterFunc={(task) => task.difficulty === diffLevel}

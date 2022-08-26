@@ -13,6 +13,40 @@ const events = [
     { title: "basketball", startTime: "2022-08-17T00:00:00.000+00:00", id: 134908 },
 ];
 
+
+export const ScheduleDay = ({ nbRows, _id }) => {
+    const idList = [];
+    for (let i = 1; i <= nbRows; i++) {
+        idList.push(`${_id}${i}`);
+    }
+
+    return (
+        <div className="scheduleDay">
+            <div className="scheduleHeader"></div>
+            <div className="background">
+                <GridContainer nbRows={nbRows} nbColumns={6} _id={"background"}>
+                    {
+                        idList.map((id) => {
+                            return <div
+                                key={id}
+                                id={id}
+                                style={{ "border": "2px solid black" }}
+                                width={6} />;
+                        })
+                    }
+                </GridContainer>
+            </div>
+            <div className="foreground">
+                <GridContainer nbRows={nbRows * 4} nbColumns={6} _id={"forground"} />
+            </div>
+        </div>
+    );
+}
+
+
+
+
+/*
 const EventTag = ({ id, height, title }) => {
 
     return (
@@ -118,3 +152,5 @@ export const WeekSchedule = () => {
         </GridContainer>
     );
 }
+
+*/
