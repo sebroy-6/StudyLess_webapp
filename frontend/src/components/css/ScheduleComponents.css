@@ -23,9 +23,14 @@
 }
 
 .scheduleDay > .scheduleHeader {
-    border: 2px solid green;
+    border: 2px solid black;
     height: calc(10% - 4px);
     width: calc(100% - 4px);
+    text-align: center;
+    padding-top: 10%;
+    background-color: var(--thirnaryColor);
+    color: white;
+    font-size:x-large;
 }
 
 /*
