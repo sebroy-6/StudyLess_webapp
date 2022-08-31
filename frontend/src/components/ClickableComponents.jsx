@@ -73,3 +73,22 @@ export const StartStopButton = ({ onClick }) => {
 }
 
 
+export const CollapsibleDivider = ({ title, children, isBlack }) => {
+    const [isOpen, toggleOpen] = useSwitch(true);
+    return (
+        <div>
+            {
+                children ?
+                    <div className={`divider ${isBlack ? "black" : null}`}>
+                        <button onClick={toggleOpen}>
+                            <h3>{title ? title : "Others"}</h3>
+                            {isOpen ? <div className="arrow down" /> : <div className="arrow up" />}
+                        </button>
+                        <div className="divider-content">
+                            {isOpen && children}
+                        </div>
+                    </div> : null
+            }
+        </div >
+    );
+}

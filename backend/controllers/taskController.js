@@ -24,7 +24,7 @@ async function createTask(req, res) {
 		const createdTask = await Task.createOne(req.user, req.body.task);
 		return res.status(200).json(createdTask);
 	} catch (error) {
-		return res.status(error.status).json(error.message);
+		return res.status(error.status ? error.status : 400).json(error.message);
 	}
 }
 
