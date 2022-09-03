@@ -4,12 +4,19 @@ export const EventContext = createContext();
 
 function reduceEvents(state, action) {
     switch (action.type) {
-        case "SET_EVENTS":
-            return { events: action.payload };
-        case "ADD_EVENT":
-            return { events: [action.payload, ...state.tasks] };
-        case "REMOVE_EVENT":
-            return { events: state.tasks.filter((task) => task._id !== action.payload._id) };
+        case "SET_EVENTS_IN_DAY":
+            return { events: [...state.daysEvents, { [action.payload.date]: action.payload.daysEvents }] };
+        case "ADD_EVENT_TO_DAY":
+            state.events.find((day) => action.payload.date === day.date).daysEvents.push(action.payload.event)
+            return state;
+        /*
+        case "REMOVE_EVENT_FROM_DAY":
+            state.events.find((day) => {
+                action.payload.date === day.date
+            }).daysEvents.find((event) => {
+                event._id === action.payload._id
+            })
+        */
         default:
             return state;
     }
@@ -17,7 +24,7 @@ function reduceEvents(state, action) {
 
 export const EventContextProvider = (props) => {
     const [state, dispatch] = useReducer(reduceEvents, {
-        events: null
+        events: []
     });
 
     return (

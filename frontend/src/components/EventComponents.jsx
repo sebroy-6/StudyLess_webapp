@@ -1,28 +1,21 @@
 import React from "react";
 import { CollapsibleDivider } from "./ClickableComponents";
+import { useDrag } from "react-dnd";
 import "./css/EventComponents.css";
 
-const AddEventTag = ({ type, title, style }) => {
+const AddEventTag = ({ event }) => {
+    const [{ isDragging }, dragRef] = useDrag({ // eslint-disable-line
+        type: "event",
+        item: event,
+        collect: (monitor) => {
+            return { isDragging: monitor.isDragging() };
+        }
+    })
+
     return (
-        <button className="addEventTag" style={style ? style : undefined} draggable>
-            {title ? `${type} - ${title}` : type}
+        <button className="addEventTag" draggable>
         </button>
     );
-}
-
-const EventTagsList = ({ title, events }) => {
-    return (
-        <div>
-            {
-                events && events?.length ?
-                    events.map((event) => {
-
-                    }) : null
-            }
-
-        </div >
-    );
-
 }
 
 export const ScheduleEvents = () => {
