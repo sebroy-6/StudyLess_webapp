@@ -31,6 +31,7 @@ export const ScheduleDay = ({ nbRows, _id, date }) => {
     return (
         <div className="scheduleDay">
             <ScheduleHeader>{date}</ScheduleHeader>
+
             <div id={"background" + _id} className="background">
                 <GridContainer nbRows={nbRows} nbColumns={6} _id={"background"}>
                     {
@@ -48,6 +49,7 @@ export const ScheduleDay = ({ nbRows, _id, date }) => {
                     }
                 </GridContainer>
             </div>
+
             <div id={"middleground" + _id} className="middleground">
                 <GridContainer nbRows={nbRows * 4} nbColumns={6} _id="middleground" >
                     {
@@ -57,9 +59,11 @@ export const ScheduleDay = ({ nbRows, _id, date }) => {
                     }
                 </GridContainer >
             </div>
+
             <div id={"foreground" + _id} className="foreground">
                 <GridContainer nbRows={nbRows * 4} nbColumns={6} _id={"foreground"} />
             </div>
+
         </div>
     );
 }

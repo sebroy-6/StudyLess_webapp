@@ -39,9 +39,7 @@ export const Task = ({ task }) => {
                     { "display": menuDisplay }}
             >
                 <button onClick={() => {
-                    const token = localStorage.getItem("authentication");
-                    deleteTask(token, task);
-                    dispatch({ type: "REMOVE_TASK", payload: task });
+                    deleteTask(dispatch, task);
                 }}>
                     <img src={deleteIcon} alt="delete" className="icon" />
                 </button>
@@ -74,13 +72,11 @@ export const TaskList = ({ id, title, sortParam }) => {
     const { tasks, dispatch } = useContext(TasksContext);
     const [{ }, dropRef] = useDrop({ // eslint-disable-line
         accept: 'task',
-        drop: (task) => {
+        drop: async (task) => {
             if (task.progress !== id) {
-                dispatch({ type: "REMOVE_TASK", payload: task });
-                task.progress = id;
-                dispatch({ type: "ADD_TASK", payload: task });
-                const token = localStorage.getItem("authentication");
-                updateTask(token, task);
+                const newTask = task;
+                newTask.progress = id;
+                updateTask(dispatch, task, newTask);
             }
         },
         collect: (monitor) => ({

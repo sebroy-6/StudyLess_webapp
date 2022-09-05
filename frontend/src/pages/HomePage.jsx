@@ -3,34 +3,15 @@ import { FullTopBar, FullSideBar } from "../components/NavBarComponents";
 import { TaskList } from "../components/TasksComponents";
 import { TaskForm } from "../components/FormComponents";
 import { TasksContext } from "../contexts/TasksContext";
+import { getTasks } from "../utils/TaskAPIRequests";
 
 
 const HomePage = () => {
     const { tasks, dispatch } = useContext(TasksContext);
 
-    const getTasks = async () => {
-        const token = localStorage.getItem("authentication");
-        const response = await fetch("/api/task", {
-            method: "GET",
-            headers: {
-                authentication: token
-            }
-        });
-        const json = await response.json();
-
-        if (!response.ok) {
-            if (response.status === 403) {
-                localStorage.removeItem("authentication");
-                return window.location = "/login";
-            }
-        }
-        dispatch({ type: "SET_TASKS", payload: json });
-        return json;
-    };
-
     useEffect(() => {
         if (!tasks) {
-            getTasks();
+            getTasks(dispatch);
         }
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
