@@ -34,12 +34,13 @@ const EventSchema = new mongoose.Schema(
 	{ timestamps: true }
 );
 
-EventSchema.statics.getByDay = async function (user, day) {
-	if (!isValidDate(new Date(day))) {
-		throw new reqError("invalid day string was given");
+EventSchema.statics.getByDay = async function (user, dateString) {
+	if (!isValidDate(dateString)) {
+		throw new reqError("invalid date was given (YYYY-MM-DD)");
 	}
-	const start = new Date(day);
-	const end = new Date(day);
+	const start = new Date(dateString);
+	const end = new Date(dateString);
+
 	end.setDate(end.getDate() + 1);
 	return await this.find({
 		userId: user._id,
