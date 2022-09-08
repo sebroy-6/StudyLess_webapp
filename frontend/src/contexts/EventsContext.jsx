@@ -8,6 +8,23 @@ function reduceEvents(state, action) {
         case "SET_EVENTS_BY_DAY":
             const daysEvents = action.payload.daysEvents;
             return { events: [...state.events, { date, daysEvents }] };
+
+        case "ADD_EVENT_BY_DAY":
+            /*
+            console.log("before: ", state);
+            let initDaysEvents = state.events.find((eventsByDate) => {
+                return eventsByDate.date === action.payload.date;
+            }).daysEvents;
+
+            if (initDaysEvents) {
+                state.events.find((eventsByDate) => {
+                    return eventsByDate.date === action.payload.date;
+                }).daysEvents.push(action.payload.event);
+            }
+            console.log("after: ", state);
+            */
+            return state;
+
         default:
             return state;
     }

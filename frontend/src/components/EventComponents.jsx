@@ -13,7 +13,7 @@ const AddEventTag = ({ event }) => {
     })
 
     return (
-        <button className="addEventTag" draggable>
+        <button className="addEventTag" ref={dragRef}>
         </button>
     );
 }

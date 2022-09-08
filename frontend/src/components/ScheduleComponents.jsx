@@ -4,6 +4,7 @@ import { GridContainer } from "./GridContainerComponent";
 import { useDrop } from "react-dnd";
 import { EventsContext } from "../contexts/EventsContext";
 import { getEventsByDay } from "../utils/EventAPIRequest";
+import { useState } from "react";
 
 function isValidDate(dateString) {
     var dateRegEx = /^\d{4}-\d{2}-\d{2}$/;
@@ -13,6 +14,24 @@ function isValidDate(dateString) {
     if (!dNum && dNum !== 0) return false; // NaN value, Invalid date
     return d.toISOString().slice(0, 10) === dateString;
 }
+
+function getDayHeaderStr(dateString) {
+    if (!isValidDate(dateString)) {
+        throw new Error("invalid date was provided to ScheduleDay component");
+    }
+    const date = new Date(dateString);
+    const weekDays = [
+        "Monday",
+        "Thuesday",
+        "Wednesday",
+        "Thurday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+    ]
+    return `${date.getDate() + 1} ${weekDays[date.getDay()]}`;
+}
+
 
 
 const ScheduleHeader = ({ children }) => {
@@ -40,26 +59,52 @@ export const ScheduleDay = ({ nbRows, _id, date }) => {
     const middlegroundIdList = [];
     for (let i = 1; i <= 4 * nbRows; i++) { middlegroundIdList.push(`${_id}${i}`); }
 
-    useEffect(() => {
-        if (!isValidDate(date)) {
-            throw new Error("invalid date was provided to ScheduleDay component");
-        }
+    function findEventsByDate() {
+        return events.find((eventByDate) => { return eventByDate.date === date; })
+    }
 
+    useEffect(() => {
         async function getTodaysEvents() {
-            let daysEvents = events.find((eventByDate) => { return eventByDate.date === date; })
+            if (!isValidDate(date)) {
+                throw new Error("invalid date was provided to ScheduleDay component");
+            }
+            let daysEvents = findEventsByDate();
             if (!daysEvents) {
                 daysEvents = await getEventsByDay(dispatch, date);
+            }
+            else {
+                daysEvents = daysEvents.daysEvents;
             }
             return daysEvents;
         }
         getTodaysEvents();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+
     return (
         <div className="scheduleDay">
-            <ScheduleHeader>{`${date}`}</ScheduleHeader>
 
-            <div id={"background" + _id} className="background">
+            <ScheduleHeader>{getDayHeaderStr(date)}</ScheduleHeader>
+            <div style={{ backgroundColor: "white", height: "90%", border: "1px solid black" }}>
+                {
+                    findEventsByDate() ? findEventsByDate().daysEvents.map((event) => {
+                        return (<div
+                            key={event._id}
+                            id={event._id}>
+                            {`${event.title}`}
+                        </div>);
+                    }) : null
+                }
+            </div>
+
+        </div>
+    );
+}
+
+// Keep this comment, it will be used after some testing
+
+/*
+<div id={"background" + _id} className="background">
                 <GridContainer nbRows={nbRows} nbColumns={6} _id={"background"}>
                     {
                         backgroundIdList.map((id) => {
@@ -81,7 +126,12 @@ export const ScheduleDay = ({ nbRows, _id, date }) => {
                 <GridContainer nbRows={nbRows * 4} nbColumns={6} _id="middleground" >
                     {
                         middlegroundIdList.map((id) => {
-                            return <div ref={dropRef} id={"middleground" + id} style={{ backgroundColor: "transparent" }} width={6} />
+                            return <div
+                                ref={dropRef}
+                                key={"middleground" + id}
+                                id={"middleground" + id}
+                                style={{ backgroundColor: "transparent" }}
+                                width={6} />;
                         })
                     }
                 </GridContainer >
@@ -90,6 +140,4 @@ export const ScheduleDay = ({ nbRows, _id, date }) => {
             <div id={"foreground" + _id} className="foreground">
                 <GridContainer nbRows={nbRows * 4} nbColumns={6} _id={"foreground"} />
             </div>
-        </div>
-    );
-}
+            */

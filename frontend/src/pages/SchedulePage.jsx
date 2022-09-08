@@ -29,7 +29,7 @@ const SchedulePage = () => {
                         "verticalAlign": "top"
                     }}>
                     <ScheduleDay nbRows={20} date={"2022-08-16"} />
-                    <ScheduleDay nbRows={20} date={"2022-08-30"} />
+                    <ScheduleDay nbRows={20} date={"2022-08-17"} />
                 </div>
             </div >
         </div >

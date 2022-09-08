@@ -56,7 +56,7 @@ export const TaskDivider = ({ title, filterFunc, tasks }) => {
             <CollapsibleDivider title={title}>
                 {
                     filteredTasks && filteredTasks?.length ? filteredTasks.map((task) => {
-                        return <Task key={task.id} task={task} />
+                        return <Task key={task._id} task={task} />
                     }) : null
                 }
             </CollapsibleDivider>
@@ -141,7 +141,7 @@ export const TaskList = ({ id, title, sortParam }) => {
                     firstSortParam === "subject" ?
                         getAllSubjects().map((subject) => {
                             return <TaskDivider
-                                key={subject}
+                                key={subject + title}
                                 title={subject}
                                 filterFunc={(task) => task.subject === subject}
                                 tasks={tasks.filter((task) => task.progress === id)}
@@ -150,7 +150,7 @@ export const TaskList = ({ id, title, sortParam }) => {
                         : firstSortParam === "difficulty" ?
                             getAllDifficulty().map((diffLevel) => {
                                 return <TaskDivider
-                                    key={diffLevel}
+                                    id={diffLevel + title}
                                     title={diffLevel}
                                     filterFunc={(task) => task.difficulty === diffLevel}
                                     tasks={tasks.filter((task) => task.progress === id)}
