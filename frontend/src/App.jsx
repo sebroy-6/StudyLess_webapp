@@ -6,7 +6,6 @@ import HomePage from "./pages/HomePage.jsx";
 import TimerPage from "./pages/TimerPage.jsx";
 import ContactMePage from "./pages/ContactMePage.jsx";
 import AccountPage from "./pages/AccountPage.jsx";
-import SchedulePage from "./pages/SchedulePage.jsx";
 
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
                     <Route path="/timer" element={token ? <TimerPage /> : <Navigate to="/login" />} />
                     <Route path="/contactMe" element={token ? <ContactMePage /> : <Navigate to="/login" />} />
                     <Route path="/account" element={token ? <AccountPage /> : <Navigate to="/login" />} />
-                    <Route path="/schedule" element={token ? <SchedulePage /> : <Navigate to="/login" />} />
                 </Routes>
             </BrowserRouter>
         </div >

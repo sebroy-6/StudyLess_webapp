@@ -35,7 +35,6 @@ export const FullSideBar = (props) => {
         <div className={"bar-side " + barIsHidden}>
             <a href="homePage" ><h1>POLYSTUDY</h1></a>
             <button className="option " onClick={goToDailyTasks}>See daily tasks</button>
-            <button className="option " onClick={goToSchedule}>See Schedule</button>
             <button className="option " onClick={toggleOptionIsHidden}>Study tools</button>
             <button className={"option secondary " + optionIsHidden} onClick={goToTimer}>Timer</button>
             <button className="rightPullTag" onClick={toggleBarDisplay}><div></div></button>

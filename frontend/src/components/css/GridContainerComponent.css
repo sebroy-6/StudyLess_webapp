@@ -1,9 +1,0 @@
-.gridContainer {
-    display: grid;
-    height: 100%;
-}
-
-.gridContainer > div {
-    background-color: white;
-    text-align: center;
-}
