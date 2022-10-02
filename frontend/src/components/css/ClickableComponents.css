@@ -64,7 +64,7 @@ button.addButton:active {
 }
 
 
-/* TaskDivider styles*/
+/* Collapsable Divider styles*/
 
 .divider > button {
     background-color: transparent;
@@ -75,6 +75,7 @@ button.addButton:active {
 
 .divider > button:hover {
     color: white;
+    cursor: pointer;
 }
 
 .divider > * > h3 {

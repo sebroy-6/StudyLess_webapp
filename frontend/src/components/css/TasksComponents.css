@@ -92,13 +92,36 @@
 
 /* task - taskMenu */
 
-.taskMenu {
-    width: 100%;
-    height: 200px;
-    background-color: rgba(149, 141, 141, 0.548);
+div.taskMenu {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    width: calc(100% - 32px);
+    height: 150px;
     border-radius: inherit;
     border-top-right-radius: 0;
     border-top-left-radius: 0;
+    border:inset var(--thirnaryColor) 5px;
+    padding: 10px;
+    margin: 1px;
+}
+
+button.deleteTask {
+    grid-column: 6;
+    grid-row: 4;
+    width: 30px;
+    height: 37px;
+    padding: 0;
+    margin: auto;
+    background-color: transparent;
+    border: none;
+}
+button.deleteTask:hover {
+    color: rgb(90, 90, 90);
+    cursor: pointer;
+}
+button.deleteTask:active {
+    color: red;
 }
 
 /* taskList styles */

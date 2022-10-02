@@ -81,7 +81,7 @@ export const CollapsibleDivider = ({ title, children, isBlack }) => {
                 children ?
                     <div className={`divider ${isBlack ? "black" : null}`}>
                         <button onClick={toggleOpen}>
-                            <h3>{title ? title : "Others"}</h3>
+                            <h3 class="collapsableDividerTitle">{title ? title : "Others"}</h3>
                             {isOpen ? <div className="arrow down" /> : <div className="arrow up" />}
                         </button>
                         <div className="divider-content">
