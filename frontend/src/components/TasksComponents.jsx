@@ -9,7 +9,7 @@ import { deleteTask, updateTask } from "../utils/TaskAPIRequests";
 import { useSwitch } from "../hooks/useSwitch";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons"
+import { faTrash, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 export const Task = ({ task }) => {
     const { dispatch } = useContext(TasksContext);
@@ -42,6 +42,13 @@ export const Task = ({ task }) => {
                 </div> : null
         }
             <div id={task._id + "menu"} className="taskMenu" >
+                <button class="finishTask" onClick={() => {
+                    let oldTask = { ...task };
+                    task.progress = "completed";
+                    updateTask(dispatch, oldTask, task);
+                }}>
+                    <FontAwesomeIcon class="checkIcon" icon={faCheck} />
+                </button>
                 <button class="deleteTask" onClick={() => {
                     deleteTask(dispatch, task);
                 }}>
