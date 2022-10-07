@@ -26,9 +26,6 @@ app.use("/api/user", userRouter);
 const taskRouter = require("./routes/task");
 app.use("/api/task", authenticateJWT, taskRouter);
 
-const eventRouter = require("./routes/event");
-app.use("/api/event", authenticateJWT, eventRouter);
-
 app.listen(
 	process.env.PORT,
 	console.log(`Running server on port ${process.env.PORT}`)

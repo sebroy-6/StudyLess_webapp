@@ -62,8 +62,9 @@ export async function updateTask(dispatch, oldTask, newTask) {
 			localStorage.removeItem("authentication");
 			return (window.location = "/login");
 		}
-		dispatch({ type: "REMOVE_TASK", payload: newTask });
+		dispatch({ type: "REMOVE_TASK", payload: oldTask });
 		dispatch({ type: "ADD_TASK", payload: oldTask });
+		return response;
 	}
 	console.log(`task ${oldTask._id} has been updated`);
 }
