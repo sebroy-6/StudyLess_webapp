@@ -7,14 +7,13 @@
 }
 
 .task {
-    text-align: right;
-    display: flex;
-    justify-content: space-between;
     margin-top: 15px;
     margin-bottom: 15px;
     padding: 10px;
-    width: 275px;
-    min-height: 50px;
+    padding-bottom: 25px;
+    padding-right: 65px;
+    width: 210px;
+    min-height: 35px;
     font-family: Gill Sans Extrabold, sans-serif;
     font-size: 13px;
     background-color: inherit;
@@ -24,11 +23,9 @@
 }
 
 .task > h3 {
-    margin: 10px;
-    text-align: left;
-    width: 300px;
-    margin-bottom: 30px;
-    margin-right: 90px;
+    margin: 5px;
+    font-size: 15px;
+    margin-bottom: 3px;
 }
 
 .task > p {
@@ -36,23 +33,29 @@
     margin: 0;
 }
 
-.task > p.difficulty {
-    font-weight: 600;
-    bottom: 8px;
-    right: 15px;
-    font-size: 15px;
+.task > p.description {
+    font-size: small;
+    position: static;
+    color: grey;
+    margin-top: 8px;
+    margin-left: 10px;
+    margin-right: 55px;
+    margin-bottom: 25px;
 }
 
 .task > p.subject {
-    font-weight: 600;
     bottom: 8px;
+    left: 15px;
 }
 
 .task > p.duration {
     right: 15px;
-    bottom: 25px;
+    top: 27px;
     font-size: 15px;
+    font-weight: 600;
 }
+
+
 
 .easy {
     color: green;
@@ -72,8 +75,8 @@
     border-radius: 5px;
 }
 
-.task > button:active {
-    background-color: lightgrey;
+.task > button:active > .ellipsis{
+    color: rgb(147, 147, 147);
 }
 
 .task > button:hover {
@@ -81,14 +84,21 @@
 }
 
 .task > button.options {
+    display: none;
     position: absolute;
-    top: 15px;
+    top: 5px;
     right: 15px;
+    padding: 0;
 }
 
-.icon {
-    width: 30px;
+.task:hover > button.options {
+    display: block;
 }
+
+.task > button.options > .ellipsis {
+    height: 28px;
+    margin: 0;
+} 
 
 /* task - taskMenu */
 
@@ -115,7 +125,6 @@ div.taskMenu > button {
     border: none;
 }
 div.taskMenu > button:hover {
-    color: rgb(120, 120, 120);
     cursor: pointer;
 }
 
@@ -126,7 +135,7 @@ div.taskMenu > button.finishTask {
     height: 35px;
 }
 div.taskMenu > button.finishTask:active {
-    color: green;
+    color: rgba(0, 128, 0, 0.7);
 }
 
 div.taskMenu > button.deleteTask {
@@ -134,7 +143,7 @@ div.taskMenu > button.deleteTask {
     grid-row: 3;
 }
 div.taskMenu > button.deleteTask:active {
-    color: red;
+    color: rgb(255, 0, 0, 0.7);
 }
 
 /* taskList styles */

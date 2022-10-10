@@ -1,43 +1,54 @@
 /* TaskForm styles */
 
-.basicForm {
+#taskForm {
     display: none;
     position: fixed;
-    top: 160px;
-    right: 25px;
+    top: 140px;
+    right: 15px;
     background-color: lightgrey;
-    width: 300px;
+    width: 265px;
     font-size: 15px;
-    font-family: Gill Sans Extrabold, sans-serif;
     transition: 0.3s;
+    height: 100%;
+    padding: 5px;
+    border-radius: 10px;
 }
 
-.basicForm > input.text,
-.basicForm > div > input.number {
-    margin-bottom: 5px;
+#taskForm > div {
+    margin-left: 5px;
+    margin-top: 15px;
 }
 
-.basicForm > div > h3 {
+#taskForm label {
+    font-size: 22px;
+    display: block;
+}
+#taskForm label.radio {
     display: inline-block;
+    font-size: 18px;
 }
 
-.basicForm > input.text {
-    background-color: white;
+#taskForm input {
+    display: inline-block;
+    height: 25px;
     font-size: large;
-    height: 30px;
-    width: 90%;
-    border: none;
-}
-
-.basicForm > div > input.number {
-    display: inline-block;
+    margin: 5px;
     margin-left: 15px;
-    background-color: white;
-    font-size: 30px;
-    border: none;
+    border: solid var(--mainColor) 1px;
+    border-radius: 4px;
+}
+#taskForm input[type="number"] {
+    width: 50px;
 }
 
-.basicForm > button {
+
+#taskForm input#title {
+    width: 95%;
+}
+
+#taskForm button {
+    display: inline-block;
+    margin-left: 10%;
     margin-top: 10px;
     color:white;
     font-size: large;
@@ -47,7 +58,7 @@
     height: 30px;
 }
 
-.basicForm > button:active {
+#taskForm > button:active {
     transform: scale(0.97);
 }
 

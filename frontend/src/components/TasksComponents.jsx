@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import "./css/TasksComponents.css";
-import optionsIcon from "../images/optionsIcon.png";
+//import optionsIcon from "../images/optionsIcon.png";
 import sortIcon from "../images/sortIcon.png";
 import { CollapsibleDivider } from "./ClickableComponents";
 import { TasksContext } from "../contexts/TasksContext";
@@ -9,7 +9,7 @@ import { deleteTask, updateTask } from "../utils/TaskAPIRequests";
 import { useSwitch } from "../hooks/useSwitch";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faCheck, faEllipsis } from "@fortawesome/free-solid-svg-icons";
 
 export const Task = ({ task }) => {
     const { dispatch } = useContext(TasksContext);
@@ -24,7 +24,7 @@ export const Task = ({ task }) => {
 
     useEffect(() => {
         document.getElementById(task._id + "menu").style.display = menuDisplay;
-    }, [menuDisplay])
+    }, [menuDisplay])   // eslint-disable-line
 
     return (
         <div className="taskContainer" > {
@@ -32,24 +32,24 @@ export const Task = ({ task }) => {
                 <div className="task" ref={dragRef}>
 
                     <h3><b>{task.title}</b></h3>
-                    <p className="duration">{task?.duration}</p>
-                    <p className={"difficulty " + task.difficulty}>{task.difficulty}</p>
+                    {task.description ? <p className="description">{task.description}</p> : null}
                     <p className="subject">{task.subject}</p>
+                    <p className={"duration " + task.difficulty}>{task?.duration}</p>
                     <button className="options" onClick={toggleMenuDisplay}>
-                        <img src={optionsIcon} alt="..." className="icon" />
+                        <FontAwesomeIcon class="ellipsis" icon={faEllipsis} />
                     </button>
 
                 </div> : null
         }
             <div id={task._id + "menu"} className="taskMenu" >
-                <button class="finishTask" onClick={() => {
+                <button className="finishTask" onClick={() => {
                     let oldTask = { ...task };
                     task.progress = "completed";
                     updateTask(dispatch, oldTask, task);
                 }}>
                     <FontAwesomeIcon class="checkIcon" icon={faCheck} />
                 </button>
-                <button class="deleteTask" onClick={() => {
+                <button className="deleteTask" onClick={() => {
                     deleteTask(dispatch, task);
                 }}>
                     <FontAwesomeIcon class="trashIcon" icon={faTrash} />
@@ -63,15 +63,13 @@ export const Task = ({ task }) => {
 export const TaskDivider = ({ title, filterFunc, tasks }) => {
     const filteredTasks = filterFunc ? tasks.filter(filterFunc) : tasks;
     return (
-        <div>
-            <CollapsibleDivider title={title}>
-                {
-                    filteredTasks && filteredTasks?.length ? filteredTasks.map((task) => {
-                        return <Task key={task._id} task={task} />
-                    }) : null
-                }
-            </CollapsibleDivider>
-        </div >
+        <CollapsibleDivider title={title}>
+            {
+                filteredTasks && filteredTasks?.length ? filteredTasks.map((task) => {
+                    return <Task key={task._id} task={task} />
+                }) : null
+            }
+        </CollapsibleDivider>
     );
 
 }

@@ -10,19 +10,20 @@ function reduceTasks(state, action) {
             return { tasks: [action.payload, ...state.tasks] };
         case "REMOVE_TASK":
             return { tasks: state.tasks.filter((task) => task._id !== action.payload._id) };
+
         default:
             return state;
     }
 }
 
-export const TaskContextProvider = (props) => {
+export const TaskContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reduceTasks, {
         tasks: null
     });
 
     return (
         <TasksContext.Provider value={{ ...state, dispatch }}>
-            {props.children}
+            {children}
         </TasksContext.Provider>
     );
 };

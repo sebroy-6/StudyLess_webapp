@@ -107,12 +107,13 @@ export const AuthNForm = ({ type }) => {
 export const TaskForm = () => {
     const [isShow, setIsShown] = useState(false);
     const [title, setTitle] = useState("");
-    const [difficulty, setDiff] = useState(0);
+    const [description, setDescription] = useState("");
+    const [difficulty, setDiff] = useState("easy");
     const [subject, setSubject] = useState("");
     const [duration, setDuration] = useState("");
     const [dueDate, setDueDate] = useState("");
     const [error, setError] = useState("");
-    const { dispatch } = useContext(TasksContext);
+    const { tasks, dispatch } = useContext(TasksContext);
 
     const toggleIsShown = () => {
         setIsShown(!isShow);
@@ -125,7 +126,7 @@ export const TaskForm = () => {
     const createTask = async (event) => {
         event.preventDefault();
         const token = localStorage.getItem("authentication");
-        const data = { title, difficulty, subject, duration, dueDate };
+        const data = { title, description, difficulty, subject, duration, dueDate };
 
         const response = await fetch("/api/task", {
             method: "POST",
@@ -146,40 +147,81 @@ export const TaskForm = () => {
         }
         else {
             dispatch({ type: "ADD_TASK", payload: json });
-            setTitle("");
-            setDiff(0);
-            setSubject("");
-            setDuration("");
-            setError("");
+            resetStates();
         }
-        setError("");
     };
+
+    const resetStates = () => {
+        setTitle("");
+        setDescription("");
+        setDiff("easy");
+        setSubject("");
+        setDuration("");
+        setError("");
+    }
+
+    const getExistingSubjects = () => {
+        const subjects = [];
+        if (tasks?.length) {
+            tasks.forEach((task) => {
+                if (!subjects.includes(task.subject)) {
+                    subjects.push(task.subject);
+                }
+            });
+        }
+        return subjects;
+    }
 
     return (
         <div>
             <SymboleButton text="task" onClick={toggleIsShown} logo1="+" logo2="-" />
-            <form className="basicForm" id="taskForm">
+            <form id="taskForm">
                 <h2><b><u>New Task</u></b></h2>
-                <h3>title :</h3>
-                <input className="text" type="text"
-                    onChange={(e) => { setTitle(e.target.value) }} value={title} />
-                <div className="inputBox">
-                    <h3>Difficulty (out of 5) :</h3>
-                    <input className="number" type="number" min="1" max="5"
-                        onChange={(e) => { setDiff(e.target.value) }} value={difficulty} />
+                <div>
+                    <label for="title">Title</label>
+                    <input id="title" type="text"
+                        onChange={(e) => { setTitle(e.target.value) }} value={title} />
                 </div>
-                <h3>duration :</h3>
-                <input className="text" type="text"
-                    onChange={(e) => { setDuration(e.target.value) }} value={duration} />
-                <h3>subject :</h3>
-                <input className="text" type="text"
-                    onChange={(e) => { setSubject(e.target.value) }} value={subject} />
-                <h3>due date :</h3>
-                <input className="text" type="date"
-                    onChange={(e) => { setDueDate(e.target.value) }} value={dueDate} />
-                <button onClick={createTask}>CREATE</button>
+                <div>
+                    <label for="easyDiff">Difficulty</label>
+                    <input id="easyDiff" type="radio" name="difficulty"
+                        onChange={(e) => { setDiff("easy") }} />
+                    <label for="easyDiff" className="radio">easy</label>
+                    <input id="mediumDiff" type="radio" name="difficulty"
+                        onChange={(e) => { setDiff("medium") }} />
+                    <label for="mediumDiff" className="radio">medium</label>
+                    <input id="hardDiff" type="radio" name="difficulty"
+                        onChange={(e) => { setDiff("hard") }} />
+                    <label for="hardDiff" className="radio">hard</label>
+                </div>
+                <div>
+                    <label for="hoursDuration">Duration</label>
+                    <input type="text"
+                        onChange={(e) => { setDuration(e.target.value) }} value={duration} />
+                </div>
+                <div>
+                    <label for="subject">Subject</label>
+                    <input id="subject" name="taskSubject" list="existingSubjects"
+                        onChange={(e) => { setSubject(e.target.value) }} value={subject} />
+                    <datalist id="existingSubjects" name="existingSubjects" >
+                        {
+                            getExistingSubjects().map((subject) => {
+                                return <option key={subject} value={subject} />
+                            })
+                        }
+                    </datalist>
+                </div>
+                <div>
+                    <label>Due date</label>
+                    <input type="date"
+                        onChange={(e) => { setDueDate(e.target.value) }} value={dueDate} />
+                </div>
+                <div className="flex">
+                    <button onClick={createTask}>CREATE</button>
+                    <button type="button" onClick={resetStates}>CLEAR</button>
+                </div>
                 {error !== "" && <div className="error">{error}</div>}
-            </form>
-        </div>
+            </form >
+        </div >
     );
 };
