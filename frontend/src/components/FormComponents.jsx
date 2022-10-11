@@ -110,7 +110,7 @@ export const TaskForm = () => {
     const [description, setDescription] = useState("");
     const [difficulty, setDiff] = useState("easy");
     const [subject, setSubject] = useState("");
-    const [duration, setDuration] = useState("");
+    const [duration, setDuration] = useState("00:00");
     const [dueDate, setDueDate] = useState("");
     const [error, setError] = useState("");
     const { tasks, dispatch } = useContext(TasksContext);
@@ -156,7 +156,8 @@ export const TaskForm = () => {
         setDescription("");
         setDiff("easy");
         setSubject("");
-        setDuration("");
+        setDuration("00:00");
+        setDueDate("");
         setError("");
     }
 
@@ -170,6 +171,20 @@ export const TaskForm = () => {
             });
         }
         return subjects;
+    }
+
+    const getTodaysDate = () => {
+        const today = new Date();
+
+        const year = today.getFullYear().toString();
+        let month = (today.getMonth() + 1).toString();
+        let day = today.getDate().toString();
+
+        if (month < 10)
+            month = '0' + month;
+        if (day < 10)
+            day = '0' + day;
+        return `${year}-${month}-${day}`;
     }
 
     return (
@@ -196,7 +211,7 @@ export const TaskForm = () => {
                 </div>
                 <div>
                     <label for="hoursDuration">Duration</label>
-                    <input type="text"
+                    <input type="time" min="00:00" max="20:00"
                         onChange={(e) => { setDuration(e.target.value) }} value={duration} />
                 </div>
                 <div>
@@ -212,8 +227,8 @@ export const TaskForm = () => {
                     </datalist>
                 </div>
                 <div>
-                    <label>Due date</label>
-                    <input type="date"
+                    <label for="dueDate" >Due date</label>
+                    <input type="date" id="dueDate" min={getTodaysDate()}
                         onChange={(e) => { setDueDate(e.target.value) }} value={dueDate} />
                 </div>
                 <div className="flex">
