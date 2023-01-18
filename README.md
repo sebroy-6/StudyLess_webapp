@@ -54,21 +54,5 @@ This project uses the popular MERN stack group of technologies. This includes Mo
 
 As you can see, this architecure is following the Model-Vue-Control(MVC) structure commonly seen in many fullstack applications.
 
-# In Development
-
-This section is dedicated to the functionnalities comming in the futur.
-
-## functionnalities to implement
-
-- sort tasks by due date
-- Edit time seperation in study timer
-- Save time in timer while not in timer page (by using webworker?)
-
-## Study tools to implement
-
-- flash cards study tool
-- Study Schedule (maybe with Google Calender compatibility)
-- virtual sticky notes (for reminders & quick notes)
-
 ## Contact Info
 - [LinkedIn](https://www.linkedin.com/in/s%C3%A9bastien-roy-611245213/)
