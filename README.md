@@ -1,19 +1,17 @@
 # StudyLess - Studyaid web app
 
-> ## Note: This repository is made only for demonstration purposes 
+> ## Note: This repository is only for demonstration purposes 
 
 ## Table of contents
 
 1. [Introduction](#introduction)  
 1.1 [demo](#video-demo)  
 
-2. [Features](#features)  
+2. [Functionnalities](#features)  
 2.1 [Task manager](#manage-your-daily-tasks)  
-2.2 [Study timer](#breakdown-your-time)
+2.2 [Timer](#breakdown-your-time)
 
 3. [Architecture](#project-architecture)
-
-4. [In Development](#in-development)
 
 # Introduction
 
@@ -43,9 +41,9 @@ In the event of a mistake or change in plans, tasks can also be modified, marked
 
 ## Breakdown your time
 
-By using the study timer, users can cycle through different work cycles including studying (25min), small break (5min) & longer break (15min). 
+By using the timer, users can cycle through different work cycles including studying (25min), small break (5min) & longer break (15min). 
 
-This time seperation technique is called Pomodoro & it's goal is to optimise focus & productivity when studying by integrating multiple small breaks in your studying sessions.
+This time seperation technique is called Pomodoro & it's goal is to optimise focus & productivity when studying by integrating multiple small breaks in your study sessions.
 ![Screenshot](./images/timerScreen.png)
 
 # Project architecture
