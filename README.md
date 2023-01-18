@@ -1,6 +1,7 @@
 # StudyLess - Studyaid web app
 
 > ## Note: This repository is only for demonstration purposes 
+> To learn more about this project, please contact me with the link in the [Contact](#contact-info) section
 
 ## Table of contents
 
@@ -12,6 +13,8 @@
 2.2 [Timer](#breakdown-your-time)
 
 3. [Architecture](#project-architecture)
+
+4. [Contact]
 
 # Introduction
 
