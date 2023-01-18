@@ -14,8 +14,6 @@
 
 3. [Architecture](#project-architecture)
 
-4. [Contact]
-
 # Introduction
 
 The goal of this project is to create a website that help students simplify and optimise their studying schedule. This project is ongoing and will receive new features as time goes on.
